@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<!--
+  tinight.github.io
+  Breitner (Tinight) — Portfólio Pessoal
+  Desenvolvedor Entusiasta · Viajante
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Breitner Tinight — Desenvolvedor Entusiasta. Tecnologia, viagens e projetos que fazem sentido.">
+<meta property="og:title" content="Tinight">
+<meta property="og:description" content="Desenvolvedor Entusiasta · Tecnologia · Viagens · Natureza">
+<meta property="og:url" content="https://tinight.github.io">
+<title>Tinight</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & VARS ── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg:       #080810;
+  --bg2:      #0d0d1a;
+  --bg3:      #121224;
+  --gold:     #f5c842;
+  --gold2:    #e8a800;
+  --cyan:     #00e5ff;
+  --purple:   #7c3aed;
+  --purple2:  #a855f7;
+  --white:    #f0f0f8;
+  --muted:    rgba(240,240,248,.38);
+  --border:   rgba(240,240,248,.07);
+  --mono:     'Space Mono', monospace;
+  --sans:     'Outfit', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--white);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: .6;
+}
+
+/* ── GRID BG ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(124,58,237,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ── GLOW ORBS ── */
+.orb {
+  position: fixed; border-radius: 50%;
+  filter: blur(80px); pointer-events: none; z-index: 0;
+  animation: orbFloat 8s ease-in-out infinite alternate;
+}
+.orb1 { width:400px;height:400px;top:-100px;right:-100px;background:rgba(124,58,237,.18); animation-delay:0s; }
+.orb2 { width:300px;height:300px;bottom:-80px;left:-80px; background:rgba(0,229,255,.1);  animation-delay:-3s; }
+.orb3 { width:200px;height:200px;top:40%;left:40%;        background:rgba(245,200,66,.07);animation-delay:-5s; }
+@keyframes orbFloat {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(20px,30px) scale(1.08); }
+}
+
+/* ── MAIN WRAPPER ── */
+main {
+  position: relative; z-index: 1;
+  max-width: 600px; margin: 0 auto;
+  padding: 48px 20px 80px;
+  display: flex; flex-direction: column; gap: 0;
+}
+
+/* ── HEADER ── */
+.header {
+  text-align: center;
+  padding-bottom: 40px;
+  animation: fadeUp .7s ease both;
+}
+
+.avatar-ring {
+  width: 88px; height: 88px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--cyan), var(--gold));
+  padding: 2.5px;
+  animation: spin 6s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.avatar-inner {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.4rem;
+  animation: spin 6s linear infinite reverse; /* counter-rotate so emoji stays upright */
+}
+
+.name {
+  font-family: var(--sans);
+  font-size: 2rem; font-weight: 800;
+  letter-spacing: -.5px;
+  line-height: 1.1;
+}
+.name span { color: var(--gold); }
+
+.handle {
+  font-family: var(--mono);
+  font-size: .72rem; color: var(--muted);
+  margin-top: 4px; letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.tagline {
+  margin-top: 14px;
+  font-size: 1rem; font-weight: 500;
+  color: rgba(240,240,248,.7);
+  line-height: 1.5; max-width: 340px; margin-inline: auto;
+}
+
+.badges {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: center; margin-top: 16px;
+}
+.badge {
+  font-size: .7rem; font-weight: 600; letter-spacing: .5px;
+  padding: 4px 12px; border-radius: 20px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  color: var(--muted);
+}
+.badge.accent { border-color: rgba(124,58,237,.4); color: var(--purple2); background: rgba(124,58,237,.08); }
+.badge.gold   { border-color: rgba(245,200,66,.4); color: var(--gold);    background: rgba(245,200,66,.08); }
+.badge.cyan   { border-color: rgba(0,229,255,.3);  color: var(--cyan);    background: rgba(0,229,255,.06); }
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 32px 0 24px;
+  animation: fadeUp .7s ease both;
+}
+.divider::before, .divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.divider-label {
+  font-family: var(--mono); font-size: .65rem;
+  color: var(--muted); letter-spacing: 3px; text-transform: uppercase;
+}
+
+/* ── SOCIAL LINKS ── */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  animation: fadeUp .7s .1s ease both;
+}
+
+.social-btn {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px; border-radius: 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  text-decoration: none; color: var(--white);
+  transition: all .22s ease;
+  position: relative; overflow: hidden;
+}
+.social-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--hover-color, rgba(255,255,255,.04));
+  opacity: 0; transition: opacity .22s;
+}
+.social-btn:hover::before { opacity: 1; }
+.social-btn:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.14); }
+.social-btn:active { transform: translateY(0); }
+
+.social-icon { font-size: 1.3rem; flex-shrink: 0; }
+.social-info { min-width: 0; }
+.social-name { font-size: .78rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.social-sub  { font-size: .65rem; color: var(--muted); margin-top: 1px; }
+
+.social-btn.instagram { --hover-color: rgba(214,41,118,.08); border-color: rgba(214,41,118,.18); }
+.social-btn.github    { --hover-color: rgba(255,255,255,.06); }
+.social-btn.tiktok    { --hover-color: rgba(0,229,255,.06); border-color: rgba(0,229,255,.15); }
+.social-btn.coming    { opacity: .45; pointer-events: none; }
+
+/* ── PROJECT CARDS ── */
+.projects-grid {
+  display: flex; flex-direction: column; gap: 12px;
+  animation: fadeUp .7s .2s ease both;
+}
+
+.project-card {
+  border-radius: 18px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform .22s ease, border-color .22s;
+  text-decoration: none; color: inherit;
+  display: block;
+}
+.project-card:hover { transform: translateY(-3px); border-color: rgba(124,58,237,.35); }
+
+.card-header {
+  padding: 20px 20px 0;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+}
+.card-icon-wrap {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--purple), #4f1bb5);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(124,58,237,.4);
+}
+.card-meta { flex: 1; min-width: 0; }
+.card-title { font-size: 1.05rem; font-weight: 800; }
+.card-type  { font-family: var(--mono); font-size: .62rem; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 3px; }
+.card-tag   {
+  font-size: .65rem; font-weight: 700;
+  padding: 3px 10px; border-radius: 8px;
+  background: rgba(245,200,66,.12); color: var(--gold);
+  border: 1px solid rgba(245,200,66,.25);
+  flex-shrink: 0; align-self: flex-start;
+}
+.card-tag.free { background: rgba(0,229,255,.1); color: var(--cyan); border-color: rgba(0,229,255,.2); }
+
+.card-desc {
+  padding: 12px 20px;
+  font-size: .83rem; color: rgba(240,240,248,.6); line-height: 1.55;
+}
+
+.card-footer {
+  padding: 12px 20px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--border);
+}
+.card-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  font-size: .62rem; font-weight: 600;
+  padding: 3px 9px; border-radius: 6px;
+  background: rgba(255,255,255,.05); color: var(--muted);
+  border: 1px solid var(--border);
+}
+.card-arrow {
+  font-size: .8rem; color: var(--muted);
+  transition: transform .2s, color .2s;
+}
+.project-card:hover .card-arrow { transform: translateX(4px); color: var(--gold); }
+
+/* Coming soon card */
+.project-card.soon {
+  opacity: .5; pointer-events: none;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--bg3),
+    var(--bg3) 8px,
+    rgba(255,255,255,.01) 8px,
+    rgba(255,255,255,.01) 16px
+  );
+}
+
+/* ── STATUS STRIP ── */
+.status-strip {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px; border-radius: 12px;
+  background: rgba(0,229,255,.05);
+  border: 1px solid rgba(0,229,255,.12);
+  font-size: .78rem; color: rgba(240,240,248,.6);
+  animation: fadeUp .7s .3s ease both;
+}
+.status-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--cyan); flex-shrink: 0;
+  box-shadow: 0 0 8px var(--cyan);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%,100%{ opacity:1; transform:scale(1); }
+  50%    { opacity:.5; transform:scale(.8); }
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 1;
+  text-align: center; padding: 24px 20px;
+  font-family: var(--mono); font-size: .65rem;
+  color: rgba(240,240,248,.2); letter-spacing: 1px;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── MOBILE TWEAKS ── */
+@media (max-width: 400px) {
+  .social-grid { grid-template-columns: 1fr; }
+  .name { font-size: 1.7rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<main>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="avatar-ring">
+      <div class="avatar-inner">🚀</div>
+    </div>
+
+    <div class="name">Breitner <span>Tinight</span></div>
+    <div class="handle">@tinight</div>
+
+    <p class="tagline">
+      Tecnologia, viagens e natureza —<br>minha ideia é viver viajando.
+    </p>
+
+    <div class="badges">
+      <span class="badge accent">Desenvolvedor Entusiasta</span>
+      <span class="badge gold">✈️ Viajante</span>
+      <span class="badge cyan">🌿 Natureza</span>
+    </div>
+  </header>
+
+  <!-- STATUS -->
+  <div class="status-strip">
+    <div class="status-dot"></div>
+    <span>Disponível para novos projetos e colaborações</span>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="divider"><span class="divider-label">Redes</span></div>
+
+  <div class="social-grid">
+    <a class="social-btn instagram" href="https://instagram.com/tinight" target="_blank" rel="noopener">
+      <span class="social-icon">📸</span>
+      <div class="social-info">
+        <div class="social-name">Instagram</div>
+        <div class="social-sub">@tinight</div>
+      </div>
+    </a>
+
+    <a class="social-btn github" href="https://github.com/Tinight" target="_blank" rel="noopener">
+      <span class="social-icon">💻</span>
+      <div class="social-info">
+        <div class="social-name">GitHub</div>
+        <div class="social-sub">github.com/Tinight</div>
+      </div>
+    </a>
+
+    <a class="social-btn tiktok coming" href="#" target="_blank" rel="noopener">
+      <span class="social-icon">🎵</span>
+      <div class="social-info">
+        <div class="social-name">TikTok</div>
+        <div class="social-sub">Em breve · Agosto 2026</div>
+      </div>
+    </a>
+
+    <a class="social-btn coming" href="#" target="_blank" rel="noopener">
+      <span class="social-icon">💼</span>
+      <div class="social-info">
+        <div class="social-name">LinkedIn</div>
+        <div class="social-sub">Em breve</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="divider"><span class="divider-label">Projetos</span></div>
+
+  <div class="projects-grid">
+
+    <!-- Glixar -->
+    <a class="project-card" href="https://tinight.github.io/glixar" target="_blank" rel="noopener">
+      <div class="card-header">
+        <div class="card-icon-wrap">✨</div>
+        <div class="card-meta">
+          <div class="card-title">Glixar</div>
+          <div class="card-type">Jogo · Match-3</div>
+        </div>
+        <span class="card-tag free">Grátis</span>
+      </div>
+      <div class="card-desc">
+        Jogo match-3 com níveis infinitos, gemas especiais, obstáculos, missões diárias e ranking global. Funciona como app no celular.
+      </div>
+      <div class="card-footer">
+        <div class="card-chips">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Firebase</span>
+        </div>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- Em breve gratuito -->
+    <div class="project-card soon">
+      <div class="card-header">
+        <div class="card-icon-wrap" style="background:linear-gradient(135deg,#1a6b3a,#0a3a1f);">🔧</div>
+        <div class="card-meta">
+          <div class="card-title">Próximo Projeto</div>
+          <div class="card-type">Em desenvolvimento</div>
+        </div>
+        <span class="card-tag free">Grátis</span>
+      </div>
+      <div class="card-desc">Novo projeto em desenvolvimento. Em breve por aqui!</div>
+      <div class="card-footer">
+        <div class="card-chips"><span class="chip">Em breve</span></div>
+        <span class="card-arrow">→</span>
+      </div>
+    </div>
+
+    <!-- Em breve pago -->
+    <div class="project-card soon">
+      <div class="card-header">
+        <div class="card-icon-wrap" style="background:linear-gradient(135deg,#b8860b,#5a4000);">💎</div>
+        <div class="card-meta">
+          <div class="card-title">Produto Premium</div>
+          <div class="card-type">Em desenvolvimento</div>
+        </div>
+        <span class="card-tag">Pago</span>
+      </div>
+      <div class="card-desc">Produto premium em construção. Fique de olho!</div>
+      <div class="card-footer">
+        <div class="card-chips"><span class="chip">Em breve</span></div>
+        <span class="card-arrow">→</span>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  © 2026 Breitner Tinight · Feito com 💜 e ☕
+</footer>
+
+</body>
+</html>
