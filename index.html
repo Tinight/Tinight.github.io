@@ -13,6 +13,9 @@
 <meta property="og:description" content="Desenvolvedor Entusiasta · Tecnologia · Viagens · Natureza">
 <meta property="og:url" content="https://tinight.github.io">
 <title>Tinight</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚀%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#080810">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 /* ── RESET & VARS ── */
@@ -68,6 +71,7 @@ body::after {
   position: fixed; border-radius: 50%;
   filter: blur(80px); pointer-events: none; z-index: 0;
   animation: orbFloat 8s ease-in-out infinite alternate;
+  transition: opacity 0.6s ease;
 }
 .orb1 { width:400px;height:400px;top:-100px;right:-100px;background:rgba(124,58,237,.18); animation-delay:0s; }
 .orb2 { width:300px;height:300px;bottom:-80px;left:-80px; background:rgba(0,229,255,.1);  animation-delay:-3s; }
@@ -75,6 +79,34 @@ body::after {
 @keyframes orbFloat {
   from { transform: translate(0,0) scale(1); }
   to   { transform: translate(20px,30px) scale(1.08); }
+}
+
+/* ── GLOW TOGGLE BUTTON ── */
+.glow-toggle {
+  position: absolute;
+  top: 24px; right: 20px;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(18, 18, 36, 0.6);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--white);
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.glow-toggle:hover {
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+.glow-toggle:active {
+  transform: scale(0.95);
+}
+.glow-off .orb {
+  opacity: 0 !important;
 }
 
 /* ── MAIN WRAPPER ── */
@@ -99,6 +131,12 @@ main {
   background: linear-gradient(135deg, var(--purple), var(--cyan), var(--gold));
   padding: 2.5px;
   animation: spin 6s linear infinite;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+  cursor: pointer;
+}
+.avatar-ring:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.45);
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
@@ -109,6 +147,10 @@ main {
   display: flex; align-items: center; justify-content: center;
   font-size: 2.4rem;
   animation: spin 6s linear infinite reverse; /* counter-rotate so emoji stays upright */
+  transition: transform 0.2s ease;
+}
+.avatar-ring:hover .avatar-inner {
+  transform: scale(1.05) rotate(-15deg);
 }
 
 .name {
@@ -192,12 +234,23 @@ main {
 .social-icon { font-size: 1.3rem; flex-shrink: 0; }
 .social-info { min-width: 0; }
 .social-name { font-size: .78rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.social-sub  { font-size: .65rem; color: var(--muted); margin-top: 1px; }
+.social-sub  { font-size: .65rem; color: var(--muted); margin-top: 1px; transition: color 0.2s; }
 
 .social-btn.instagram { --hover-color: rgba(214,41,118,.08); border-color: rgba(214,41,118,.18); }
 .social-btn.github    { --hover-color: rgba(255,255,255,.06); }
 .social-btn.tiktok    { --hover-color: rgba(0,229,255,.06); border-color: rgba(0,229,255,.15); }
-.social-btn.coming    { opacity: .45; pointer-events: none; }
+.social-btn.linkedin  { --hover-color: rgba(10,102,194,.08); border-color: rgba(10,102,194,.18); }
+
+.social-btn.email-btn {
+  grid-column: span 2;
+  width: 100%; text-align: left;
+  cursor: pointer; font-family: inherit;
+  transition: all 0.25s ease;
+}
+.social-btn.email-btn.copied {
+  border-color: rgba(0,229,255,0.4);
+  box-shadow: 0 0 15px rgba(0,229,255,0.15);
+}
 
 /* ── PROJECT CARDS ── */
 .projects-grid {
@@ -206,6 +259,7 @@ main {
 }
 
 .project-card {
+  position: relative;
   border-radius: 18px;
   background: var(--bg3);
   border: 1px solid var(--border);
@@ -216,7 +270,26 @@ main {
 }
 .project-card:hover { transform: translateY(-3px); border-color: rgba(124,58,237,.35); }
 
+/* Spotlight overlay */
+.project-card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(124, 58, 237, 0.08),
+    transparent 60%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+.project-card:hover .project-card-glow {
+  opacity: 1;
+}
+
 .card-header {
+  position: relative; z-index: 1;
   padding: 20px 20px 0;
   display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
 }
@@ -240,11 +313,13 @@ main {
 .card-tag.free { background: rgba(0,229,255,.1); color: var(--cyan); border-color: rgba(0,229,255,.2); }
 
 .card-desc {
+  position: relative; z-index: 1;
   padding: 12px 20px;
   font-size: .83rem; color: rgba(240,240,248,.6); line-height: 1.55;
 }
 
 .card-footer {
+  position: relative; z-index: 1;
   padding: 12px 20px 18px;
   display: flex; align-items: center; justify-content: space-between;
   border-top: 1px solid var(--border);
@@ -262,9 +337,67 @@ main {
 }
 .project-card:hover .card-arrow { transform: translateX(4px); color: var(--gold); }
 
-/* Coming soon card */
+/* Expandable Form styles */
+.card-expand-form {
+  position: relative; z-index: 1;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s ease;
+  padding: 0 20px;
+}
+.project-card.soon.expanded .card-expand-form {
+  max-height: 90px;
+  padding: 0 20px 20px;
+}
+
+.notify-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  width: 100%;
+}
+.notify-form input[type="email"] {
+  flex: 1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: var(--white);
+  font-family: inherit;
+  font-size: 0.8rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.notify-form input[type="email"]:focus {
+  border-color: var(--gold);
+}
+.notify-form button {
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.notify-form button:hover {
+  background: var(--gold2);
+}
+.notify-form button:active {
+  transform: scale(0.96);
+}
+.form-feedback {
+  font-size: 0.75rem;
+  color: var(--cyan);
+  margin-top: 8px;
+  display: none;
+}
+
+/* Coming soon card styling updates */
 .project-card.soon {
-  opacity: .5; pointer-events: none;
+  cursor: pointer;
   background: repeating-linear-gradient(
     -45deg,
     var(--bg3),
@@ -272,6 +405,13 @@ main {
     rgba(255,255,255,.01) 8px,
     rgba(255,255,255,.01) 16px
   );
+  border-color: rgba(240,240,248,.04);
+}
+.project-card.soon:hover {
+  border-color: rgba(245, 200, 66, 0.25);
+}
+.project-card.soon .card-arrow {
+  transition: transform 0.3s ease;
 }
 
 /* ── STATUS STRIP ── */
@@ -311,6 +451,7 @@ footer {
 /* ── MOBILE TWEAKS ── */
 @media (max-width: 400px) {
   .social-grid { grid-template-columns: 1fr; }
+  .social-btn.email-btn { grid-column: span 1; }
   .name { font-size: 1.7rem; }
 }
 </style>
@@ -320,6 +461,8 @@ footer {
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
 <div class="orb orb3"></div>
+
+<button class="glow-toggle" id="glowToggle" title="Alternar Brilho de Fundo" aria-label="Alternar Brilho de Fundo">💡</button>
 
 <main>
 
@@ -365,7 +508,7 @@ footer {
       <span class="social-icon">💻</span>
       <div class="social-info">
         <div class="social-name">GitHub</div>
-        <div class="social-sub">github.com/Tinight</div>
+        <div class="social-sub" id="github-sub">github.com/Tinight</div>
       </div>
     </a>
 
@@ -377,13 +520,22 @@ footer {
       </div>
     </a>
 
-    <a class="social-btn" href="https://linkedin.com/in/breitner-maquito" target="_blank" rel="noopener">
+    <a class="social-btn linkedin" href="https://linkedin.com/in/breitner-maquito" target="_blank" rel="noopener">
       <span class="social-icon">💼</span>
       <div class="social-info">
         <div class="social-name">LinkedIn</div>
         <div class="social-sub">breitner-maquito</div>
       </div>
     </a>
+
+    <!-- EMAIL COPY BUTTON -->
+    <button class="social-btn email-btn" id="copyEmailBtn" title="Clique para copiar o e-mail">
+      <span class="social-icon">✉️</span>
+      <div class="social-info">
+        <div class="social-name" id="emailText">E-mail de Contato</div>
+        <div class="social-sub" id="emailSub">Clique para copiar: breitnermaquito@gmail.com</div>
+      </div>
+    </button>
   </div>
 
   <!-- PROJECTS -->
@@ -393,6 +545,7 @@ footer {
 
     <!-- Glixar -->
     <a class="project-card" href="https://tinight.github.io/glixar" target="_blank" rel="noopener">
+      <div class="project-card-glow"></div>
       <div class="card-header">
         <div class="card-icon-wrap">✨</div>
         <div class="card-meta">
@@ -417,6 +570,7 @@ footer {
 
     <!-- Em breve gratuito -->
     <div class="project-card soon">
+      <div class="project-card-glow"></div>
       <div class="card-header">
         <div class="card-icon-wrap" style="background:linear-gradient(135deg,#1a6b3a,#0a3a1f);">🔧</div>
         <div class="card-meta">
@@ -426,14 +580,25 @@ footer {
         <span class="card-tag free">Grátis</span>
       </div>
       <div class="card-desc">Novo projeto em desenvolvimento. Em breve por aqui!</div>
+      
+      <!-- Expandable form -->
+      <div class="card-expand-form">
+        <form class="notify-form" action="https://formspree.io/f/placeholder_free" method="POST">
+          <input type="email" name="email" placeholder="Seu melhor e-mail" required onclick="event.stopPropagation()">
+          <button type="submit" onclick="event.stopPropagation()">Me Avise</button>
+        </form>
+        <div class="form-feedback"></div>
+      </div>
+
       <div class="card-footer">
         <div class="card-chips"><span class="chip">Em breve</span></div>
-        <span class="card-arrow">→</span>
+        <span class="card-arrow">▼</span>
       </div>
     </div>
 
     <!-- Em breve pago -->
     <div class="project-card soon">
+      <div class="project-card-glow"></div>
       <div class="card-header">
         <div class="card-icon-wrap" style="background:linear-gradient(135deg,#b8860b,#5a4000);">💎</div>
         <div class="card-meta">
@@ -443,9 +608,19 @@ footer {
         <span class="card-tag">Pago</span>
       </div>
       <div class="card-desc">Produto premium em construção. Fique de olho!</div>
+
+      <!-- Expandable form -->
+      <div class="card-expand-form">
+        <form class="notify-form" action="https://formspree.io/f/placeholder_premium" method="POST">
+          <input type="email" name="email" placeholder="Seu melhor e-mail" required onclick="event.stopPropagation()">
+          <button type="submit" onclick="event.stopPropagation()">Me Avise</button>
+        </form>
+        <div class="form-feedback"></div>
+      </div>
+
       <div class="card-footer">
         <div class="card-chips"><span class="chip">Em breve</span></div>
-        <span class="card-arrow">→</span>
+        <span class="card-arrow">▼</span>
       </div>
     </div>
 
@@ -456,6 +631,135 @@ footer {
 <footer>
   © 2026 Breitner Tinight · Feito com 💜 e ☕
 </footer>
+
+<!-- ── JAVASCRIPT LOGIC ── -->
+<script>
+  // 1. Ambient Glow Toggle
+  const glowToggle = document.getElementById('glowToggle');
+  const body = document.body;
+
+  // Restore user preference
+  const isGlowOff = localStorage.getItem('glowOff') === 'true';
+  if (isGlowOff) {
+    body.classList.add('glow-off');
+    glowToggle.innerText = '✨';
+  }
+
+  glowToggle.addEventListener('click', () => {
+    body.classList.toggle('glow-off');
+    const currentlyOff = body.classList.contains('glow-off');
+    localStorage.setItem('glowOff', currentlyOff);
+    glowToggle.innerText = currentlyOff ? '✨' : '💡';
+  });
+
+  // 2. Spotlight mouse movement effect
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+
+  // 3. Dynamic GitHub Repos Fetch
+  async function fetchGithubStats() {
+    try {
+      const response = await fetch('https://api.github.com/users/Tinight');
+      if (response.ok) {
+        const data = await response.json();
+        const githubSub = document.getElementById('github-sub');
+        if (githubSub && data.public_repos !== undefined) {
+          githubSub.innerText = `github.com/Tinight • ${data.public_repos} repos`;
+        }
+      }
+    } catch (err) {
+      console.warn('Erro ao buscar dados do GitHub:', err);
+    }
+  }
+  fetchGithubStats();
+
+  // 4. Copiar E-mail com feedback visual
+  const copyEmailBtn = document.getElementById('copyEmailBtn');
+  const emailSub = document.getElementById('emailSub');
+  const emailText = document.getElementById('emailText');
+  const emailVal = "breitnermaquito@gmail.com";
+
+  copyEmailBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(emailVal).then(() => {
+      copyEmailBtn.classList.add('copied');
+      emailText.innerText = "E-mail Copiado!";
+      emailSub.innerText = "Copiado com sucesso para a área de transferência!";
+      
+      setTimeout(() => {
+        copyEmailBtn.classList.remove('copied');
+        emailText.innerText = "E-mail de Contato";
+        emailSub.innerText = `Clique para copiar: ${emailVal}`;
+      }, 2500);
+    }).catch(err => {
+      console.error('Erro ao copiar e-mail:', err);
+    });
+  });
+
+  // 5. Expandable "Soon" cards & signup
+  document.querySelectorAll('.project-card.soon').forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Don't close if clicking inside inputs or buttons
+      if (e.target.closest('input') || e.target.closest('button')) {
+        return;
+      }
+      
+      card.classList.toggle('expanded');
+      const arrow = card.querySelector('.card-arrow');
+      if (card.classList.contains('expanded')) {
+        arrow.style.transform = 'rotate(-180deg)';
+      } else {
+        arrow.style.transform = 'rotate(0deg)';
+      }
+    });
+  });
+
+  document.querySelectorAll('.notify-form').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = form.querySelector('input[type="email"]');
+      const button = form.querySelector('button');
+      const feedback = form.nextElementSibling;
+      const email = input.value;
+      
+      button.disabled = true;
+      button.innerText = 'Enviando...';
+      
+      // Simulate form submission success
+      setTimeout(() => {
+        form.style.display = 'none';
+        feedback.style.display = 'block';
+        feedback.innerText = `✓ Obrigado! Você será notificado em: ${email}`;
+      }, 800);
+    });
+  });
+
+  // 6. Interactive Avatar Emoji rotation
+  const avatarRing = document.querySelector('.avatar-ring');
+  const avatarInner = document.querySelector('.avatar-inner');
+  const emojis = ['🚀', '👨‍💻', '✨', '🌍', '🌿'];
+  let emojiIdx = 0;
+  
+  avatarRing.addEventListener('mouseenter', () => {
+    emojiIdx = (emojiIdx + 1) % emojis.length;
+    avatarInner.innerText = emojis[emojiIdx];
+  });
+
+  // 7. Service Worker Registration
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('Service Worker registrado com sucesso:', reg.scope))
+        .catch(err => console.error('Erro ao registrar Service Worker:', err));
+    });
+  }
+</script>
 
 </body>
 </html>
