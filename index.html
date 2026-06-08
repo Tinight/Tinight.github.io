@@ -448,10 +448,10 @@ footer {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── FINANCES SANDBOX MODAL ── */
+/* ── FINANCES SANDBOX MODAL (CELULAR SIMULADO) ── */
 .modal-overlay {
   position: fixed; inset: 0;
-  background: rgba(8, 8, 16, 0.8);
+  background: rgba(8, 8, 16, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex; align-items: center; justify-content: center;
@@ -463,74 +463,162 @@ footer {
 .modal-overlay.active {
   opacity: 1; pointer-events: auto;
 }
-.modal-content {
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  width: 100%; max-width: 440px;
+.phone-mockup {
+  background: var(--bg);
+  border: 8px solid #1e1e2f;
+  border-radius: 40px;
+  width: 100%; max-width: 360px;
+  height: 640px;
+  display: flex; flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.05);
   transform: translateY(20px) scale(0.95);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15);
   position: relative;
 }
-.modal-overlay.active .modal-content {
+.modal-overlay.active .phone-mockup {
   transform: translateY(0) scale(1);
 }
 
-.modal-header {
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.02);
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-}
-.modal-title-wrap {
-  display: flex; align-items: center; gap: 10px;
-}
-.modal-icon {
-  font-size: 1.4rem;
-}
-.modal-title {
-  font-size: 1.1rem; font-weight: 800;
-}
-.modal-subtitle {
-  font-size: 0.62rem; font-family: var(--mono); color: var(--gold); letter-spacing: 1px; text-transform: uppercase;
-}
-.modal-close {
-  background: none; border: none; color: var(--muted); font-size: 1.5rem; cursor: pointer;
-  width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+/* Close button on phone mockup (absolute top right of screen) */
+.phone-close-btn {
+  position: absolute;
+  top: 32px; right: 12px;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; cursor: pointer;
+  z-index: 1010;
   transition: all 0.2s;
 }
-.modal-close:hover {
-  background: rgba(255, 255, 255, 0.05); color: var(--white);
+.phone-close-btn:hover {
+  background: rgba(255,255,255,0.1);
+  transform: scale(1.05);
 }
 
-.sandbox-container {
-  padding: 20px;
-  display: flex; flex-direction: column; gap: 16px;
+/* Status Bar */
+.phone-status-bar {
+  height: 28px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  padding: 0 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.65rem; font-family: var(--mono);
+  color: var(--muted);
+  pointer-events: none;
+  z-index: 1005;
 }
+.phone-status-left { font-weight: bold; }
+.phone-status-right { display: flex; gap: 4px; align-items: center; }
+
+/* Home indicator */
+.phone-home-indicator {
+  height: 14px;
+  background: var(--bg3);
+  display: flex; justify-content: center; align-items: center;
+  pointer-events: none;
+  z-index: 1005;
+  border-top: 1px solid rgba(255, 255, 255, 0.01);
+}
+.phone-home-indicator::after {
+  content: '';
+  width: 100px; height: 4px;
+  background: rgba(240, 240, 248, 0.2);
+  border-radius: 2px;
+}
+
+/* Screen */
+.phone-screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg2);
+}
+
+/* Tabs Viewport */
+.phone-tabs-viewport {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+.phone-tab-panel {
+  position: absolute; inset: 0;
+  display: none;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 16px;
+  animation: tabFadeIn 0.25s ease both;
+}
+.phone-tab-panel.active {
+  display: flex;
+}
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Phone Navbar */
+.phone-navbar {
+  height: 60px;
+  background: var(--bg3);
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-around; align-items: center;
+  z-index: 1005;
+}
+.phone-nav-item {
+  flex: 1; height: 100%;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  gap: 2px; border: none; background: none;
+  color: var(--muted); cursor: pointer;
+  transition: all 0.2s;
+}
+.phone-nav-item:hover {
+  color: rgba(240, 240, 248, 0.7);
+}
+.phone-nav-item.active {
+  color: var(--cyan);
+}
+.phone-nav-icon { font-size: 1.15rem; }
+.phone-nav-label { font-size: 0.58rem; font-weight: 700; font-family: var(--sans); }
+
+/* Sandbox Container */
+.phone-sandbox-container {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.phone-header-app {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 2px;
+}
+.phone-header-title { font-size: 1rem; font-weight: 800; }
+.phone-header-subtitle { font-size: 0.65rem; color: var(--gold); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.5px; }
 
 .sandbox-banner {
-  background: rgba(245, 200, 66, 0.08);
-  border: 1px solid rgba(245, 200, 66, 0.2);
+  background: rgba(245, 200, 66, 0.06);
+  border: 1px solid rgba(245, 200, 66, 0.15);
   border-radius: 10px;
-  padding: 8px 12px;
-  font-size: 0.72rem; color: var(--gold);
-  display: flex; align-items: center; gap: 8px;
+  padding: 8px 10px;
+  font-size: 0.68rem; color: var(--gold);
+  display: flex; align-items: flex-start; gap: 8px;
+  line-height: 1.35;
 }
 
 .fin-dashboard {
   background: var(--bg3);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 16px;
+  padding: 14px;
   text-align: center;
 }
 .fin-balance-label {
-  font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px;
+  font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px;
 }
 .fin-balance-val {
-  font-size: 2rem; font-weight: 800; color: var(--white); margin: 4px 0 10px;
+  font-size: 1.7rem; font-weight: 800; color: var(--white); margin: 4px 0 8px;
   letter-spacing: -0.5px;
 }
 .fin-budget-progress {
@@ -541,52 +629,52 @@ footer {
   border-radius: 3px; transition: width 0.4s ease;
 }
 .fin-budget-info {
-  display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--muted); margin-top: 6px;
+  display: flex; justify-content: space-between; font-size: 0.65rem; color: var(--muted); margin-top: 5px;
 }
 
 .fin-transactions-title {
-  font-size: 0.82rem; font-weight: 700; color: var(--white); display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.78rem; font-weight: 700; color: var(--white); display: flex; justify-content: space-between; align-items: center;
 }
 .fin-transactions-list {
   display: flex; flex-direction: column; gap: 8px;
-  max-height: 140px; overflow-y: auto; padding-right: 4px;
+  max-height: 120px; overflow-y: auto; padding-right: 2px;
 }
 
 /* Custom scrollbar for transaction list */
 .fin-transactions-list::-webkit-scrollbar {
-  width: 4px;
+  width: 3px;
 }
 .fin-transactions-list::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.01);
 }
 .fin-transactions-list::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
+  border-radius: 1.5px;
 }
 
 .fin-tx-item {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 8px 12px; background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border); border-radius: 10px;
-  font-size: 0.78rem; transition: transform 0.25s ease;
+  padding: 6px 10px; background: rgba(255, 255, 255, 0.01); border: 1px solid var(--border); border-radius: 10px;
+  font-size: 0.75rem; transition: transform 0.25s ease;
   animation: slideInTx 0.25s ease both;
 }
 @keyframes slideInTx {
-  from { opacity: 0; transform: translateY(5px); }
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.fin-tx-left { display: flex; align-items: center; gap: 8px; }
-.fin-tx-emoji { font-size: 1.1rem; }
+.fin-tx-left { display: flex; align-items: center; gap: 6px; }
+.fin-tx-emoji { font-size: 1rem; }
 .fin-tx-name { font-weight: 600; }
 .fin-tx-amount { font-family: var(--mono); font-weight: 700; }
 .fin-tx-amount.expense { color: #f43f5e; }
 .fin-tx-amount.income { color: var(--cyan); }
 
 .fin-add-form {
-  display: grid; grid-template-columns: 1.2fr 1fr auto; gap: 8px;
+  display: grid; grid-template-columns: 1.2fr 1fr auto; gap: 6px;
 }
 .fin-add-form input, .fin-add-form select {
   background: var(--bg3); border: 1px solid var(--border); border-radius: 8px;
-  padding: 8px; color: var(--white); font-family: inherit; font-size: 0.78rem; outline: none;
+  padding: 6px 8px; color: var(--white); font-family: inherit; font-size: 0.75rem; outline: none;
   transition: border-color 0.2s;
 }
 .fin-add-form input:focus, .fin-add-form select:focus {
@@ -594,38 +682,78 @@ footer {
 }
 .fin-add-btn {
   background: var(--purple); color: var(--white); border: none; border-radius: 8px;
-  padding: 8px 12px; font-weight: 700; font-size: 0.78rem; cursor: pointer;
+  padding: 6px 10px; font-weight: 700; font-size: 0.75rem; cursor: pointer;
   transition: all 0.2s; display: flex; align-items: center; justify-content: center;
 }
 .fin-add-btn:hover { background: var(--purple2); }
 .fin-add-btn:active { transform: scale(0.95); }
 
-.modal-footer-waitlist {
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.01);
-  border-top: 1px solid var(--border);
-  text-align: center;
+/* Lock Overlay */
+.lock-overlay {
+  position: absolute; inset: 0;
+  background: rgba(8, 8, 16, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 24px;
+  z-index: 100;
+  animation: tabFadeIn 0.3s ease both;
 }
-.waitlist-text {
-  font-size: 0.72rem; color: var(--muted); margin-bottom: 8px; line-height: 1.4;
+.lock-icon-wrap {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(245, 200, 66, 0.1);
+  border: 1px solid rgba(245, 200, 66, 0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; color: var(--gold);
+  box-shadow: 0 0 15px rgba(245, 200, 66, 0.15);
+  animation: pulseLock 2s infinite alternate;
 }
+@keyframes pulseLock {
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(245, 200, 66, 0.1); }
+  100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(245, 200, 66, 0.3); }
+}
+.lock-title {
+  font-size: 0.95rem; font-weight: 800; color: var(--white); margin: 12px 0 6px;
+}
+.lock-desc {
+  font-size: 0.72rem; color: var(--muted); line-height: 1.4; max-width: 240px; margin-bottom: 16px;
+}
+
+.lock-waitlist-box {
+  width: 100%; max-width: 260px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+}
+.lock-waitlist-text {
+  font-size: 0.65rem; color: var(--muted); margin-bottom: 8px; line-height: 1.3;
+}
+
 .waitlist-form {
-  display: flex; gap: 8px;
+  display: flex; gap: 6px;
 }
 .waitlist-form input {
-  flex: 1; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px;
-  padding: 8px 12px; color: var(--white); font-family: inherit; font-size: 0.78rem; outline: none;
+  flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+  padding: 6px 10px; color: var(--white); font-family: inherit; font-size: 0.75rem; outline: none;
 }
 .waitlist-form input:focus { border-color: var(--cyan); }
 .waitlist-form button {
   background: var(--cyan); color: var(--bg); border: none; border-radius: 8px;
-  padding: 8px 16px; font-weight: 700; font-size: 0.78rem; cursor: pointer;
+  padding: 6px 12px; font-weight: 700; font-size: 0.75rem; cursor: pointer;
   transition: all 0.2s;
 }
 .waitlist-form button:hover { background: #5df0ff; }
 .waitlist-form button:active { transform: scale(0.95); }
 .waitlist-feedback {
-  font-size: 0.72rem; color: var(--cyan); margin-top: 6px; display: none;
+  font-size: 0.68rem; color: var(--cyan); margin-top: 6px; display: none;
+}
+
+/* Adaptability for smaller height viewports */
+@media (max-height: 680px) {
+  .phone-mockup {
+    transform: translateY(0) scale(0.85) !important;
+  }
 }
 
 /* ── MOBILE TWEAKS ── */
@@ -808,65 +936,149 @@ footer {
   © 2026 Breitner Tinight · Feito com 💜 e ☕
 </footer>
 
-<!-- ── FINANCES SIMULATOR MODAL ── -->
+<!-- ── FINANCES SIMULATOR MODAL (CELULAR SIMULADO) ── -->
 <div class="modal-overlay" id="financesModal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <div class="modal-title-wrap">
-        <span class="modal-icon">💎</span>
-        <div>
-          <h3 class="modal-title">Finanças</h3>
-          <span class="modal-subtitle">Finzen Sandbox</span>
-        </div>
+  <div class="phone-mockup">
+    <!-- Status Bar -->
+    <div class="phone-status-bar">
+      <div class="phone-status-left">18:45</div>
+      <div class="phone-status-right">
+        <span>📶</span>
+        <span>🔋</span>
       </div>
-      <button class="modal-close" id="closeFinancesBtn" aria-label="Fechar">&times;</button>
     </div>
     
-    <div class="sandbox-container">
-      <div class="sandbox-banner">
-        <span>💡</span>
-        <span>Modo de Teste: adicione gastos abaixo. Nenhum dado é salvo no servidor.</span>
-      </div>
+    <!-- Close button (x) inside phone header for usability -->
+    <button class="phone-close-btn" id="closeFinancesBtn" title="Fechar Simulador">&times;</button>
 
-      <!-- App Screen Simulation -->
-      <div class="fin-dashboard">
-        <span class="fin-balance-label">Saldo em Conta</span>
-        <div class="fin-balance-val" id="finBalance">R$ 2.450,00</div>
+    <!-- Phone Screen -->
+    <div class="phone-screen">
+      <div class="phone-tabs-viewport">
         
-        <div class="fin-budget-progress">
-          <div class="fin-budget-bar" id="finBudgetBar"></div>
+        <!-- TAB 1: INÍCIO (INTERATIVO) -->
+        <div class="phone-tab-panel active" id="tab-inicio">
+          <div class="phone-sandbox-container">
+            <div class="phone-header-app">
+              <div>
+                <h3 class="phone-header-title">Finanças</h3>
+                <span class="phone-header-subtitle">Finzen Sandbox</span>
+              </div>
+              <span style="font-size:1.1rem;">👋</span>
+            </div>
+
+            <div class="sandbox-banner">
+              <span>💡</span>
+              <span>Modo Teste: simule adicionando gastos. Nada é salvo no servidor.</span>
+            </div>
+
+            <!-- Virtual Credit Card representation -->
+            <div class="fin-dashboard">
+              <span class="fin-balance-label">Saldo em Conta</span>
+              <div class="fin-balance-val" id="finBalance">R$ 2.450,00</div>
+              
+              <div class="fin-budget-progress">
+                <div class="fin-budget-bar" id="finBudgetBar"></div>
+              </div>
+              <div class="fin-budget-info">
+                <span>Orçamento Gasto: <strong id="finBudgetPercent">0%</strong></span>
+                <span>Limite: R$ 4.000,00</span>
+              </div>
+            </div>
+
+            <div class="fin-transactions-title">
+              <span>Transações Recentes</span>
+              <span style="font-size:0.65rem; color:var(--muted); font-weight:normal;" id="txCount">2 itens</span>
+            </div>
+
+            <div class="fin-transactions-list" id="finTxList">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Form to add mock expense -->
+            <form class="fin-add-form" id="finAddForm" onsubmit="event.preventDefault();">
+              <input type="text" id="finNameInput" placeholder="Ex: Almoço, Uber..." required>
+              <input type="number" id="finAmountInput" placeholder="Valor (R$)" step="0.01" min="0.01" required>
+              <button type="submit" class="fin-add-btn" title="Adicionar Despesa">+</button>
+            </form>
+          </div>
         </div>
-        <div class="fin-budget-info">
-          <span>Orçamento Utilizado: <strong id="finBudgetPercent">0%</strong></span>
-          <span>Limite: R$ 4.000,00</span>
+
+        <!-- TAB 2: ANÁLISE (BLOQUEADA) -->
+        <div class="phone-tab-panel" id="tab-analise">
+          <div class="lock-overlay">
+            <div class="lock-icon-wrap">🔒</div>
+            <h4 class="lock-title">Aba de Análise</h4>
+            <p class="lock-desc">Veja gráficos detalhados de categorias, médias de consumo e relatórios mensais automáticos na versão oficial do app.</p>
+            <div class="lock-waitlist-box">
+              <p class="lock-waitlist-text">Inscreva seu e-mail para receber o aviso de lançamento:</p>
+              <form class="waitlist-form notify-form-waitlist">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">Me Avise</button>
+              </form>
+              <div class="waitlist-feedback">✓ Inscrito com sucesso!</div>
+            </div>
+          </div>
         </div>
+
+        <!-- TAB 3: CARTÕES (BLOQUEADA) -->
+        <div class="phone-tab-panel" id="tab-cartoes">
+          <div class="lock-overlay">
+            <div class="lock-icon-wrap">💳</div>
+            <h4 class="lock-title">Gestão de Cartões</h4>
+            <p class="lock-desc">Crie cartões virtuais ilimitados, configure limites de segurança por cartão e ajuste datas de vencimento em poucos cliques.</p>
+            <div class="lock-waitlist-box">
+              <p class="lock-waitlist-text">Inscreva seu e-mail para receber o aviso de lançamento:</p>
+              <form class="waitlist-form notify-form-waitlist">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">Me Avise</button>
+              </form>
+              <div class="waitlist-feedback">✓ Inscrito com sucesso!</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: PERFIL (BLOQUEADA) -->
+        <div class="phone-tab-panel" id="tab-perfil">
+          <div class="lock-overlay">
+            <div class="lock-icon-wrap">👤</div>
+            <h4 class="lock-title">Configurações</h4>
+            <p class="lock-desc">Personalize categorias de gastos, configure notificações push diárias, altere moedas e sincronize dados com múltiplas contas.</p>
+            <div class="lock-waitlist-box">
+              <p class="lock-waitlist-text">Inscreva seu e-mail para receber o aviso de lançamento:</p>
+              <form class="waitlist-form notify-form-waitlist">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">Me Avise</button>
+              </form>
+              <div class="waitlist-feedback">✓ Inscrito com sucesso!</div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="fin-transactions-title">
-        <span>Transações Recentes</span>
-        <span style="font-size:0.7rem; color:var(--muted); font-weight:normal;" id="txCount">2 itens</span>
+      <!-- Phone Bottom Navbar Navigation -->
+      <div class="phone-navbar">
+        <button class="phone-nav-item active" data-tab="tab-inicio" title="Início">
+          <span class="phone-nav-icon">🏠</span>
+          <span class="phone-nav-label">Início</span>
+        </button>
+        <button class="phone-nav-item" data-tab="tab-analise" title="Análise">
+          <span class="phone-nav-icon">📊</span>
+          <span class="phone-nav-label">Análise</span>
+        </button>
+        <button class="phone-nav-item" data-tab="tab-cartoes" title="Cartões">
+          <span class="phone-nav-icon">💳</span>
+          <span class="phone-nav-label">Cartões</span>
+        </button>
+        <button class="phone-nav-item" data-tab="tab-perfil" title="Configurações">
+          <span class="phone-nav-icon">⚙️</span>
+          <span class="phone-nav-label">Perfil</span>
+        </button>
       </div>
-
-      <div class="fin-transactions-list" id="finTxList">
-        <!-- Transactions dynamically added here -->
-      </div>
-
-      <!-- Form to add mock expense -->
-      <form class="fin-add-form" id="finAddForm">
-        <input type="text" id="finNameInput" placeholder="Ex: Mercado, Uber..." required>
-        <input type="number" id="finAmountInput" placeholder="Valor (R$)" step="0.01" min="0.01" required>
-        <button type="submit" class="fin-add-btn" title="Adicionar Despesa">+</button>
-      </form>
     </div>
 
-    <div class="modal-footer-waitlist">
-      <p class="waitlist-text">Gostou da experiência? Inscreva seu e-mail para receber aviso de lançamento da versão oficial com salvamento na nuvem.</p>
-      <form class="waitlist-form" id="finWaitlistForm">
-        <input type="email" id="finWaitlistEmail" placeholder="Seu melhor e-mail" required>
-        <button type="submit">Inscrever</button>
-      </form>
-      <div class="waitlist-feedback" id="finWaitlistFeedback">✓ Inscrito com sucesso!</div>
-    </div>
+    <!-- Home indicator iOS/Android bar -->
+    <div class="phone-home-indicator"></div>
   </div>
 </div>
 
@@ -1003,8 +1215,6 @@ footer {
   const openFinancesBtn = document.getElementById('openFinancesBtn');
   const closeFinancesBtn = document.getElementById('closeFinancesBtn');
   const finAddForm = document.getElementById('finAddForm');
-  const finWaitlistForm = document.getElementById('finWaitlistForm');
-  const finWaitlistFeedback = document.getElementById('finWaitlistFeedback');
 
   let transactions = [
     { name: 'Uber', amount: 18.50, type: 'expense', emoji: '🚗' },
@@ -1070,6 +1280,11 @@ footer {
 
   openFinancesBtn.addEventListener('click', () => {
     financesModal.classList.add('active');
+    // Set default tab back to Início
+    document.querySelectorAll('.phone-nav-item').forEach(b => b.classList.remove('active'));
+    document.querySelector('[data-tab="tab-inicio"]').classList.add('active');
+    document.querySelectorAll('.phone-tab-panel').forEach(panel => panel.classList.remove('active'));
+    document.getElementById('tab-inicio').classList.add('active');
     updateFinancesUI();
   });
 
@@ -1106,20 +1321,40 @@ footer {
     }
   });
 
-  finWaitlistForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const emailInput = document.getElementById('finWaitlistEmail');
-    const button = finWaitlistForm.querySelector('button');
-    const email = emailInput.value;
-    
-    button.disabled = true;
-    button.innerText = 'Enviando...';
-    
-    setTimeout(() => {
-      finWaitlistForm.style.display = 'none';
-      finWaitlistFeedback.style.display = 'block';
-      finWaitlistFeedback.innerText = `✓ Inscrito! Informaremos sobre o Finzen em: ${email}`;
-    }, 800);
+  // Tab switching logic
+  document.querySelectorAll('.phone-nav-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.phone-nav-item').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      const tabId = btn.getAttribute('data-tab');
+      document.querySelectorAll('.phone-tab-panel').forEach(panel => panel.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      
+      if (tabId === 'tab-inicio') {
+        updateFinancesUI();
+      }
+    });
+  });
+
+  // Waitlist forms inside lock screens
+  document.querySelectorAll('.notify-form-waitlist').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = form.querySelector('input');
+      const button = form.querySelector('button');
+      const feedback = form.nextElementSibling;
+      const email = input.value;
+      
+      button.disabled = true;
+      button.innerText = 'Enviando...';
+      
+      setTimeout(() => {
+        form.style.display = 'none';
+        feedback.style.display = 'block';
+        feedback.innerText = `✓ Cadastrado: ${email}`;
+      }, 800);
+    });
   });
 </script>
 
