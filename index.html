@@ -16,7 +16,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚀%3C/text%3E%3C/svg%3E">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#080810">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ── RESET & VARS ── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -451,7 +451,7 @@ footer {
 /* ── FINANCES SANDBOX MODAL (CELULAR SIMULADO) ── */
 .modal-overlay {
   position: fixed; inset: 0;
-  background: rgba(8, 8, 16, 0.85);
+  background: rgba(5, 8, 15, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex; align-items: center; justify-content: center;
@@ -464,50 +464,75 @@ footer {
   opacity: 1; pointer-events: auto;
 }
 .phone-mockup {
-  background: var(--bg);
-  border: 8px solid #1e1e2f;
+  background: #05080f;
+  border: 10px solid #1a2540;
   border-radius: 40px;
   width: 100%; max-width: 360px;
   height: 640px;
   display: flex; flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.05);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 212, 255, 0.15);
   transform: translateY(20px) scale(0.95);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15);
   position: relative;
+}
+.phone-mockup, .phone-mockup * {
+  font-family: 'DM Sans', 'Outfit', sans-serif !important;
 }
 .modal-overlay.active .phone-mockup {
   transform: translateY(0) scale(1);
 }
 
-/* Close button on phone mockup (absolute top right of screen) */
+/* Splash Screen Simulado */
+.phone-splash-screen {
+  position: absolute; inset: 0;
+  background: #05080f;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 2000;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.phone-splash-screen.hide {
+  opacity: 0; pointer-events: none;
+}
+.phone-splash-logo {
+  text-align: center;
+  animation: phoneSplashPulse 1.8s ease-in-out infinite;
+}
+@keyframes phoneSplashPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.96); opacity: 0.75; }
+}
+
+/* Close button on phone mockup */
 .phone-close-btn {
   position: absolute;
   top: 32px; right: 12px;
-  background: rgba(0,0,0,0.5);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: var(--white);
+  background: rgba(13, 18, 32, 0.8);
+  border: 1px solid #1a2540;
+  color: #e8f0ff;
   width: 28px; height: 28px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; cursor: pointer;
+  font-size: 0.9rem; cursor: pointer;
   z-index: 1010;
   transition: all 0.2s;
 }
 .phone-close-btn:hover {
-  background: rgba(255,255,255,0.1);
+  background: #1a2540;
   transform: scale(1.05);
 }
 
 /* Status Bar */
 .phone-status-bar {
   height: 28px;
-  background: rgba(255, 255, 255, 0.02);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  background: rgba(13, 18, 32, 0.2);
+  border-bottom: 1px solid rgba(26, 37, 64, 0.3);
   padding: 0 20px;
   display: flex; justify-content: space-between; align-items: center;
-  font-size: 0.65rem; font-family: var(--mono);
-  color: var(--muted);
+  font-size: 0.65rem; font-family: 'Space Mono', monospace !important;
+  color: #5a7aa8;
   pointer-events: none;
   z-index: 1005;
 }
@@ -517,16 +542,16 @@ footer {
 /* Home indicator */
 .phone-home-indicator {
   height: 14px;
-  background: var(--bg3);
+  background: #0d1220;
   display: flex; justify-content: center; align-items: center;
   pointer-events: none;
   z-index: 1005;
-  border-top: 1px solid rgba(255, 255, 255, 0.01);
+  border-top: 1px solid rgba(26, 37, 64, 0.2);
 }
 .phone-home-indicator::after {
   content: '';
   width: 100px; height: 4px;
-  background: rgba(240, 240, 248, 0.2);
+  background: rgba(90, 122, 168, 0.3);
   border-radius: 2px;
 }
 
@@ -537,7 +562,8 @@ footer {
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  background: var(--bg2);
+  background: #05080f;
+  color: #e8f0ff;
 }
 
 /* Tabs Viewport */
@@ -551,208 +577,275 @@ footer {
   display: none;
   flex-direction: column;
   overflow-y: auto;
-  padding: 16px;
+  padding: 14px;
   animation: tabFadeIn 0.25s ease both;
 }
 .phone-tab-panel.active {
   display: flex;
 }
 @keyframes tabFadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Phone Navbar */
+/* Phone Navbar (5 abas) */
 .phone-navbar {
-  height: 60px;
-  background: var(--bg3);
-  border-top: 1px solid var(--border);
+  height: 58px;
+  background: #080d18;
+  border-top: 1px solid #1a2540;
   display: flex; justify-content: space-around; align-items: center;
   z-index: 1005;
 }
 .phone-nav-item {
   flex: 1; height: 100%;
   display: flex; flex-direction: column; justify-content: center; align-items: center;
-  gap: 2px; border: none; background: none;
-  color: var(--muted); cursor: pointer;
+  gap: 3px; border: none; background: none;
+  color: #5a7aa8; cursor: pointer;
   transition: all 0.2s;
 }
 .phone-nav-item:hover {
-  color: rgba(240, 240, 248, 0.7);
+  color: rgba(232, 240, 255, 0.7);
 }
 .phone-nav-item.active {
-  color: var(--cyan);
+  color: #00d4ff;
 }
-.phone-nav-icon { font-size: 1.15rem; }
-.phone-nav-label { font-size: 0.58rem; font-weight: 700; font-family: var(--sans); }
+.phone-nav-icon { font-size: 1.1rem; }
+.phone-nav-label { font-size: 0.55rem; font-weight: 700; }
 
 /* Sandbox Container */
 .phone-sandbox-container {
-  display: flex; flex-direction: column; gap: 14px;
+  display: flex; flex-direction: column; gap: 12px;
 }
 .phone-header-app {
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; justify-content: space-between; align-items: flex-start;
   margin-bottom: 2px;
 }
-.phone-header-title { font-size: 1rem; font-weight: 800; }
-.phone-header-subtitle { font-size: 0.65rem; color: var(--gold); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.5px; }
+.phone-header-title { font-size: 1.15rem; font-weight: 800; color: #e8f0ff; }
+.phone-header-subtitle { font-size: 0.52rem; color: #5a7aa8; font-family: 'Space Mono', monospace !important; text-transform: uppercase; letter-spacing: 1.5px; }
 
-.sandbox-banner {
-  background: rgba(245, 200, 66, 0.06);
-  border: 1px solid rgba(245, 200, 66, 0.15);
-  border-radius: 10px;
-  padding: 8px 10px;
-  font-size: 0.68rem; color: var(--gold);
-  display: flex; align-items: flex-start; gap: 8px;
-  line-height: 1.35;
+/* KPIs em Grid */
+.phone-kpis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.phone-kpi-card {
+  background: #0d1220;
+  border: 1px solid #1a2540;
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+.phone-kpi-label {
+  font-size: 0.52rem; color: #5a7aa8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
+}
+.phone-kpi-val {
+  font-size: 1.05rem; font-weight: 800;
+}
+.phone-kpi-val.cyan { color: #00d4ff; }
+.phone-kpi-val.green { color: #00e5a0; }
+.phone-kpi-val.red { color: #ff4060; }
+.phone-kpi-sub {
+  font-size: 0.52rem; color: #5a7aa8; margin-top: 2px;
 }
 
 .fin-dashboard {
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 14px;
-  text-align: center;
+  background: #0d1220;
+  border: 1px solid #1a2540;
+  border-radius: 14px;
+  padding: 12px 14px;
 }
-.fin-balance-label {
-  font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px;
+.fin-dashboard-header {
+  font-size: 0.65rem; font-weight: 600; color: #e8f0ff; margin-bottom: 8px;
+  display: flex; justify-content: space-between;
 }
-.fin-balance-val {
-  font-size: 1.7rem; font-weight: 800; color: var(--white); margin: 4px 0 8px;
-  letter-spacing: -0.5px;
-}
-.fin-budget-progress {
-  width: 100%; height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 3px; overflow: hidden;
-}
-.fin-budget-bar {
-  height: 100%; width: 0%; background: linear-gradient(90deg, var(--purple), var(--cyan));
-  border-radius: 3px; transition: width 0.4s ease;
-}
-.fin-budget-info {
-  display: flex; justify-content: space-between; font-size: 0.65rem; color: var(--muted); margin-top: 5px;
-}
+.fin-dashboard-total-label { color: #5a7aa8; font-size: 0.52rem; text-transform: uppercase; }
 
+/* Meus Cofres List */
+.fin-cofres-list {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.fin-cofre-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 8px; border-radius: 8px; transition: background 0.2s;
+  cursor: pointer;
+}
+.fin-cofre-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.fin-cofre-left { display: flex; align-items: center; gap: 8px; }
+.fin-cofre-icon {
+  width: 26px; height: 26px; border-radius: 8px;
+  background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.15);
+  display: flex; align-items: center; justify-content: center; fontSize: 0.85rem;
+}
+.fin-cofre-meta { display: flex; flex-direction: column; gap: 1px; }
+.fin-cofre-name { font-size: 0.72rem; font-weight: 600; color: #e8f0ff; }
+.fin-cofre-type { font-size: 0.52rem; color: #5a7aa8; }
+.fin-cofre-right { display: flex; align-items: center; gap: 4px; }
+.fin-cofre-balance { font-size: 0.72rem; font-weight: 700; color: #00d4ff; }
+.fin-cofre-arrow { font-size: 0.65rem; color: #5a7aa8; }
+
+.fin-divider {
+  height: 1px; background: #1a2540; margin: 8px 0;
+}
+.fin-total-row {
+  display: flex; justify-content: space-between; font-size: 0.65rem;
+}
+.fin-total-label { color: #5a7aa8; }
+.fin-total-val { font-weight: 700; color: #00d4ff; }
+
+/* Donut Chart Category */
+.fin-category-card {
+  background: #0d1220;
+  border: 1px solid #1a2540;
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+.fin-category-title { font-size: 0.65rem; font-weight: 600; color: #e8f0ff; margin-bottom: 8px; }
+.fin-category-body { display: flex; align-items: center; gap: 12px; }
+.fin-category-legend { font-size: 0.7rem; color: #e8f0ff; display: flex; align-items: center; gap: 6px; }
+.fin-category-dot { width: 6px; height: 6px; border-radius: 50%; background: #00d4ff; }
+
+/* Transactions list */
 .fin-transactions-title {
-  font-size: 0.78rem; font-weight: 700; color: var(--white); display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.68rem; font-weight: 700; color: #e8f0ff; display: flex; justify-content: space-between; align-items: center;
 }
 .fin-transactions-list {
-  display: flex; flex-direction: column; gap: 8px;
+  display: flex; flex-direction: column; gap: 4px;
   max-height: 120px; overflow-y: auto; padding-right: 2px;
 }
-
-/* Custom scrollbar for transaction list */
 .fin-transactions-list::-webkit-scrollbar {
   width: 3px;
 }
 .fin-transactions-list::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.01);
+  background: rgba(13, 18, 32, 0.1);
 }
 .fin-transactions-list::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: #223058;
   border-radius: 1.5px;
 }
 
 .fin-tx-item {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 6px 10px; background: rgba(255, 255, 255, 0.01); border: 1px solid var(--border); border-radius: 10px;
-  font-size: 0.75rem; transition: transform 0.25s ease;
+  padding: 6px 8px; background: transparent; border-bottom: 1px solid rgba(26, 37, 64, 0.2);
+  font-size: 0.72rem; transition: transform 0.25s ease;
   animation: slideInTx 0.25s ease both;
 }
 @keyframes slideInTx {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.fin-tx-left { display: flex; align-items: center; gap: 6px; }
-.fin-tx-emoji { font-size: 1rem; }
-.fin-tx-name { font-weight: 600; }
-.fin-tx-amount { font-family: var(--mono); font-weight: 700; }
-.fin-tx-amount.expense { color: #f43f5e; }
-.fin-tx-amount.income { color: var(--cyan); }
+.fin-tx-left { display: flex; align-items: center; gap: 8px; }
+.fin-tx-emoji-box {
+  width: 24px; height: 24px; border-radius: 6px;
+  background: rgba(0, 229, 160, 0.1); display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+}
+.fin-tx-meta { display: flex; flex-direction: column; gap: 1px; }
+.fin-tx-name { font-weight: 600; color: #e8f0ff; }
+.fin-tx-date { font-size: 0.52rem; color: #5a7aa8; }
+.fin-tx-right-side { text-align: right; }
+.fin-tx-amount { font-weight: 700; font-size: 0.72rem; }
+.fin-tx-amount.expense { color: #e8f0ff; }
+.fin-tx-amount.income { color: #00e5a0; }
+.fin-tx-category { font-size: 0.52rem; color: #5a7aa8; margin-top: 1px; }
 
+/* Add expense form */
 .fin-add-form {
   display: grid; grid-template-columns: 1.2fr 1fr auto; gap: 6px;
 }
-.fin-add-form input, .fin-add-form select {
-  background: var(--bg3); border: 1px solid var(--border); border-radius: 8px;
-  padding: 6px 8px; color: var(--white); font-family: inherit; font-size: 0.75rem; outline: none;
+.fin-add-form input {
+  background: #0d1220; border: 1px solid #1a2540; border-radius: 8px;
+  padding: 6px 8px; color: #e8f0ff; font-family: inherit; font-size: 0.72rem; outline: none;
   transition: border-color 0.2s;
 }
-.fin-add-form input:focus, .fin-add-form select:focus {
-  border-color: var(--purple2);
+.fin-add-form input:focus {
+  border-color: #00d4ff;
 }
 .fin-add-btn {
-  background: var(--purple); color: var(--white); border: none; border-radius: 8px;
-  padding: 6px 10px; font-weight: 700; font-size: 0.75rem; cursor: pointer;
+  background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.3); color: #00d4ff; border-radius: 8px;
+  padding: 6px 10px; font-weight: 700; font-size: 0.72rem; cursor: pointer;
   transition: all 0.2s; display: flex; align-items: center; justify-content: center;
 }
-.fin-add-btn:hover { background: var(--purple2); }
+.fin-add-btn:hover { background: rgba(0, 212, 255, 0.25); }
 .fin-add-btn:active { transform: scale(0.95); }
 
-/* Lock Overlay */
+/* Blurs and previews for locked tabs */
+.phone-tab-panel-blurred-content {
+  filter: blur(4.5px);
+  opacity: 0.35;
+  pointer-events: none;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Lock Overlay styled glassmorphic */
 .lock-overlay {
   position: absolute; inset: 0;
-  background: rgba(8, 8, 16, 0.82);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(5, 8, 15, 0.65);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 24px;
+  text-align: center; padding: 20px;
   z-index: 100;
   animation: tabFadeIn 0.3s ease both;
 }
 .lock-icon-wrap {
-  width: 56px; height: 56px; border-radius: 50%;
-  background: rgba(245, 200, 66, 0.1);
-  border: 1px solid rgba(245, 200, 66, 0.2);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.25);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.8rem; color: var(--gold);
-  box-shadow: 0 0 15px rgba(245, 200, 66, 0.15);
+  font-size: 1.25rem; color: #00d4ff;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
   animation: pulseLock 2s infinite alternate;
 }
 @keyframes pulseLock {
-  0% { transform: scale(1); box-shadow: 0 0 10px rgba(245, 200, 66, 0.1); }
-  100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(245, 200, 66, 0.3); }
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 212, 255, 0.1); }
+  100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
 }
 .lock-title {
-  font-size: 0.95rem; font-weight: 800; color: var(--white); margin: 12px 0 6px;
+  font-size: 0.88rem; font-weight: 800; color: #e8f0ff; margin: 10px 0 4px;
 }
 .lock-desc {
-  font-size: 0.72rem; color: var(--muted); line-height: 1.4; max-width: 240px; margin-bottom: 16px;
+  font-size: 0.68rem; color: #5a7aa8; line-height: 1.35; max-width: 220px; margin-bottom: 12px;
 }
 
 .lock-waitlist-box {
-  width: 100%; max-width: 260px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border);
+  width: 100%; max-width: 240px;
+  background: #0d1220;
+  border: 1px solid #1a2540;
   border-radius: 12px;
-  padding: 12px;
+  padding: 10px;
 }
 .lock-waitlist-text {
-  font-size: 0.65rem; color: var(--muted); margin-bottom: 8px; line-height: 1.3;
+  font-size: 0.6rem; color: #5a7aa8; margin-bottom: 6px; line-height: 1.3;
 }
 
 .waitlist-form {
   display: flex; gap: 6px;
 }
 .waitlist-form input {
-  flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
-  padding: 6px 10px; color: var(--white); font-family: inherit; font-size: 0.75rem; outline: none;
+  flex: 1; background: #05080f; border: 1px solid #1a2540; border-radius: 8px;
+  padding: 5px 8px; color: #e8f0ff; font-family: inherit; font-size: 0.7rem; outline: none;
 }
-.waitlist-form input:focus { border-color: var(--cyan); }
+.waitlist-form input:focus { border-color: #00d4ff; }
 .waitlist-form button {
-  background: var(--cyan); color: var(--bg); border: none; border-radius: 8px;
-  padding: 6px 12px; font-weight: 700; font-size: 0.75rem; cursor: pointer;
+  background: #00d4ff; color: #05080f; border: none; border-radius: 8px;
+  padding: 5px 10px; font-weight: 700; font-size: 0.7rem; cursor: pointer;
   transition: all 0.2s;
 }
 .waitlist-form button:hover { background: #5df0ff; }
 .waitlist-form button:active { transform: scale(0.95); }
 .waitlist-feedback {
-  font-size: 0.68rem; color: var(--cyan); margin-top: 6px; display: none;
+  font-size: 0.65rem; color: #00d4ff; margin-top: 6px; display: none;
 }
 
 /* Adaptability for smaller height viewports */
 @media (max-height: 680px) {
   .phone-mockup {
-    transform: translateY(0) scale(0.85) !important;
+    transform: translateY(0) scale(0.82) !important;
   }
 }
 
@@ -830,6 +923,31 @@ footer {
       </div>
     </a>
 
+    <!-- Finanças (Premium Preview) -->
+    <div class="project-card" id="openFinancesBtn" style="cursor:pointer;">
+      <div class="project-card-glow"></div>
+      <div class="card-header">
+        <div class="card-icon-wrap" style="background:linear-gradient(135deg,#b8860b,#5a4000);">💎</div>
+        <div class="card-meta">
+          <div class="card-title">Finanças</div>
+          <div class="card-type">Simulador</div>
+        </div>
+        <span class="card-tag" style="background:rgba(245,200,66,0.12); color:var(--gold); border:1px solid rgba(245,200,66,0.25);">Demo</span>
+      </div>
+      <div class="card-desc">
+        Gerenciador financeiro inteligente. Teste a prévia interativa adicionando gastos fictícios na hora, sem salvar nada.
+      </div>
+      <div class="card-footer">
+        <div class="card-chips">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Simulador</span>
+        </div>
+        <span class="card-arrow">→</span>
+      </div>
+    </div>
+
     <!-- Em breve gratuito -->
     <div class="project-card soon">
       <div class="project-card-glow"></div>
@@ -855,31 +973,6 @@ footer {
       <div class="card-footer">
         <div class="card-chips"><span class="chip">Em breve</span></div>
         <span class="card-arrow">▼</span>
-      </div>
-    </div>
-
-    <!-- Finanças (Premium Preview) -->
-    <div class="project-card" id="openFinancesBtn" style="cursor:pointer;">
-      <div class="project-card-glow"></div>
-      <div class="card-header">
-        <div class="card-icon-wrap" style="background:linear-gradient(135deg,#b8860b,#5a4000);">💎</div>
-        <div class="card-meta">
-          <div class="card-title">Finanças</div>
-          <div class="card-type">Finzen · Sandbox</div>
-        </div>
-        <span class="card-tag" style="background:rgba(245,200,66,0.12); color:var(--gold); border:1px solid rgba(245,200,66,0.25);">Demo</span>
-      </div>
-      <div class="card-desc">
-        Gerenciador financeiro inteligente. Teste a prévia interativa adicionando gastos fictícios na hora, sem salvar nada.
-      </div>
-      <div class="card-footer">
-        <div class="card-chips">
-          <span class="chip">HTML</span>
-          <span class="chip">CSS</span>
-          <span class="chip">JavaScript</span>
-          <span class="chip">Simulador</span>
-        </div>
-        <span class="card-arrow">→</span>
       </div>
     </div>
 
@@ -953,6 +1046,15 @@ footer {
 
     <!-- Phone Screen -->
     <div class="phone-screen">
+      
+      <!-- Splash Screen Simulado -->
+      <div class="phone-splash-screen" id="phoneSplash">
+        <div class="phone-splash-logo">
+          <div style="font-size: 40px; font-weight: 800; color: #00d4ff; letter-spacing: -2px;">Finanças</div>
+          <div style="font-size: 9px; color: #5a7aa8; margin-top: 6px; letter-spacing: 2px; text-transform: uppercase;">Controle Financeiro</div>
+        </div>
+      </div>
+
       <div class="phone-tabs-viewport">
         
         <!-- TAB 1: INÍCIO (INTERATIVO) -->
@@ -960,55 +1062,135 @@ footer {
           <div class="phone-sandbox-container">
             <div class="phone-header-app">
               <div>
-                <h3 class="phone-header-title">Finanças</h3>
-                <span class="phone-header-subtitle">Finzen Sandbox</span>
+                <span class="phone-header-subtitle">Visão Geral</span>
+                <h3 class="phone-header-title">Junho de 2026</h3>
               </div>
-              <span style="font-size:1.1rem;">👋</span>
+              <!-- Registrar lançamento simulation button -->
+              <button class="fin-add-btn" style="padding: 6px 10px; font-size: 0.62rem; height: 26px; border: 1px solid rgba(0, 212, 255, 0.3); background: rgba(0, 212, 255, 0.08); color: #00d4ff; border-radius: 8px; font-weight: 600;" id="simAddBtnTrigger">+ Registrar lançamento</button>
             </div>
 
-            <div class="sandbox-banner">
-              <span>💡</span>
-              <span>Modo Teste: simule adicionando gastos. Nada é salvo no servidor.</span>
+            <!-- KPIs com valores exatos do print -->
+            <div class="phone-kpis-grid">
+              <div class="phone-kpi-card">
+                <div class="phone-kpi-label">Patrimônio Líquido</div>
+                <div class="phone-kpi-val cyan" id="finBalance">R$ 900,00</div>
+                <div class="phone-kpi-sub">saldo total</div>
+              </div>
+              <div class="phone-kpi-card">
+                <div class="phone-kpi-label">Receitas do Mês</div>
+                <div class="phone-kpi-val green" id="finRevenues">R$ 0,00</div>
+                <div class="phone-kpi-sub">Junho</div>
+              </div>
+              <div class="phone-kpi-card">
+                <div class="phone-kpi-label">Gastos do Mês</div>
+                <div class="phone-kpi-val red" id="finExpenses">R$ 100,00</div>
+                <div class="phone-kpi-sub">Junho</div>
+              </div>
+              <div class="phone-kpi-card">
+                <div class="phone-kpi-label">Taxa de Poupança</div>
+                <div class="phone-kpi-val cyan" id="finSavings">0%</div>
+                <div class="phone-kpi-sub">do que entrou</div>
+              </div>
             </div>
 
-            <!-- Virtual Credit Card representation -->
+            <!-- Meus Cofres (Bradesco) -->
             <div class="fin-dashboard">
-              <span class="fin-balance-label">Saldo em Conta</span>
-              <div class="fin-balance-val" id="finBalance">R$ 2.450,00</div>
+              <div class="fin-dashboard-header">
+                <span>Meus Cofres</span>
+                <span style="font-size: 0.52rem; color: #5a7aa8; font-weight: normal;">(clique para ver histórico)</span>
+              </div>
               
-              <div class="fin-budget-progress">
-                <div class="fin-budget-bar" id="finBudgetBar"></div>
+              <div class="fin-cofres-list">
+                <div class="fin-cofre-item">
+                  <div class="fin-cofre-left">
+                    <div class="fin-cofre-icon">🏦</div>
+                    <div class="fin-cofre-meta">
+                      <span class="fin-cofre-name">Bradesco</span>
+                      <span class="fin-cofre-type">Banco</span>
+                    </div>
+                  </div>
+                  <div class="fin-cofre-right">
+                    <span class="fin-cofre-balance" id="finCofreBradesco">R$ 900,00</span>
+                    <span class="fin-cofre-arrow">›</span>
+                  </div>
+                </div>
               </div>
-              <div class="fin-budget-info">
-                <span>Orçamento Gasto: <strong id="finBudgetPercent">0%</strong></span>
-                <span>Limite: R$ 4.000,00</span>
+
+              <div class="fin-divider"></div>
+              <div class="fin-total-row">
+                <span class="fin-total-label">Patrimônio total</span>
+                <span class="fin-total-val" id="finCofreTotal">R$ 900,00</span>
               </div>
             </div>
 
-            <div class="fin-transactions-title">
-              <span>Transações Recentes</span>
-              <span style="font-size:0.65rem; color:var(--muted); font-weight:normal;" id="txCount">2 itens</span>
+            <!-- Gastos por Categoria -->
+            <div class="fin-category-card">
+              <div class="fin-category-title">Gastos por Categoria — Junho</div>
+              <div class="fin-category-body">
+                <!-- SVG circular donut simulated chart -->
+                <svg width="42" height="42" viewBox="0 0 36 36">
+                  <circle cx="18" cy="18" r="15.915" fill="none" stroke="#1a2540" stroke-width="4.5"></circle>
+                  <circle cx="18" cy="18" r="15.915" fill="none" stroke="#00d4ff" stroke-width="4.5" stroke-dasharray="100 0" stroke-dashoffset="0"></circle>
+                </svg>
+                <div class="fin-category-legend">
+                  <div class="fin-category-dot"></div>
+                  <span>Outros: <strong id="finCategoryVal">R$ 100,00</strong></span>
+                </div>
+              </div>
             </div>
 
-            <div class="fin-transactions-list" id="finTxList">
-              <!-- Rendered via JS -->
-            </div>
+            <!-- Lançamentos Recentes -->
+            <div class="phone-sandbox-container" style="gap: 8px;">
+              <div class="fin-transactions-title">
+                <span>Lançamentos Recentes</span>
+                <a class="phone-nav-link" style="font-size:0.58rem; color:#00d4ff; text-decoration:none; cursor:pointer;" id="simVerTodos">ver todos →</a>
+              </div>
 
-            <!-- Form to add mock expense -->
-            <form class="fin-add-form" id="finAddForm" onsubmit="event.preventDefault();">
-              <input type="text" id="finNameInput" placeholder="Ex: Almoço, Uber..." required>
-              <input type="number" id="finAmountInput" placeholder="Valor (R$)" step="0.01" min="0.01" required>
-              <button type="submit" class="fin-add-btn" title="Adicionar Despesa">+</button>
-            </form>
+              <div class="fin-transactions-list" id="finTxList">
+                <!-- Rendered via JS -->
+              </div>
+
+              <!-- Form to add mock expense (Sandbox) -->
+              <form class="fin-add-form" id="finAddForm" onsubmit="event.preventDefault();">
+                <input type="text" id="finNameInput" placeholder="Ex: Mercado, Uber..." required>
+                <input type="number" id="finAmountInput" placeholder="Valor (R$)" step="0.01" min="0.01" required>
+                <button type="submit" class="fin-add-btn" title="Adicionar Despesa" id="finAddSubmitBtn">+</button>
+              </form>
+            </div>
           </div>
         </div>
 
-        <!-- TAB 2: ANÁLISE (BLOQUEADA) -->
-        <div class="phone-tab-panel" id="tab-analise">
+        <!-- TAB 2: LANÇAMENTOS (BLOQUEADA) -->
+        <div class="phone-tab-panel" id="tab-lancamentos">
+          <!-- Blurred preview screen of transactions -->
+          <div class="phone-tab-panel-blurred-content">
+            <div class="phone-header-app">
+              <h3 class="phone-header-title">Histórico</h3>
+            </div>
+            <div class="fin-transactions-list">
+              <div class="fin-tx-item">
+                <div class="fin-tx-left"><div class="fin-tx-emoji-box">🛒</div><div><strong>Supermercado</strong><div class="fin-tx-date">05 de jun. · Débito</div></div></div>
+                <span class="fin-tx-amount">R$ 180,00</span>
+              </div>
+              <div class="fin-tx-item">
+                <div class="fin-tx-left"><div class="fin-tx-emoji-box">💰</div><div><strong>Salário</strong><div class="fin-tx-date">01 de jun. · PIX</div></div></div>
+                <span class="fin-tx-amount income">+ R$ 4.500,00</span>
+              </div>
+              <div class="fin-tx-item">
+                <div class="fin-tx-left"><div class="fin-tx-emoji-box">🚗</div><div><strong>Uber</strong><div class="fin-tx-date">28 de mai. · Crédito</div></div></div>
+                <span class="fin-tx-amount">R$ 15,20</span>
+              </div>
+              <div class="fin-tx-item">
+                <div class="fin-tx-left"><div class="fin-tx-emoji-box">💡</div><div><strong>Luz & Água</strong><div class="fin-tx-date">25 de mai. · Débito</div></div></div>
+                <span class="fin-tx-amount">R$ 120,40</span>
+              </div>
+            </div>
+          </div>
+          <!-- Locked overlay -->
           <div class="lock-overlay">
             <div class="lock-icon-wrap">🔒</div>
-            <h4 class="lock-title">Aba de Análise</h4>
-            <p class="lock-desc">Veja gráficos detalhados de categorias, médias de consumo e relatórios mensais automáticos na versão oficial do app.</p>
+            <h4 class="lock-title">Histórico de Lançamentos</h4>
+            <p class="lock-desc">Acompanhe todas as suas movimentações passadas com filtros de busca inteligentes e exportação de planilhas.</p>
             <div class="lock-waitlist-box">
               <p class="lock-waitlist-text">Inscreva seu e-mail para receber o aviso de lançamento:</p>
               <form class="waitlist-form notify-form-waitlist">
@@ -1020,12 +1202,44 @@ footer {
           </div>
         </div>
 
-        <!-- TAB 3: CARTÕES (BLOQUEADA) -->
-        <div class="phone-tab-panel" id="tab-cartoes">
+        <!-- TAB 3: COFRES (BLOQUEADA) -->
+        <div class="phone-tab-panel" id="tab-cofres">
+          <!-- Blurred preview screen of accounts -->
+          <div class="phone-tab-panel-blurred-content">
+            <div class="phone-header-app">
+              <h3 class="phone-header-title">Onde está cada real</h3>
+              <button class="fin-add-btn" style="padding: 4px 8px; font-size: 0.58rem;">+ Novo cofre</button>
+            </div>
+            <!-- Net worth card representation -->
+            <div style="background: linear-gradient(135deg, #091428, #0d1f3c); border: 1px solid rgba(0, 212, 255, 0.15); border-radius: 12px; padding: 12px; display: flex; justify-content: space-between;">
+              <div>
+                <span style="font-size: 0.52rem; color: #5a7aa8;">Patrimônio Líquido</span>
+                <div style="font-size: 1.15rem; font-weight: 800; color: #00d4ff;">R$ 900,00</div>
+              </div>
+              <div style="font-size: 0.6rem; text-align: right;">
+                <div style="color: #00e5a0;">↑ R$ 900,00</div>
+                <div style="color: #ff4060; margin-top: 2px;">↓ R$ 0,00</div>
+              </div>
+            </div>
+            <!-- Bradesco bank account representation -->
+            <div class="fin-dashboard">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 1.1rem;">🏦</span>
+                  <div>
+                    <span style="font-size: 0.72rem; font-weight: 600; display: block;">Bradesco</span>
+                    <span style="font-size: 0.52rem; color: #5a7aa8;">Banco</span>
+                  </div>
+                </div>
+                <span style="font-size: 0.72rem; font-weight: 700; color: #00d4ff;">R$ 900,00</span>
+              </div>
+            </div>
+          </div>
+          <!-- Locked overlay -->
           <div class="lock-overlay">
-            <div class="lock-icon-wrap">💳</div>
-            <h4 class="lock-title">Gestão de Cartões</h4>
-            <p class="lock-desc">Crie cartões virtuais ilimitados, configure limites de segurança por cartão e ajuste datas de vencimento em poucos cliques.</p>
+            <div class="lock-icon-wrap">⬡</div>
+            <h4 class="lock-title">Contas & Cofres</h4>
+            <p class="lock-desc">Organize e reordene seus bancos, cartões de crédito e investimentos, acompanhando o saldo de ativos e dívidas individuais.</p>
             <div class="lock-waitlist-box">
               <p class="lock-waitlist-text">Inscreva seu e-mail para receber o aviso de lançamento:</p>
               <form class="waitlist-form notify-form-waitlist">
@@ -1037,12 +1251,68 @@ footer {
           </div>
         </div>
 
-        <!-- TAB 4: PERFIL (BLOQUEADA) -->
+        <!-- TAB 4: RELATÓRIOS (BLOQUEADA) -->
+        <div class="phone-tab-panel" id="tab-relatorios">
+          <!-- Blurred preview screen of reports -->
+          <div class="phone-tab-panel-blurred-content">
+            <div class="phone-header-app">
+              <h3 class="phone-header-title">Evolução Mensal</h3>
+            </div>
+            <!-- Donut categories representation -->
+            <div class="fin-category-card" style="text-align: center;">
+              <svg width="42" height="42" viewBox="0 0 36 36">
+                <circle cx="18" cy="18" r="15.915" fill="none" stroke="#1a2540" stroke-width="4"></circle>
+                <circle cx="18" cy="18" r="15.915" fill="none" stroke="#00d4ff" stroke-width="4" stroke-dasharray="60 40"></circle>
+                <circle cx="18" cy="18" r="15.915" fill="none" stroke="#9b6dff" stroke-width="4" stroke-dasharray="40 60" stroke-dashoffset="-60"></circle>
+              </svg>
+              <div style="font-size: 0.58rem; color: #e8f0ff; margin-top: 6px;">Alimentação (60%) · Transporte (40%)</div>
+            </div>
+            <!-- Simulated bar chart -->
+            <div class="fin-dashboard" style="height: 60px; display: flex; align-items: flex-end; justify-content: space-around;">
+              <div style="width: 14px; height: 35px; background: #00e5a0; border-radius: 2px;"></div>
+              <div style="width: 14px; height: 18px; background: #ff4060; border-radius: 2px;"></div>
+              <div style="width: 14px; height: 42px; background: #00e5a0; border-radius: 2px;"></div>
+              <div style="width: 14px; height: 30px; background: #ff4060; border-radius: 2px;"></div>
+            </div>
+          </div>
+          <!-- Locked overlay -->
+          <div class="lock-overlay">
+            <div class="lock-icon-wrap">📊</div>
+            <h4 class="lock-title">Análises & Gráficos</h4>
+            <p class="lock-desc">Monitore médias de gastos, receba insights automáticos da saúde financeira e visualize o balanço anual de receitas e despesas.</p>
+            <div class="lock-waitlist-box">
+              <p class="lock-waitlist-text">Inscreva seu e-mail para receber o aviso de lançamento:</p>
+              <form class="waitlist-form notify-form-waitlist">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">Me Avise</button>
+              </form>
+              <div class="waitlist-feedback">✓ Inscrito com sucesso!</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 5: PERFIL (BLOQUEADA) -->
         <div class="phone-tab-panel" id="tab-perfil">
+          <!-- Blurred preview screen of profile/settings -->
+          <div class="phone-tab-panel-blurred-content">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 6px;">
+              <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.2); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: #00d4ff; font-weight: 700;">BT</div>
+              <div>
+                <span style="font-size: 0.72rem; font-weight: 600; display: block;">Breitner Tinight</span>
+                <span style="font-size: 0.52rem; color: #5a7aa8;">conta pessoal</span>
+              </div>
+            </div>
+            <div class="fin-cofres-list">
+              <div class="fin-cofre-item"><div class="fin-cofre-left"><span>💑</span><span class="fin-cofre-name">Modo Casal</span></div><span class="fin-cofre-arrow">›</span></div>
+              <div class="fin-cofre-item"><div class="fin-cofre-left"><span>🔔</span><span class="fin-cofre-name">Notificações</span></div><span class="fin-cofre-arrow">›</span></div>
+              <div class="fin-cofre-item"><div class="fin-cofre-left"><span>⚙️</span><span class="fin-cofre-name">Configurações</span></div><span class="fin-cofre-arrow">›</span></div>
+            </div>
+          </div>
+          <!-- Locked overlay -->
           <div class="lock-overlay">
             <div class="lock-icon-wrap">👤</div>
-            <h4 class="lock-title">Configurações</h4>
-            <p class="lock-desc">Personalize categorias de gastos, configure notificações push diárias, altere moedas e sincronize dados com múltiplas contas.</p>
+            <h4 class="lock-title">Configurações do Perfil</h4>
+            <p class="lock-desc">Ative o Modo Casal para compartilhar suas contas em tempo real, ajuste limites gerais e altere suas preferências de interface.</p>
             <div class="lock-waitlist-box">
               <p class="lock-waitlist-text">Inscreva seu e-mail para receber o aviso de lançamento:</p>
               <form class="waitlist-form notify-form-waitlist">
@@ -1056,22 +1326,26 @@ footer {
 
       </div>
 
-      <!-- Phone Bottom Navbar Navigation -->
+      <!-- Phone Bottom Navbar Navigation (5 abas reais) -->
       <div class="phone-navbar">
         <button class="phone-nav-item active" data-tab="tab-inicio" title="Início">
-          <span class="phone-nav-icon">🏠</span>
+          <span class="phone-nav-icon">◈</span>
           <span class="phone-nav-label">Início</span>
         </button>
-        <button class="phone-nav-item" data-tab="tab-analise" title="Análise">
+        <button class="phone-nav-item" data-tab="tab-lancamentos" title="Lançamentos">
+          <span class="phone-nav-icon">↕</span>
+          <span class="phone-nav-label">Lançamentos</span>
+        </button>
+        <button class="phone-nav-item" data-tab="tab-cofres" title="Cofres">
+          <span class="phone-nav-icon">⬡</span>
+          <span class="phone-nav-label">Cofres</span>
+        </button>
+        <button class="phone-nav-item" data-tab="tab-relatorios" title="Relatórios">
           <span class="phone-nav-icon">📊</span>
-          <span class="phone-nav-label">Análise</span>
+          <span class="phone-nav-label">Relatórios</span>
         </button>
-        <button class="phone-nav-item" data-tab="tab-cartoes" title="Cartões">
-          <span class="phone-nav-icon">💳</span>
-          <span class="phone-nav-label">Cartões</span>
-        </button>
-        <button class="phone-nav-item" data-tab="tab-perfil" title="Configurações">
-          <span class="phone-nav-icon">⚙️</span>
+        <button class="phone-nav-item" data-tab="tab-perfil" title="Perfil">
+          <span class="phone-nav-icon">👤</span>
           <span class="phone-nav-label">Perfil</span>
         </button>
       </div>
@@ -1215,13 +1489,17 @@ footer {
   const openFinancesBtn = document.getElementById('openFinancesBtn');
   const closeFinancesBtn = document.getElementById('closeFinancesBtn');
   const finAddForm = document.getElementById('finAddForm');
+  const phoneSplash = document.getElementById('phoneSplash');
+  const simAddBtnTrigger = document.getElementById('simAddBtnTrigger');
+  const simVerTodos = document.getElementById('simVerTodos');
 
+  // Initial values matching user screenshots
+  let initialPatrimony = 900.00;
+  let initialExpenses = 100.00;
   let transactions = [
-    { name: 'Uber', amount: 18.50, type: 'expense', emoji: '🚗' },
-    { name: 'Almoço', amount: 35.00, type: 'expense', emoji: '🍔' },
-    { name: 'Saldo Inicial', amount: 2503.50, type: 'income', emoji: '💰' }
+    { name: 'Gasto', amount: 50.00, type: 'expense', emoji: '💸', date: '06 de jun.', category: 'Débito' },
+    { name: 'Gasto no débito', amount: 50.00, type: 'expense', emoji: '💸', date: '03 de jun.', category: 'Débito' }
   ];
-  const budgetLimit = 4000.00;
 
   function getEmojiForExpense(name) {
     const n = name.toLowerCase();
@@ -1235,42 +1513,61 @@ footer {
 
   function updateFinancesUI() {
     const balanceEl = document.getElementById('finBalance');
+    const revenuesEl = document.getElementById('finRevenues');
+    const expensesEl = document.getElementById('finExpenses');
+    const savingsEl = document.getElementById('finSavings');
+    const cofreBradescoEl = document.getElementById('finCofreBradesco');
+    const cofreTotalEl = document.getElementById('finCofreTotal');
+    const categoryValEl = document.getElementById('finCategoryVal');
     const listEl = document.getElementById('finTxList');
-    const barEl = document.getElementById('finBudgetBar');
-    const percentEl = document.getElementById('finBudgetPercent');
-    const txCountEl = document.getElementById('txCount');
     
-    let balance = 0;
-    let totalExpenses = 0;
-    transactions.forEach(t => {
+    // Dynamic recalculation
+    let simulatedExpensesSum = 0;
+    let simulatedRevenuesSum = 0;
+    
+    // Calculate total added beyond our starting ones
+    transactions.slice(2).forEach(t => {
       if (t.type === 'income') {
-        balance += t.amount;
+        simulatedRevenuesSum += t.amount;
       } else {
-        balance -= t.amount;
-        totalExpenses += t.amount;
+        simulatedExpensesSum += t.amount;
       }
     });
     
-    balanceEl.innerText = `R$ ${balance.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    
-    const percent = Math.min((totalExpenses / budgetLimit) * 100, 100);
-    barEl.style.width = `${percent}%`;
-    percentEl.innerText = `${Math.round(percent)}%`;
-    
-    txCountEl.innerText = `${transactions.length} ${transactions.length === 1 ? 'item' : 'itens'}`;
-    
+    const currentBalance = initialPatrimony + simulatedRevenuesSum - simulatedExpensesSum;
+    const currentExpenses = initialExpenses + simulatedExpensesSum;
+    const currentRevenues = simulatedRevenuesSum;
+    const currentSavingsRate = currentRevenues > 0 ? Math.round(((currentRevenues - currentExpenses) / currentRevenues) * 100) : 0;
+
+    // Update KPIs
+    balanceEl.innerText = `R$ ${currentBalance.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    revenuesEl.innerText = `R$ ${currentRevenues.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    expensesEl.innerText = `R$ ${currentExpenses.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    savingsEl.innerText = `${currentSavingsRate >= 0 ? currentSavingsRate : 0}%`;
+
+    // Update Cofres section
+    cofreBradescoEl.innerText = `R$ ${currentBalance.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    cofreTotalEl.innerText = `R$ ${currentBalance.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+    // Update Category chart legend value
+    categoryValEl.innerText = `R$ ${currentExpenses.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+    // Render transactions list
     listEl.innerHTML = '';
     transactions.forEach(t => {
       const item = document.createElement('div');
       item.className = 'fin-tx-item';
       
-      const formattedAmount = `${t.type === 'expense' ? '-' : '+'} R$ ${t.amount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      const formattedAmount = `${t.type === 'expense' ? '' : '+ '}R$ ${t.amount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
       const amountClass = t.type === 'expense' ? 'expense' : 'income';
       
       item.innerHTML = `
         <div class="fin-tx-left">
-          <span class="fin-tx-emoji">${t.emoji}</span>
-          <span class="fin-tx-name">${t.name}</span>
+          <div class="fin-tx-emoji-box">${t.emoji}</div>
+          <div class="fin-tx-meta">
+            <span class="fin-tx-name">${t.name}</span>
+            <span class="fin-tx-date">${t.date} · ${t.category}</span>
+          </div>
         </div>
         <span class="fin-tx-amount ${amountClass}">${formattedAmount}</span>
       `;
@@ -1278,14 +1575,24 @@ footer {
     });
   }
 
+  // Trigger bootloader splash screen when opening the simulator
   openFinancesBtn.addEventListener('click', () => {
     financesModal.classList.add('active');
+    
+    // Exibir splash screen do Finzen por 1.0 segundo
+    phoneSplash.classList.remove('hide');
+    
     // Set default tab back to Início
     document.querySelectorAll('.phone-nav-item').forEach(b => b.classList.remove('active'));
     document.querySelector('[data-tab="tab-inicio"]').classList.add('active');
     document.querySelectorAll('.phone-tab-panel').forEach(panel => panel.classList.remove('active'));
     document.getElementById('tab-inicio').classList.add('active');
+    
     updateFinancesUI();
+    
+    setTimeout(() => {
+      phoneSplash.classList.add('hide');
+    }, 1000);
   });
 
   closeFinancesBtn.addEventListener('click', () => {
@@ -1298,6 +1605,17 @@ footer {
     }
   });
 
+  // Simulator button to focus input
+  simAddBtnTrigger.addEventListener('click', () => {
+    document.getElementById('finNameInput').focus();
+  });
+
+  // Sim ver todos link redirects to Lançamentos tab
+  simVerTodos.addEventListener('click', () => {
+    const lancTabBtn = document.querySelector('[data-tab="tab-lancamentos"]');
+    if (lancTabBtn) lancTabBtn.click();
+  });
+
   finAddForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const nameInput = document.getElementById('finNameInput');
@@ -1307,11 +1625,14 @@ footer {
     const amount = parseFloat(amountInput.value);
     
     if (name && amount > 0) {
+      // Add transaction to the top of our array
       transactions.unshift({
         name: name,
         amount: amount,
         type: 'expense',
-        emoji: getEmojiForExpense(name)
+        emoji: getEmojiForExpense(name),
+        date: 'Hoje',
+        category: 'Simulado'
       });
       
       updateFinancesUI();
@@ -1321,7 +1642,7 @@ footer {
     }
   });
 
-  // Tab switching logic
+  // Tab switching logic (5 abas)
   document.querySelectorAll('.phone-nav-item').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.phone-nav-item').forEach(b => b.classList.remove('active'));
