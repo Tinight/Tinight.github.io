@@ -448,404 +448,271 @@ footer {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── FINANCES SANDBOX MODAL (CELULAR SIMULADO) ── */
+/* ── WATERMARKS ── */
+.watermark-wolf, .watermark-owl {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+  height: 260px;
+  opacity: 0.03;
+  color: var(--white);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+}
+.watermark-wolf {
+  left: 2%;
+}
+.watermark-owl {
+  right: 2%;
+}
+
+.medal-watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 520px;
+  height: 520px;
+  opacity: 0.02;
+  color: var(--white);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+}
+
+@media (max-width: 1100px) {
+  .watermark-wolf, .watermark-owl {
+    display: none;
+  }
+}
+
+/* ── SAINT BENEDICT MODAL ── */
 .modal-overlay {
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 0;
   background: rgba(5, 8, 15, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1000;
-  opacity: 0; pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 0.3s ease;
-  padding: 16px;
+  padding: 20px;
 }
 .modal-overlay.active {
-  opacity: 1; pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
-.phone-mockup {
-  background: #05080f;
-  border: 10px solid #1a2540;
-  border-radius: 40px;
-  width: 100%; max-width: 360px;
-  height: 640px;
-  display: flex; flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 212, 255, 0.15);
-  transform: translateY(20px) scale(0.95);
+
+.benedict-card {
+  background: rgba(13, 13, 26, 0.85);
+  border: 1px solid rgba(245, 200, 66, 0.2);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 680px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(245, 200, 66, 0.05);
+  transform: translateY(30px) scale(0.95);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15);
   position: relative;
+  overflow: hidden;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 30px;
 }
-.phone-mockup, .phone-mockup * {
-  font-family: 'DM Sans', 'Outfit', sans-serif !important;
-}
-.modal-overlay.active .phone-mockup {
+.modal-overlay.active .benedict-card {
   transform: translateY(0) scale(1);
 }
 
-/* Splash Screen Simulado */
-.phone-splash-screen {
-  position: absolute; inset: 0;
-  background: #05080f;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  z-index: 2000;
-  transition: all 0.5s ease;
-  opacity: 1;
-}
-.phone-splash-screen.hide {
-  opacity: 0; pointer-events: none;
-}
-.phone-splash-logo {
-  text-align: center;
-  animation: phoneSplashPulse 1.8s ease-in-out infinite;
-}
-@keyframes phoneSplashPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(0.96); opacity: 0.75; }
-}
-
-/* Close button on phone mockup */
-.phone-close-btn {
+.benedict-close-btn {
   position: absolute;
-  top: 32px; right: 12px;
-  background: rgba(13, 18, 32, 0.8);
-  border: 1px solid #1a2540;
-  color: #e8f0ff;
-  width: 28px; height: 28px;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--white);
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.9rem; cursor: pointer;
-  z-index: 1010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10;
   transition: all 0.2s;
 }
-.phone-close-btn:hover {
-  background: #1a2540;
-  transform: scale(1.05);
+.benedict-close-btn:hover {
+  background: rgba(245, 200, 66, 0.15);
+  border-color: var(--gold);
+  color: var(--gold);
 }
 
-/* Status Bar */
-.phone-status-bar {
-  height: 28px;
-  background: rgba(13, 18, 32, 0.2);
-  border-bottom: 1px solid rgba(26, 37, 64, 0.3);
-  padding: 0 20px;
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 0.65rem; font-family: 'Space Mono', monospace !important;
-  color: #5a7aa8;
-  pointer-events: none;
-  z-index: 1005;
-}
-.phone-status-left { font-weight: bold; }
-.phone-status-right { display: flex; gap: 4px; align-items: center; }
-
-/* Home indicator */
-.phone-home-indicator {
-  height: 14px;
-  background: #0d1220;
-  display: flex; justify-content: center; align-items: center;
-  pointer-events: none;
-  z-index: 1005;
-  border-top: 1px solid rgba(26, 37, 64, 0.2);
-}
-.phone-home-indicator::after {
-  content: '';
-  width: 100px; height: 4px;
-  background: rgba(90, 122, 168, 0.3);
-  border-radius: 2px;
-}
-
-/* Screen */
-.phone-screen {
-  flex: 1;
+/* 3D Medal Viewer */
+.medal-viewer {
   display: flex;
   flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  background: #05080f;
-  color: #e8f0ff;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
 }
-
-/* Tabs Viewport */
-.phone-tabs-viewport {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-}
-.phone-tab-panel {
-  position: absolute; inset: 0;
-  display: none;
-  flex-direction: column;
-  overflow-y: auto;
-  padding: 14px;
-  animation: tabFadeIn 0.25s ease both;
-}
-.phone-tab-panel.active {
-  display: flex;
-}
-@keyframes tabFadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Phone Navbar (5 abas) */
-.phone-navbar {
-  height: 58px;
-  background: #080d18;
-  border-top: 1px solid #1a2540;
-  display: flex; justify-content: space-around; align-items: center;
-  z-index: 1005;
-}
-.phone-nav-item {
-  flex: 1; height: 100%;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  gap: 3px; border: none; background: none;
-  color: #5a7aa8; cursor: pointer;
-  transition: all 0.2s;
-}
-.phone-nav-item:hover {
-  color: rgba(232, 240, 255, 0.7);
-}
-.phone-nav-item.active {
-  color: #00d4ff;
-}
-.phone-nav-icon { font-size: 1.1rem; }
-.phone-nav-label { font-size: 0.55rem; font-weight: 700; }
-
-/* Sandbox Container */
-.phone-sandbox-container {
-  display: flex; flex-direction: column; gap: 12px;
-}
-.phone-header-app {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  margin-bottom: 2px;
-}
-.phone-header-title { font-size: 1.15rem; font-weight: 800; color: #e8f0ff; }
-.phone-header-subtitle { font-size: 0.52rem; color: #5a7aa8; font-family: 'Space Mono', monospace !important; text-transform: uppercase; letter-spacing: 1.5px; }
-
-/* KPIs em Grid */
-.phone-kpis-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-.phone-kpi-card {
-  background: #0d1220;
-  border: 1px solid #1a2540;
-  border-radius: 12px;
-  padding: 10px 12px;
-}
-.phone-kpi-label {
-  font-size: 0.52rem; color: #5a7aa8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
-}
-.phone-kpi-val {
-  font-size: 1.05rem; font-weight: 800;
-}
-.phone-kpi-val.cyan { color: #00d4ff; }
-.phone-kpi-val.green { color: #00e5a0; }
-.phone-kpi-val.red { color: #ff4060; }
-.phone-kpi-sub {
-  font-size: 0.52rem; color: #5a7aa8; margin-top: 2px;
-}
-
-.fin-dashboard {
-  background: #0d1220;
-  border: 1px solid #1a2540;
-  border-radius: 14px;
-  padding: 12px 14px;
-}
-.fin-dashboard-header {
-  font-size: 0.65rem; font-weight: 600; color: #e8f0ff; margin-bottom: 8px;
-  display: flex; justify-content: space-between;
-}
-.fin-dashboard-total-label { color: #5a7aa8; font-size: 0.52rem; text-transform: uppercase; }
-
-/* Meus Cofres List */
-.fin-cofres-list {
-  display: flex; flex-direction: column; gap: 4px;
-}
-.fin-cofre-item {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 6px 8px; border-radius: 8px; transition: background 0.2s;
+.medal-3d-card {
+  width: 180px;
+  height: 180px;
+  perspective: 1000px;
   cursor: pointer;
 }
-.fin-cofre-item:hover {
-  background: rgba(255, 255, 255, 0.04);
+.medal-3d-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.fin-cofre-left { display: flex; align-items: center; gap: 8px; }
-.fin-cofre-icon {
-  width: 26px; height: 26px; border-radius: 8px;
-  background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.15);
-  display: flex; align-items: center; justify-content: center; fontSize: 0.85rem;
+.medal-3d-inner.flipped {
+  transform: rotateY(180deg);
 }
-.fin-cofre-meta { display: flex; flex-direction: column; gap: 1px; }
-.fin-cofre-name { font-size: 0.72rem; font-weight: 600; color: #e8f0ff; }
-.fin-cofre-type { font-size: 0.52rem; color: #5a7aa8; }
-.fin-cofre-right { display: flex; align-items: center; gap: 4px; }
-.fin-cofre-balance { font-size: 0.72rem; font-weight: 700; color: #00d4ff; }
-.fin-cofre-arrow { font-size: 0.65rem; color: #5a7aa8; }
-
-.fin-divider {
-  height: 1px; background: #1a2540; margin: 8px 0;
+.medal-front, .medal-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 50%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
-.fin-total-row {
-  display: flex; justify-content: space-between; font-size: 0.65rem;
-}
-.fin-total-label { color: #5a7aa8; }
-.fin-total-val { font-weight: 700; color: #00d4ff; }
-
-/* Donut Chart Category */
-.fin-category-card {
-  background: #0d1220;
-  border: 1px solid #1a2540;
-  border-radius: 14px;
-  padding: 12px 14px;
-}
-.fin-category-title { font-size: 0.65rem; font-weight: 600; color: #e8f0ff; margin-bottom: 8px; }
-.fin-category-body { display: flex; align-items: center; gap: 12px; }
-.fin-category-legend { font-size: 0.7rem; color: #e8f0ff; display: flex; align-items: center; gap: 6px; }
-.fin-category-dot { width: 6px; height: 6px; border-radius: 50%; background: #00d4ff; }
-
-/* Transactions list */
-.fin-transactions-title {
-  font-size: 0.68rem; font-weight: 700; color: #e8f0ff; display: flex; justify-content: space-between; align-items: center;
-}
-.fin-transactions-list {
-  display: flex; flex-direction: column; gap: 4px;
-  max-height: 120px; overflow-y: auto; padding-right: 2px;
-}
-.fin-transactions-list::-webkit-scrollbar {
-  width: 3px;
-}
-.fin-transactions-list::-webkit-scrollbar-track {
-  background: rgba(13, 18, 32, 0.1);
-}
-.fin-transactions-list::-webkit-scrollbar-thumb {
-  background: #223058;
-  border-radius: 1.5px;
+.medal-back {
+  transform: rotateY(180deg);
 }
 
-.fin-tx-item {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 6px 8px; background: transparent; border-bottom: 1px solid rgba(26, 37, 64, 0.2);
-  font-size: 0.72rem; transition: transform 0.25s ease;
-  animation: slideInTx 0.25s ease both;
+.medal-hint {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  text-align: center;
+  animation: pulseHint 2s infinite alternate;
 }
-@keyframes slideInTx {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes pulseHint {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
 }
-.fin-tx-left { display: flex; align-items: center; gap: 8px; }
-.fin-tx-emoji-box {
-  width: 24px; height: 24px; border-radius: 6px;
-  background: rgba(0, 229, 160, 0.1); display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem;
-}
-.fin-tx-meta { display: flex; flex-direction: column; gap: 1px; }
-.fin-tx-name { font-weight: 600; color: #e8f0ff; }
-.fin-tx-date { font-size: 0.52rem; color: #5a7aa8; }
-.fin-tx-right-side { text-align: right; }
-.fin-tx-amount { font-weight: 700; font-size: 0.72rem; }
-.fin-tx-amount.expense { color: #e8f0ff; }
-.fin-tx-amount.income { color: #00e5a0; }
-.fin-tx-category { font-size: 0.52rem; color: #5a7aa8; margin-top: 1px; }
 
-/* Add expense form */
-.fin-add-form {
-  display: grid; grid-template-columns: 1.2fr 1fr auto; gap: 6px;
-}
-.fin-add-form input {
-  background: #0d1220; border: 1px solid #1a2540; border-radius: 8px;
-  padding: 6px 8px; color: #e8f0ff; font-family: inherit; font-size: 0.72rem; outline: none;
-  transition: border-color 0.2s;
-}
-.fin-add-form input:focus {
-  border-color: #00d4ff;
-}
-.fin-add-btn {
-  background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.3); color: #00d4ff; border-radius: 8px;
-  padding: 6px 10px; font-weight: 700; font-size: 0.72rem; cursor: pointer;
-  transition: all 0.2s; display: flex; align-items: center; justify-content: center;
-}
-.fin-add-btn:hover { background: rgba(0, 212, 255, 0.25); }
-.fin-add-btn:active { transform: scale(0.95); }
-
-/* Blurs and previews for locked tabs */
-.phone-tab-panel-blurred-content {
-  filter: blur(4.5px);
-  opacity: 0.35;
-  pointer-events: none;
-  user-select: none;
+/* Benedict Info Details */
+.benedict-info {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+  min-width: 0;
+}
+.benedict-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: -0.5px;
+}
+.benedict-subtitle {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: -8px;
 }
 
-/* Lock Overlay styled glassmorphic */
-.lock-overlay {
-  position: absolute; inset: 0;
-  background: rgba(5, 8, 15, 0.65);
-  backdrop-filter: blur(1.5px);
-  -webkit-backdrop-filter: blur(1.5px);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 20px;
-  z-index: 100;
-  animation: tabFadeIn 0.3s ease both;
+/* Language switch tabs */
+.benedict-tabs {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
 }
-.lock-icon-wrap {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: rgba(0, 212, 255, 0.08);
-  border: 1px solid rgba(0, 212, 255, 0.25);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.25rem; color: #00d4ff;
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.15);
-  animation: pulseLock 2s infinite alternate;
-}
-@keyframes pulseLock {
-  0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 212, 255, 0.1); }
-  100% { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
-}
-.lock-title {
-  font-size: 0.88rem; font-weight: 800; color: #e8f0ff; margin: 10px 0 4px;
-}
-.lock-desc {
-  font-size: 0.68rem; color: #5a7aa8; line-height: 1.35; max-width: 220px; margin-bottom: 12px;
-}
-
-.lock-waitlist-box {
-  width: 100%; max-width: 240px;
-  background: #0d1220;
-  border: 1px solid #1a2540;
-  border-radius: 12px;
-  padding: 10px;
-}
-.lock-waitlist-text {
-  font-size: 0.6rem; color: #5a7aa8; margin-bottom: 6px; line-height: 1.3;
-}
-
-.waitlist-form {
-  display: flex; gap: 6px;
-}
-.waitlist-form input {
-  flex: 1; background: #05080f; border: 1px solid #1a2540; border-radius: 8px;
-  padding: 5px 8px; color: #e8f0ff; font-family: inherit; font-size: 0.7rem; outline: none;
-}
-.waitlist-form input:focus { border-color: #00d4ff; }
-.waitlist-form button {
-  background: #00d4ff; color: #05080f; border: none; border-radius: 8px;
-  padding: 5px 10px; font-weight: 700; font-size: 0.7rem; cursor: pointer;
+.benedict-tab-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
   transition: all 0.2s;
 }
-.waitlist-form button:hover { background: #5df0ff; }
-.waitlist-form button:active { transform: scale(0.95); }
-.waitlist-feedback {
-  font-size: 0.65rem; color: #00d4ff; margin-top: 6px; display: none;
+.benedict-tab-btn:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.03);
+}
+.benedict-tab-btn.active {
+  color: var(--gold);
+  background: rgba(245, 200, 66, 0.08);
 }
 
-/* Adaptability for smaller height viewports */
-@media (max-height: 680px) {
-  .phone-mockup {
-    transform: translateY(0) scale(0.82) !important;
+.prayer-text {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(240, 240, 248, 0.8);
+  font-style: italic;
+  min-height: 110px;
+}
+
+.siglas-container {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+}
+.siglas-header {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--gold);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.siglas-interactive-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.sigla-chip {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--white);
+  cursor: help;
+  transition: all 0.2s;
+}
+.sigla-chip:hover {
+  background: rgba(245, 200, 66, 0.15);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-1px);
+}
+
+.sigla-translation-display {
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.4;
+  min-height: 38px;
+}
+
+@media (max-width: 600px) {
+  .benedict-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+  .medal-3d-card {
+    width: 150px;
+    height: 150px;
   }
 }
 
@@ -859,6 +726,79 @@ footer {
 </head>
 <body>
 
+<div class="watermark-wolf">
+  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" style="width:100%; height:100%;">
+    <path d="M 15,85 L 22,85 L 26,75 L 32,78 L 42,75 L 40,65 L 48,55 L 56,48 L 68,36 L 76,20 L 78,8 L 73,12 L 67,14 L 60,20 L 50,26 L 44,30 L 32,38 L 26,48 L 22,62 Z" opacity="0.8"/>
+    <path d="M 26,75 L 40,65 L 32,38" />
+    <path d="M 22,62 L 32,38 L 44,30 L 48,55" />
+    <path d="M 56,48 L 48,55 L 44,30 L 50,26" />
+    <path d="M 68,36 L 56,48 L 50,26 L 60,20" />
+    <path d="M 76,20 L 68,36 L 60,20 L 73,12" />
+  </svg>
+</div>
+
+<div class="watermark-owl">
+  <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" style="width:100%; height:100%;">
+    <path d="M 32,85 L 68,85 L 66,74 L 70,60 L 66,45 L 63,30 L 57,15 L 50,22 L 43,15 L 37,30 L 34,45 L 30,60 L 34,74 Z" opacity="0.8"/>
+    <circle cx="43" cy="35" r="4.5" />
+    <circle cx="57" cy="35" r="4.5" />
+    <polygon points="50,38 48,43 52,43" />
+    <path d="M 37,30 L 43,35 L 50,22 L 57,35 L 63,30" />
+    <path d="M 34,45 L 43,35 L 50,38 L 57,35 L 66,45" />
+    <path d="M 30,60 L 42,54 L 50,57 L 58,54 L 70,60" />
+    <path d="M 34,74 L 45,69 L 50,71 L 55,69 L 66,74" />
+    <path d="M 50,38 L 50,57 L 50,71" />
+  </svg>
+</div>
+
+<div class="medal-watermark">
+  <svg viewBox="0 0 200 200" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="1.2">
+    <!-- Centered Cross -->
+    <g stroke="currentColor" stroke-width="1.5">
+      <rect x="91" y="38" width="18" height="124" rx="2" />
+      <rect x="38" y="91" width="124" height="18" rx="2" />
+    </g>
+    <!-- Letters on the Cross -->
+    <g font-family="'Outfit', sans-serif" font-weight="900" font-size="10.5" fill="currentColor" text-anchor="middle">
+      <text x="100" y="52">C</text>
+      <text x="100" y="74">S</text>
+      <text x="100" y="103">S</text>
+      <text x="100" y="129">M</text>
+      <text x="100" y="151">L</text>
+      <text x="50" y="103">N</text>
+      <text x="73" y="103">D</text>
+      <text x="127" y="103">M</text>
+      <text x="150" y="103">D</text>
+    </g>
+    <!-- Quadrant Letters -->
+    <g font-family="'Outfit', sans-serif" font-weight="900" font-size="14" fill="currentColor" text-anchor="middle">
+      <text x="73" y="75">C</text>
+      <text x="127" y="75">S</text>
+      <text x="73" y="137">P</text>
+      <text x="127" y="137">B</text>
+    </g>
+    <!-- PAX -->
+    <text x="100" y="30" font-family="'Outfit', sans-serif" font-weight="900" font-size="9" fill="currentColor" text-anchor="middle">PAX</text>
+    <!-- Border Initials -->
+    <g font-family="'Outfit', sans-serif" font-weight="800" font-size="7.5" fill="currentColor" text-anchor="middle">
+      <text x="136" y="38">V</text>
+      <text x="151" y="47">R</text>
+      <text x="163" y="59">S</text>
+      <text x="170" y="74">N</text>
+      <text x="172" y="90">S</text>
+      <text x="171" y="107">M</text>
+      <text x="165" y="124">V</text>
+      <text x="64" y="38">S</text>
+      <text x="49" y="47">M</text>
+      <text x="37" y="59">Q</text>
+      <text x="30" y="74">L</text>
+      <text x="28" y="90">I</text>
+      <text x="29" y="107">V</text>
+      <text x="35" y="124">B</text>
+    </g>
+  </svg>
+</div>
+
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
 <div class="orb orb3"></div>
@@ -870,28 +810,27 @@ footer {
   <!-- HEADER -->
   <header class="header">
     <div class="avatar-ring">
-      <div class="avatar-inner">🚀</div>
+      <div class="avatar-inner">
+        <img src="avatar.jpg" alt="Avatar" id="avatarImg" onerror="this.style.display='none'; document.getElementById('avatarEmoji').style.display='block';" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;">
+        <span id="avatarEmoji" style="display: none;">🚀</span>
+      </div>
     </div>
 
-    <div class="name">Breitner <span>Tinight</span></div>
+    <div class="name">Breitner <span>Maquito</span></div>
     <div class="handle">@breitnermaquito</div>
 
     <p class="tagline">
-      Tecnologia, viagens e natureza —<br>minha ideia é viver viajando.
+      tecnologia, viagens e natureza, minha ideia é viver viajando, Apenas a vida acontecendo. ✨<br>
+      Um pouco de tudo, muito de nada.<br>
+      Pedaços do meu caos organizado.
     </p>
 
     <div class="badges">
-      <span class="badge accent">Desenvolvedor Entusiasta</span>
-      <span class="badge gold">✈️ Viajante</span>
-      <span class="badge cyan">🌿 Natureza</span>
+      <span class="badge accent">🐺 Lobo</span>
+      <span class="badge cyan">🦉 Coruja</span>
+      <span class="badge gold" id="saintBenedictBadge" style="cursor: pointer;">🛡️ São Bento</span>
     </div>
   </header>
-
-  <!-- STATUS -->
-  <div class="status-strip">
-    <div class="status-dot"></div>
-    <span>Disponível para novos projetos e colaborações</span>
-  </div>
 
   <!-- PROJECTS -->
   <div class="divider"><span class="divider-label">Projetos</span></div>
@@ -923,31 +862,6 @@ footer {
       </div>
     </a>
 
-    <!-- Finanças (Premium Preview) -->
-    <div class="project-card" id="openFinancesBtn" style="cursor:pointer;">
-      <div class="project-card-glow"></div>
-      <div class="card-header">
-        <div class="card-icon-wrap" style="background:linear-gradient(135deg,#b8860b,#5a4000);">💎</div>
-        <div class="card-meta">
-          <div class="card-title">Finanças</div>
-          <div class="card-type">Simulador</div>
-        </div>
-        <span class="card-tag" style="background:rgba(245,200,66,0.12); color:var(--gold); border:1px solid rgba(245,200,66,0.25);">Demo</span>
-      </div>
-      <div class="card-desc">
-        Gerenciador financeiro inteligente. Teste a prévia interativa adicionando gastos fictícios na hora, sem salvar nada.
-      </div>
-      <div class="card-footer">
-        <div class="card-chips">
-          <span class="chip">HTML</span>
-          <span class="chip">CSS</span>
-          <span class="chip">JavaScript</span>
-          <span class="chip">Simulador</span>
-        </div>
-        <span class="card-arrow">→</span>
-      </div>
-    </div>
-
     <!-- Em breve gratuito -->
     <div class="project-card soon">
       <div class="project-card-glow"></div>
@@ -976,6 +890,12 @@ footer {
       </div>
     </div>
 
+  </div>
+
+  <!-- STATUS -->
+  <div class="status-strip">
+    <div class="status-dot"></div>
+    <span>Disponível para novos projetos e colaborações</span>
   </div>
 
   <!-- SOCIAL -->
@@ -1026,333 +946,201 @@ footer {
 </main>
 
 <footer>
-  © 2026 Breitner Tinight · Feito com 💜 e ☕
+  © 2026 Breitner Maquito · Feito com 💜 e ☕
 </footer>
 
-<!-- ── FINANCES SIMULATOR MODAL (CELULAR SIMULADO) ── -->
-<div class="modal-overlay" id="financesModal">
-  <div class="phone-mockup">
-    <!-- Status Bar -->
-    <div class="phone-status-bar">
-      <div class="phone-status-left">18:45</div>
-      <div class="phone-status-right">
-        <span>📶</span>
-        <span>🔋</span>
+<!-- ── SAINT BENEDICT MODAL (POPOVER INTERATIVO) ── -->
+<div class="modal-overlay" id="saintBenedictModal">
+  <div class="benedict-card">
+    <button class="benedict-close-btn" id="closeBenedictBtn" title="Fechar">&times;</button>
+    
+    <!-- Left side: 3D Medal -->
+    <div class="medal-viewer">
+      <div class="medal-3d-card" id="medalCard" title="Clique para girar a medalha">
+        <div class="medal-3d-inner" id="medalInner">
+          <div class="medal-front">
+            <svg viewBox="0 0 200 200" width="100%" height="100%" id="saintBenedictFrontSVG">
+              <defs>
+                <radialGradient id="goldGrad" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#ffe699"/>
+                  <stop offset="70%" stop-color="#c29b38"/>
+                  <stop offset="100%" stop-color="#8c6b1b"/>
+                </radialGradient>
+                <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+                  <feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.5"/>
+                </filter>
+              </defs>
+              <circle cx="100" cy="100" r="96" fill="url(#goldGrad)" stroke="#ffd700" stroke-width="2"/>
+              <circle cx="100" cy="100" r="86" fill="none" stroke="#8c6b1b" stroke-width="1" stroke-dasharray="2,2"/>
+              <circle cx="100" cy="100" r="82" fill="none" stroke="#ffd700" stroke-width="1.5"/>
+              
+              <!-- St. Benedict Figure Silhouette -->
+              <g filter="url(#dropShadow)" fill="#3a2a07" opacity="0.9">
+                <!-- Halo -->
+                <circle cx="100" cy="55" r="10" fill="none" stroke="#3a2a07" stroke-width="1.5"/>
+                <!-- Head / Hood -->
+                <path d="M96,55 C96,48 104,48 104,55 L106,66 L94,66 Z" />
+                <!-- Body / Robe -->
+                <path d="M94,66 L106,66 L112,130 L115,155 L85,155 L88,130 Z" />
+                <!-- Sleeves / Arms -->
+                <path d="M94,70 L80,95 L86,100 L95,78 Z" />
+                <path d="M106,70 L120,95 L114,100 L105,78 Z" />
+                
+                <!-- Cross in Right Hand -->
+                <path d="M78,82 L84,82 M81,75 L81,105" stroke="#3a2a07" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                <!-- Book in Left Hand -->
+                <rect x="110" y="82" width="10" height="15" rx="1" fill="#3a2a07" transform="rotate(5, 110, 82)"/>
+                <!-- Raven (left side near feet) -->
+                <path d="M76,145 C73,142 70,143 68,141 C66,139 67,136 65,135 C68,136 71,139 74,138 C75,136 78,137 80,135 C79,139 79,142 76,145" />
+                <circle cx="71" cy="138" r="3" fill="#ffe699"/>
+                <!-- Cup with Serpent (right side near waist) -->
+                <path d="M122,125 L132,125 L129,132 L127,142 L131,142 L131,145 L123,145 L123,142 L127,142 L125,132 Z" />
+                <path d="M125,123 C127,118 130,122 132,118 C133,120 128,124 126,125" stroke="#3a2a07" stroke-width="1.2" fill="none"/>
+              </g>
+
+              <!-- Pedestal St. Benedict stands on -->
+              <path d="M80,155 L120,155 L115,162 L85,162 Z" fill="#3a2a07" opacity="0.8"/>
+              
+              <!-- C S P B letters -->
+              <text x="64" y="98" font-family="'Outfit', sans-serif" font-weight="900" font-size="12" fill="#3a2a07" text-anchor="middle">C</text>
+              <text x="136" y="98" font-family="'Outfit', sans-serif" font-weight="900" font-size="12" fill="#3a2a07" text-anchor="middle">S</text>
+              <text x="64" y="122" font-family="'Outfit', sans-serif" font-weight="900" font-size="12" fill="#3a2a07" text-anchor="middle">P</text>
+              <text x="136" y="122" font-family="'Outfit', sans-serif" font-weight="900" font-size="12" fill="#3a2a07" text-anchor="middle">B</text>
+
+              <!-- Marginal text Path -->
+              <path id="frontTextPath" d="M18,100 A82,82 0 1,1 182,100" fill="none" stroke="none" />
+              <text font-family="'Outfit', sans-serif" font-weight="700" font-size="6.8" fill="#3a2a07">
+                <textPath href="#frontTextPath" startOffset="50%" text-anchor="middle">
+                  EIUS IN OBITU NOSTRO PRAESENTIA MUNIAMUR
+                </textPath>
+              </text>
+              
+              <!-- Bottom text: CRUX S. PATRIS BENEDICTI -->
+              <path id="frontBottomPath" d="M182,100 A82,82 0 0,1 18,100" fill="none" stroke="none" />
+              <text font-family="'Outfit', sans-serif" font-weight="700" font-size="6.8" fill="#3a2a07">
+                <textPath href="#frontBottomPath" startOffset="50%" text-anchor="middle">
+                  CRUX S. PATRIS BENEDICTI
+                </textPath>
+              </text>
+            </svg>
+          </div>
+          <div class="medal-back">
+            <svg viewBox="0 0 200 200" width="100%" height="100%" id="saintBenedictBackSVG">
+              <defs>
+                <radialGradient id="goldGrad2" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#ffe699"/>
+                  <stop offset="70%" stop-color="#c29b38"/>
+                  <stop offset="100%" stop-color="#8c6b1b"/>
+                </radialGradient>
+                <filter id="emboss" x="-10%" y="-10%" width="120%" height="120%">
+                  <feDropShadow dx="1" dy="1.5" stdDeviation="1.2" flood-color="#000" flood-opacity="0.4"/>
+                </filter>
+              </defs>
+              <circle cx="100" cy="100" r="96" fill="url(#goldGrad2)" stroke="#ffd700" stroke-width="2"/>
+              <circle cx="100" cy="100" r="86" fill="none" stroke="#8c6b1b" stroke-width="1" stroke-dasharray="2,2"/>
+              <circle cx="100" cy="100" r="82" fill="none" stroke="#ffd700" stroke-width="1.5"/>
+
+              <!-- Centered Cross -->
+              <g filter="url(#emboss)" fill="#3a2a07" opacity="0.9">
+                <!-- Vertical bar -->
+                <rect x="91" y="38" width="18" height="124" rx="2" />
+                <!-- Horizontal bar -->
+                <rect x="38" y="91" width="124" height="18" rx="2" />
+              </g>
+              
+              <!-- Letters on the Cross -->
+              <!-- Vertical: C S S M L -->
+              <g font-family="'Outfit', sans-serif" font-weight="900" font-size="10.5" fill="#ffe699" text-anchor="middle" filter="url(#emboss)">
+                <text x="100" y="52">C</text>
+                <text x="100" y="74">S</text>
+                <text x="100" y="103">S</text>
+                <text x="100" y="129">M</text>
+                <text x="100" y="151">L</text>
+              </g>
+              <!-- Horizontal: N D S M D -->
+              <g font-family="'Outfit', sans-serif" font-weight="900" font-size="10.5" fill="#ffe699" text-anchor="middle" filter="url(#emboss)">
+                <text x="50" y="103">N</text>
+                <text x="73" y="103">D</text>
+                <text x="127" y="103">M</text>
+                <text x="150" y="103">D</text>
+              </g>
+
+              <!-- Quadrant Letters -->
+              <g font-family="'Outfit', sans-serif" font-weight="900" font-size="14" fill="#3a2a07" text-anchor="middle">
+                <text x="73" y="75">C</text>
+                <text x="127" y="75">S</text>
+                <text x="73" y="137">P</text>
+                <text x="127" y="137">B</text>
+              </g>
+
+              <!-- Border Initials placement: PAX at the top -->
+              <text x="100" y="30" font-family="'Outfit', sans-serif" font-weight="900" font-size="9" fill="#3a2a07" text-anchor="middle">PAX</text>
+              
+              <!-- Right margin: V.R.S.N.S.M.V. -->
+              <g font-family="'Outfit', sans-serif" font-weight="800" font-size="7.5" fill="#3a2a07" text-anchor="middle">
+                <text x="136" y="38">V</text>
+                <text x="151" y="47">R</text>
+                <text x="163" y="59">S</text>
+                <text x="170" y="74">N</text>
+                <text x="172" y="90">S</text>
+                <text x="171" y="107">M</text>
+                <text x="165" y="124">V</text>
+              </g>
+
+              <!-- Left margin: S.M.Q.L.I.V.B. -->
+              <g font-family="'Outfit', sans-serif" font-weight="800" font-size="7.5" fill="#3a2a07" text-anchor="middle">
+                <text x="64" y="38">S</text>
+                <text x="49" y="47">M</text>
+                <text x="37" y="59">Q</text>
+                <text x="30" y="74">L</text>
+                <text x="28" y="90">I</text>
+                <text x="29" y="107">V</text>
+                <text x="35" y="124">B</text>
+              </g>
+            </svg>
+          </div>
+        </div>
       </div>
+      <div class="medal-hint">Girar Medalha 🔄</div>
     </div>
     
-    <!-- Close button (x) inside phone header for usability -->
-    <button class="phone-close-btn" id="closeFinancesBtn" title="Fechar Simulador">&times;</button>
-
-    <!-- Phone Screen -->
-    <div class="phone-screen">
+    <!-- Right side: Info & Prayers -->
+    <div class="benedict-info">
+      <div>
+        <h3 class="benedict-title">Medalha de São Bento</h3>
+        <span class="benedict-subtitle">Proteção e Fé</span>
+      </div>
       
-      <!-- Splash Screen Simulado -->
-      <div class="phone-splash-screen" id="phoneSplash">
-        <div class="phone-splash-logo">
-          <div style="font-size: 40px; font-weight: 800; color: #00d4ff; letter-spacing: -2px;">Finanças</div>
-          <div style="font-size: 9px; color: #5a7aa8; margin-top: 6px; letter-spacing: 2px; text-transform: uppercase;">Controle Financeiro</div>
+      <!-- Interactive Siglas Display -->
+      <div class="siglas-container">
+        <div class="siglas-header">Inscrições da Medalha</div>
+        <div class="siglas-interactive-grid">
+          <span class="sigla-chip" data-sigla="CSPB">C.S.P.B.</span>
+          <span class="sigla-chip" data-sigla="CSSML">C.S.S.M.L.</span>
+          <span class="sigla-chip" data-sigla="NDSMD">N.D.S.M.D.</span>
+          <span class="sigla-chip" data-sigla="VRS">V.R.S.</span>
+          <span class="sigla-chip" data-sigla="NSMV">N.S.M.V.</span>
+          <span class="sigla-chip" data-sigla="SMQL">S.M.Q.L.</span>
+          <span class="sigla-chip" data-sigla="IVB">I.V.B.</span>
+          <span class="sigla-chip" data-sigla="PAX">PAX</span>
+        </div>
+        <div class="sigla-translation-display" id="siglaDesc">
+          Passe o mouse ou toque em uma sigla para ver o significado e tradução.
         </div>
       </div>
-
-      <div class="phone-tabs-viewport">
-        
-        <!-- TAB 1: INÍCIO (INTERATIVO) -->
-        <div class="phone-tab-panel active" id="tab-inicio">
-          <div class="phone-sandbox-container">
-            <div class="phone-header-app">
-              <div>
-                <span class="phone-header-subtitle">Visão Geral</span>
-                <h3 class="phone-header-title">Junho de 2026</h3>
-              </div>
-              <!-- Registrar lançamento simulation button -->
-              <button class="fin-add-btn" style="padding: 6px 10px; font-size: 0.62rem; height: 26px; border: 1px solid rgba(0, 212, 255, 0.3); background: rgba(0, 212, 255, 0.08); color: #00d4ff; border-radius: 8px; font-weight: 600;" id="simAddBtnTrigger">+ Registrar lançamento</button>
-            </div>
-
-            <!-- KPIs com valores exatos do print -->
-            <div class="phone-kpis-grid">
-              <div class="phone-kpi-card">
-                <div class="phone-kpi-label">Patrimônio Líquido</div>
-                <div class="phone-kpi-val cyan" id="finBalance">R$ 900,00</div>
-                <div class="phone-kpi-sub">saldo total</div>
-              </div>
-              <div class="phone-kpi-card">
-                <div class="phone-kpi-label">Receitas do Mês</div>
-                <div class="phone-kpi-val green" id="finRevenues">R$ 0,00</div>
-                <div class="phone-kpi-sub">Junho</div>
-              </div>
-              <div class="phone-kpi-card">
-                <div class="phone-kpi-label">Gastos do Mês</div>
-                <div class="phone-kpi-val red" id="finExpenses">R$ 100,00</div>
-                <div class="phone-kpi-sub">Junho</div>
-              </div>
-              <div class="phone-kpi-card">
-                <div class="phone-kpi-label">Taxa de Poupança</div>
-                <div class="phone-kpi-val cyan" id="finSavings">0%</div>
-                <div class="phone-kpi-sub">do que entrou</div>
-              </div>
-            </div>
-
-            <!-- Meus Cofres (Bradesco) -->
-            <div class="fin-dashboard">
-              <div class="fin-dashboard-header">
-                <span>Meus Cofres</span>
-                <span style="font-size: 0.52rem; color: #5a7aa8; font-weight: normal;">(clique para ver histórico)</span>
-              </div>
-              
-              <div class="fin-cofres-list">
-                <div class="fin-cofre-item">
-                  <div class="fin-cofre-left">
-                    <div class="fin-cofre-icon">🏦</div>
-                    <div class="fin-cofre-meta">
-                      <span class="fin-cofre-name">Bradesco</span>
-                      <span class="fin-cofre-type">Banco</span>
-                    </div>
-                  </div>
-                  <div class="fin-cofre-right">
-                    <span class="fin-cofre-balance" id="finCofreBradesco">R$ 900,00</span>
-                    <span class="fin-cofre-arrow">›</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="fin-divider"></div>
-              <div class="fin-total-row">
-                <span class="fin-total-label">Patrimônio total</span>
-                <span class="fin-total-val" id="finCofreTotal">R$ 900,00</span>
-              </div>
-            </div>
-
-            <!-- Gastos por Categoria -->
-            <div class="fin-category-card">
-              <div class="fin-category-title">Gastos por Categoria — Junho</div>
-              <div class="fin-category-body">
-                <!-- SVG circular donut simulated chart -->
-                <svg width="42" height="42" viewBox="0 0 36 36">
-                  <circle cx="18" cy="18" r="15.915" fill="none" stroke="#1a2540" stroke-width="4.5"></circle>
-                  <circle cx="18" cy="18" r="15.915" fill="none" stroke="#00d4ff" stroke-width="4.5" stroke-dasharray="100 0" stroke-dashoffset="0"></circle>
-                </svg>
-                <div class="fin-category-legend">
-                  <div class="fin-category-dot"></div>
-                  <span>Outros: <strong id="finCategoryVal">R$ 100,00</strong></span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Lançamentos Recentes -->
-            <div class="phone-sandbox-container" style="gap: 8px;">
-              <div class="fin-transactions-title">
-                <span>Lançamentos Recentes</span>
-                <a class="phone-nav-link" style="font-size:0.58rem; color:#00d4ff; text-decoration:none; cursor:pointer;" id="simVerTodos">ver todos →</a>
-              </div>
-
-              <div class="fin-transactions-list" id="finTxList">
-                <!-- Rendered via JS -->
-              </div>
-
-              <!-- Form to add mock expense (Sandbox) -->
-              <form class="fin-add-form" id="finAddForm" onsubmit="event.preventDefault();">
-                <input type="text" id="finNameInput" placeholder="Ex: Mercado, Uber..." required>
-                <input type="number" id="finAmountInput" placeholder="Valor (R$)" step="0.01" min="0.01" required>
-                <button type="submit" class="fin-add-btn" title="Adicionar Despesa" id="finAddSubmitBtn">+</button>
-              </form>
-            </div>
-          </div>
+      
+      <!-- Prayers section -->
+      <div>
+        <div class="benedict-tabs">
+          <button class="benedict-tab-btn active" data-lang="pt">Português</button>
+          <button class="benedict-tab-btn" data-lang="la">Latim</button>
         </div>
-
-        <!-- TAB 2: LANÇAMENTOS (BLOQUEADA) -->
-        <div class="phone-tab-panel" id="tab-lancamentos">
-          <!-- Blurred preview screen of transactions -->
-          <div class="phone-tab-panel-blurred-content">
-            <div class="phone-header-app">
-              <h3 class="phone-header-title">Histórico</h3>
-            </div>
-            <div class="fin-transactions-list">
-              <div class="fin-tx-item">
-                <div class="fin-tx-left"><div class="fin-tx-emoji-box">🛒</div><div><strong>Supermercado</strong><div class="fin-tx-date">05 de jun. · Débito</div></div></div>
-                <span class="fin-tx-amount">R$ 180,00</span>
-              </div>
-              <div class="fin-tx-item">
-                <div class="fin-tx-left"><div class="fin-tx-emoji-box">💰</div><div><strong>Salário</strong><div class="fin-tx-date">01 de jun. · PIX</div></div></div>
-                <span class="fin-tx-amount income">+ R$ 4.500,00</span>
-              </div>
-              <div class="fin-tx-item">
-                <div class="fin-tx-left"><div class="fin-tx-emoji-box">🚗</div><div><strong>Uber</strong><div class="fin-tx-date">28 de mai. · Crédito</div></div></div>
-                <span class="fin-tx-amount">R$ 15,20</span>
-              </div>
-              <div class="fin-tx-item">
-                <div class="fin-tx-left"><div class="fin-tx-emoji-box">💡</div><div><strong>Luz & Água</strong><div class="fin-tx-date">25 de mai. · Débito</div></div></div>
-                <span class="fin-tx-amount">R$ 120,40</span>
-              </div>
-            </div>
-          </div>
-          <!-- Locked overlay -->
-          <div class="lock-overlay">
-            <div class="lock-icon-wrap">🔒</div>
-            <h4 class="lock-title">Histórico de Lançamentos</h4>
-            <p class="lock-desc">Acompanhe todas as suas movimentações passadas com filtros de busca inteligentes e exportação de planilhas.</p>
-            <div class="lock-waitlist-box">
-              <p class="lock-waitlist-text">Inscreva seu e-mail para receber o aviso de lançamento:</p>
-              <form class="waitlist-form notify-form-waitlist">
-                <input type="email" placeholder="Seu melhor e-mail" required>
-                <button type="submit">Me Avise</button>
-              </form>
-              <div class="waitlist-feedback">✓ Inscrito com sucesso!</div>
-            </div>
-          </div>
+        <div class="prayer-text" id="prayerContent">
+          "A Cruz Sagrada seja a minha luz, não seja o dragão o meu guia. Retira-te, Satanás, nunca me aconselhes coisas vãs. É mau o que tu me ofereces, bebe tu mesmo o teu veneno."
         </div>
-
-        <!-- TAB 3: COFRES (BLOQUEADA) -->
-        <div class="phone-tab-panel" id="tab-cofres">
-          <!-- Blurred preview screen of accounts -->
-          <div class="phone-tab-panel-blurred-content">
-            <div class="phone-header-app">
-              <h3 class="phone-header-title">Onde está cada real</h3>
-              <button class="fin-add-btn" style="padding: 4px 8px; font-size: 0.58rem;">+ Novo cofre</button>
-            </div>
-            <!-- Net worth card representation -->
-            <div style="background: linear-gradient(135deg, #091428, #0d1f3c); border: 1px solid rgba(0, 212, 255, 0.15); border-radius: 12px; padding: 12px; display: flex; justify-content: space-between;">
-              <div>
-                <span style="font-size: 0.52rem; color: #5a7aa8;">Patrimônio Líquido</span>
-                <div style="font-size: 1.15rem; font-weight: 800; color: #00d4ff;">R$ 900,00</div>
-              </div>
-              <div style="font-size: 0.6rem; text-align: right;">
-                <div style="color: #00e5a0;">↑ R$ 900,00</div>
-                <div style="color: #ff4060; margin-top: 2px;">↓ R$ 0,00</div>
-              </div>
-            </div>
-            <!-- Bradesco bank account representation -->
-            <div class="fin-dashboard">
-              <div style="display: flex; align-items: center; justify-content: space-between;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="font-size: 1.1rem;">🏦</span>
-                  <div>
-                    <span style="font-size: 0.72rem; font-weight: 600; display: block;">Bradesco</span>
-                    <span style="font-size: 0.52rem; color: #5a7aa8;">Banco</span>
-                  </div>
-                </div>
-                <span style="font-size: 0.72rem; font-weight: 700; color: #00d4ff;">R$ 900,00</span>
-              </div>
-            </div>
-          </div>
-          <!-- Locked overlay -->
-          <div class="lock-overlay">
-            <div class="lock-icon-wrap">⬡</div>
-            <h4 class="lock-title">Contas & Cofres</h4>
-            <p class="lock-desc">Organize e reordene seus bancos, cartões de crédito e investimentos, acompanhando o saldo de ativos e dívidas individuais.</p>
-            <div class="lock-waitlist-box">
-              <p class="lock-waitlist-text">Inscreva seu e-mail para receber o aviso de lançamento:</p>
-              <form class="waitlist-form notify-form-waitlist">
-                <input type="email" placeholder="Seu melhor e-mail" required>
-                <button type="submit">Me Avise</button>
-              </form>
-              <div class="waitlist-feedback">✓ Inscrito com sucesso!</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB 4: RELATÓRIOS (BLOQUEADA) -->
-        <div class="phone-tab-panel" id="tab-relatorios">
-          <!-- Blurred preview screen of reports -->
-          <div class="phone-tab-panel-blurred-content">
-            <div class="phone-header-app">
-              <h3 class="phone-header-title">Evolução Mensal</h3>
-            </div>
-            <!-- Donut categories representation -->
-            <div class="fin-category-card" style="text-align: center;">
-              <svg width="42" height="42" viewBox="0 0 36 36">
-                <circle cx="18" cy="18" r="15.915" fill="none" stroke="#1a2540" stroke-width="4"></circle>
-                <circle cx="18" cy="18" r="15.915" fill="none" stroke="#00d4ff" stroke-width="4" stroke-dasharray="60 40"></circle>
-                <circle cx="18" cy="18" r="15.915" fill="none" stroke="#9b6dff" stroke-width="4" stroke-dasharray="40 60" stroke-dashoffset="-60"></circle>
-              </svg>
-              <div style="font-size: 0.58rem; color: #e8f0ff; margin-top: 6px;">Alimentação (60%) · Transporte (40%)</div>
-            </div>
-            <!-- Simulated bar chart -->
-            <div class="fin-dashboard" style="height: 60px; display: flex; align-items: flex-end; justify-content: space-around;">
-              <div style="width: 14px; height: 35px; background: #00e5a0; border-radius: 2px;"></div>
-              <div style="width: 14px; height: 18px; background: #ff4060; border-radius: 2px;"></div>
-              <div style="width: 14px; height: 42px; background: #00e5a0; border-radius: 2px;"></div>
-              <div style="width: 14px; height: 30px; background: #ff4060; border-radius: 2px;"></div>
-            </div>
-          </div>
-          <!-- Locked overlay -->
-          <div class="lock-overlay">
-            <div class="lock-icon-wrap">📊</div>
-            <h4 class="lock-title">Análises & Gráficos</h4>
-            <p class="lock-desc">Monitore médias de gastos, receba insights automáticos da saúde financeira e visualize o balanço anual de receitas e despesas.</p>
-            <div class="lock-waitlist-box">
-              <p class="lock-waitlist-text">Inscreva seu e-mail para receber o aviso de lançamento:</p>
-              <form class="waitlist-form notify-form-waitlist">
-                <input type="email" placeholder="Seu melhor e-mail" required>
-                <button type="submit">Me Avise</button>
-              </form>
-              <div class="waitlist-feedback">✓ Inscrito com sucesso!</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB 5: PERFIL (BLOQUEADA) -->
-        <div class="phone-tab-panel" id="tab-perfil">
-          <!-- Blurred preview screen of profile/settings -->
-          <div class="phone-tab-panel-blurred-content">
-            <div style="display: flex; align-items: center; gap: 10px; padding: 6px;">
-              <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.2); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; color: #00d4ff; font-weight: 700;">BT</div>
-              <div>
-                <span style="font-size: 0.72rem; font-weight: 600; display: block;">Breitner Tinight</span>
-                <span style="font-size: 0.52rem; color: #5a7aa8;">conta pessoal</span>
-              </div>
-            </div>
-            <div class="fin-cofres-list">
-              <div class="fin-cofre-item"><div class="fin-cofre-left"><span>💑</span><span class="fin-cofre-name">Modo Casal</span></div><span class="fin-cofre-arrow">›</span></div>
-              <div class="fin-cofre-item"><div class="fin-cofre-left"><span>🔔</span><span class="fin-cofre-name">Notificações</span></div><span class="fin-cofre-arrow">›</span></div>
-              <div class="fin-cofre-item"><div class="fin-cofre-left"><span>⚙️</span><span class="fin-cofre-name">Configurações</span></div><span class="fin-cofre-arrow">›</span></div>
-            </div>
-          </div>
-          <!-- Locked overlay -->
-          <div class="lock-overlay">
-            <div class="lock-icon-wrap">👤</div>
-            <h4 class="lock-title">Configurações do Perfil</h4>
-            <p class="lock-desc">Ative o Modo Casal para compartilhar suas contas em tempo real, ajuste limites gerais e altere suas preferências de interface.</p>
-            <div class="lock-waitlist-box">
-              <p class="lock-waitlist-text">Inscreva seu e-mail para receber o aviso de lançamento:</p>
-              <form class="waitlist-form notify-form-waitlist">
-                <input type="email" placeholder="Seu melhor e-mail" required>
-                <button type="submit">Me Avise</button>
-              </form>
-              <div class="waitlist-feedback">✓ Inscrito com sucesso!</div>
-            </div>
-          </div>
-        </div>
-
       </div>
-
-      <!-- Phone Bottom Navbar Navigation (5 abas reais) -->
-      <div class="phone-navbar">
-        <button class="phone-nav-item active" data-tab="tab-inicio" title="Início">
-          <span class="phone-nav-icon">◈</span>
-          <span class="phone-nav-label">Início</span>
-        </button>
-        <button class="phone-nav-item" data-tab="tab-lancamentos" title="Lançamentos">
-          <span class="phone-nav-icon">↕</span>
-          <span class="phone-nav-label">Lançamentos</span>
-        </button>
-        <button class="phone-nav-item" data-tab="tab-cofres" title="Cofres">
-          <span class="phone-nav-icon">⬡</span>
-          <span class="phone-nav-label">Cofres</span>
-        </button>
-        <button class="phone-nav-item" data-tab="tab-relatorios" title="Relatórios">
-          <span class="phone-nav-icon">📊</span>
-          <span class="phone-nav-label">Relatórios</span>
-        </button>
-        <button class="phone-nav-item" data-tab="tab-perfil" title="Perfil">
-          <span class="phone-nav-icon">👤</span>
-          <span class="phone-nav-label">Perfil</span>
-        </button>
-      </div>
+      
     </div>
-
-    <!-- Home indicator iOS/Android bar -->
-    <div class="phone-home-indicator"></div>
   </div>
 </div>
 
@@ -1484,197 +1272,82 @@ footer {
     });
   }
 
-  // 8. Finances Sandbox Modal & Simulation
-  const financesModal = document.getElementById('financesModal');
-  const openFinancesBtn = document.getElementById('openFinancesBtn');
-  const closeFinancesBtn = document.getElementById('closeFinancesBtn');
-  const finAddForm = document.getElementById('finAddForm');
-  const phoneSplash = document.getElementById('phoneSplash');
-  const simAddBtnTrigger = document.getElementById('simAddBtnTrigger');
-  const simVerTodos = document.getElementById('simVerTodos');
+  // 8. Saint Benedict Modal Interactive Controls
+  const saintBenedictModal = document.getElementById('saintBenedictModal');
+  const saintBenedictBadge = document.getElementById('saintBenedictBadge');
+  const closeBenedictBtn = document.getElementById('closeBenedictBtn');
+  const medalCard = document.getElementById('medalCard');
+  const medalInner = document.getElementById('medalInner');
+  const prayerContent = document.getElementById('prayerContent');
+  const siglaDesc = document.getElementById('siglaDesc');
 
-  // Initial values matching user screenshots
-  let initialPatrimony = 900.00;
-  let initialExpenses = 100.00;
-  let transactions = [
-    { name: 'Gasto', amount: 50.00, type: 'expense', emoji: '💸', date: '06 de jun.', category: 'Débito' },
-    { name: 'Gasto no débito', amount: 50.00, type: 'expense', emoji: '💸', date: '03 de jun.', category: 'Débito' }
-  ];
-
-  function getEmojiForExpense(name) {
-    const n = name.toLowerCase();
-    if (n.includes('comer') || n.includes('almoço') || n.includes('jantar') || n.includes('lanche') || n.includes('padaria') || n.includes('comida') || n.includes('restaurante')) return '🍔';
-    if (n.includes('uber') || n.includes('taxi') || n.includes('carro') || n.includes('combustivel') || n.includes('gasolina') || n.includes('viagem')) return '🚗';
-    if (n.includes('mercado') || n.includes('compras') || n.includes('supermercado')) return '🛒';
-    if (n.includes('cinema') || n.includes('filme') || n.includes('show') || n.includes('ingresso') || n.includes('festa')) return '🎬';
-    if (n.includes('salario') || n.includes('pagamento') || n.includes('freela') || n.includes('pix')) return '💰';
-    return '💸';
-  }
-
-  function updateFinancesUI() {
-    const balanceEl = document.getElementById('finBalance');
-    const revenuesEl = document.getElementById('finRevenues');
-    const expensesEl = document.getElementById('finExpenses');
-    const savingsEl = document.getElementById('finSavings');
-    const cofreBradescoEl = document.getElementById('finCofreBradesco');
-    const cofreTotalEl = document.getElementById('finCofreTotal');
-    const categoryValEl = document.getElementById('finCategoryVal');
-    const listEl = document.getElementById('finTxList');
-    
-    // Dynamic recalculation
-    let simulatedExpensesSum = 0;
-    let simulatedRevenuesSum = 0;
-    
-    // Calculate total added beyond our starting ones
-    transactions.slice(2).forEach(t => {
-      if (t.type === 'income') {
-        simulatedRevenuesSum += t.amount;
-      } else {
-        simulatedExpensesSum += t.amount;
-      }
-    });
-    
-    const currentBalance = initialPatrimony + simulatedRevenuesSum - simulatedExpensesSum;
-    const currentExpenses = initialExpenses + simulatedExpensesSum;
-    const currentRevenues = simulatedRevenuesSum;
-    const currentSavingsRate = currentRevenues > 0 ? Math.round(((currentRevenues - currentExpenses) / currentRevenues) * 100) : 0;
-
-    // Update KPIs
-    balanceEl.innerText = `R$ ${currentBalance.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    revenuesEl.innerText = `R$ ${currentRevenues.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    expensesEl.innerText = `R$ ${currentExpenses.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    savingsEl.innerText = `${currentSavingsRate >= 0 ? currentSavingsRate : 0}%`;
-
-    // Update Cofres section
-    cofreBradescoEl.innerText = `R$ ${currentBalance.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    cofreTotalEl.innerText = `R$ ${currentBalance.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-
-    // Update Category chart legend value
-    categoryValEl.innerText = `R$ ${currentExpenses.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-
-    // Render transactions list
-    listEl.innerHTML = '';
-    transactions.forEach(t => {
-      const item = document.createElement('div');
-      item.className = 'fin-tx-item';
-      
-      const formattedAmount = `${t.type === 'expense' ? '' : '+ '}R$ ${t.amount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-      const amountClass = t.type === 'expense' ? 'expense' : 'income';
-      
-      item.innerHTML = `
-        <div class="fin-tx-left">
-          <div class="fin-tx-emoji-box">${t.emoji}</div>
-          <div class="fin-tx-meta">
-            <span class="fin-tx-name">${t.name}</span>
-            <span class="fin-tx-date">${t.date} · ${t.category}</span>
-          </div>
-        </div>
-        <span class="fin-tx-amount ${amountClass}">${formattedAmount}</span>
-      `;
-      listEl.appendChild(item);
+  // Open modal
+  if (saintBenedictBadge) {
+    saintBenedictBadge.addEventListener('click', () => {
+      saintBenedictModal.classList.add('active');
     });
   }
 
-  // Trigger bootloader splash screen when opening the simulator
-  openFinancesBtn.addEventListener('click', () => {
-    financesModal.classList.add('active');
-    
-    // Exibir splash screen do Finzen por 1.0 segundo
-    phoneSplash.classList.remove('hide');
-    
-    // Set default tab back to Início
-    document.querySelectorAll('.phone-nav-item').forEach(b => b.classList.remove('active'));
-    document.querySelector('[data-tab="tab-inicio"]').classList.add('active');
-    document.querySelectorAll('.phone-tab-panel').forEach(panel => panel.classList.remove('active'));
-    document.getElementById('tab-inicio').classList.add('active');
-    
-    updateFinancesUI();
-    
-    setTimeout(() => {
-      phoneSplash.classList.add('hide');
-    }, 1000);
-  });
-
-  closeFinancesBtn.addEventListener('click', () => {
-    financesModal.classList.remove('active');
-  });
-
-  financesModal.addEventListener('click', (e) => {
-    if (e.target === financesModal) {
-      financesModal.classList.remove('active');
+  // Close modal
+  if (closeBenedictBtn) {
+    closeBenedictBtn.addEventListener('click', () => {
+      saintBenedictModal.classList.remove('active');
+    });
+  }
+  
+  saintBenedictModal.addEventListener('click', (e) => {
+    if (e.target === saintBenedictModal) {
+      saintBenedictModal.classList.remove('active');
     }
   });
 
-  // Simulator button to focus input
-  simAddBtnTrigger.addEventListener('click', () => {
-    document.getElementById('finNameInput').focus();
-  });
+  // 3D Flip Medal
+  if (medalCard) {
+    medalCard.addEventListener('click', () => {
+      medalInner.classList.toggle('flipped');
+    });
+  }
 
-  // Sim ver todos link redirects to Lançamentos tab
-  simVerTodos.addEventListener('click', () => {
-    const lancTabBtn = document.querySelector('[data-tab="tab-lancamentos"]');
-    if (lancTabBtn) lancTabBtn.click();
-  });
+  // Languages tab toggle
+  const prayerLangs = {
+    pt: `"A Cruz Sagrada seja a minha luz, não seja o dragão o meu guia. Retira-te, Satanás, nunca me aconselhes coisas vãs. É mau o que tu me ofereces, bebe tu mesmo o teu veneno."`,
+    la: `"Crux Sacra Sit Mihi Lux, Non Draco Sit Mihi Dux. Vade Retro Satana, Numquam Suade Mihi Vana. Sunt Mala Quae Libas, Ipse Venena Bibas."`
+  };
 
-  finAddForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const nameInput = document.getElementById('finNameInput');
-    const amountInput = document.getElementById('finAmountInput');
-    
-    const name = nameInput.value.trim();
-    const amount = parseFloat(amountInput.value);
-    
-    if (name && amount > 0) {
-      // Add transaction to the top of our array
-      transactions.unshift({
-        name: name,
-        amount: amount,
-        type: 'expense',
-        emoji: getEmojiForExpense(name),
-        date: 'Hoje',
-        category: 'Simulado'
-      });
-      
-      updateFinancesUI();
-      
-      nameInput.value = '';
-      amountInput.value = '';
-    }
-  });
-
-  // Tab switching logic (5 abas)
-  document.querySelectorAll('.phone-nav-item').forEach(btn => {
+  document.querySelectorAll('.benedict-tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.phone-nav-item').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.benedict-tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      
-      const tabId = btn.getAttribute('data-tab');
-      document.querySelectorAll('.phone-tab-panel').forEach(panel => panel.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      
-      if (tabId === 'tab-inicio') {
-        updateFinancesUI();
-      }
+      const lang = btn.getAttribute('data-lang');
+      prayerContent.innerText = prayerLangs[lang];
     });
   });
 
-  // Waitlist forms inside lock screens
-  document.querySelectorAll('.notify-form-waitlist').forEach(form => {
-    form.addEventListener('submit', (e) => {
+  // Siglas Hover Helper translations
+  const siglasTranslations = {
+    CSPB: "<strong>C.S.P.B.</strong><br><em>Crux Sancti Patris Benedicti</em><br>Cruz do Santo Pai Bento.",
+    CSSML: "<strong>C.S.S.M.L.</strong><br><em>Crux Sacra Sit Mihi Lux</em><br>A Cruz Sagrada seja a minha luz.",
+    NDSMD: "<strong>N.D.S.M.D.</strong><br><em>Non Draco Sit Mihi Dux</em><br>Não seja o dragão o meu guia.",
+    VRS: "<strong>V.R.S.</strong><br><em>Vade Retro Satana</em><br>Retira-te, Satanás (afasta-te, mal!).",
+    NSMV: "<strong>N.S.M.V.</strong><br><em>Numquam Suade Mihi Vana</em><br>Nunca me aconselhes coisas vãs.",
+    SMQL: "<strong>S.M.Q.L.</strong><br><em>Sunt Mala Quae Libas</em><br>É mau o que tu me ofereces.",
+    IVB: "<strong>I.V.B.</strong><br><em>Ipse Venena Bibas</em><br>Bebe tu mesmo o teu veneno.",
+    PAX: "<strong>PAX</strong><br>Paz — Lema da ordem beneditina."
+  };
+
+  document.querySelectorAll('.sigla-chip').forEach(chip => {
+    const showTranslation = () => {
+      const key = chip.getAttribute('data-sigla');
+      siglaDesc.innerHTML = siglasTranslations[key];
+    };
+    const clearTranslation = () => {
+      siglaDesc.innerHTML = "Passe o mouse ou toque em uma sigla para ver o significado e tradução.";
+    };
+    chip.addEventListener('mouseenter', showTranslation);
+    chip.addEventListener('mouseleave', clearTranslation);
+    chip.addEventListener('touchstart', (e) => {
       e.preventDefault();
-      const input = form.querySelector('input');
-      const button = form.querySelector('button');
-      const feedback = form.nextElementSibling;
-      const email = input.value;
-      
-      button.disabled = true;
-      button.innerText = 'Enviando...';
-      
-      setTimeout(() => {
-        form.style.display = 'none';
-        feedback.style.display = 'block';
-        feedback.innerText = `✓ Cadastrado: ${email}`;
-      }, 800);
+      showTranslation();
     });
   });
 </script>
