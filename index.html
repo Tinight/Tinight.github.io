@@ -818,7 +818,7 @@ footer {
   transform: translateY(-50%);
   width: 220px;
   height: 220px;
-  opacity: 0.04;
+  opacity: 0.09; /* Mais visível */
   color: var(--gold);
   pointer-events: none;
   z-index: 0;
@@ -836,10 +836,9 @@ footer {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90vw;
-  max-width: 520px;
-  height: 520px;
-  opacity: 0.02;
+  width: 650px; /* Maior e fixada */
+  height: 650px;
+  opacity: 0.05; /* Mais visível */
   color: var(--gold);
   pointer-events: none;
   z-index: 0;
@@ -1272,8 +1271,8 @@ footer {
         <span class="badge">🌿 Natureza</span>
       </div>
       <div class="badges-row">
-        <span class="badge">🐺 Lobo</span>
-        <span class="badge">🦉 Coruja</span>
+        <span class="badge" id="wolfBadge" style="cursor: pointer;">🐺 Lobo</span>
+        <span class="badge" id="owlBadge" style="cursor: pointer;">🦉 Coruja</span>
         <span class="badge" id="saintBenedictBadge" style="cursor: pointer;">🛡️ São Bento</span>
       </div>
     </div>
@@ -1291,7 +1290,7 @@ footer {
   <div class="projects-grid">
 
     <!-- Card 1: Web Application (Glixar) -->
-    <a class="project-card" href="https://tinight.github.io/glixar" target="_blank" rel="noopener">
+    <a class="project-card" href="https://github.com/Tinight/glixar" target="_blank" rel="noopener">
       <div class="project-card-glow"></div>
       <div class="project-preview">
         <div class="preview-glixar">
@@ -1327,11 +1326,12 @@ footer {
       </div>
     </a>
 
-    <!-- Card 2: Mobile Apps (FinZen) -->
+    <!-- Card 2: Em Andamento (Soon Waitlist) -->
     <div class="project-card soon">
       <div class="project-card-glow"></div>
       <div class="project-preview">
         <div class="preview-finzen">
+          <!-- Back left phone -->
           <div class="phone-mockup finzen-phone-left">
             <div class="phone-notch"></div>
             <div class="phone-screen finzen-screen">
@@ -1339,6 +1339,7 @@ footer {
               <div class="saobento-line" style="width: 50%"></div>
             </div>
           </div>
+          <!-- Back right phone -->
           <div class="phone-mockup finzen-phone-right">
             <div class="phone-notch"></div>
             <div class="phone-screen finzen-screen">
@@ -1346,6 +1347,7 @@ footer {
               <div class="saobento-line" style="width: 40%"></div>
             </div>
           </div>
+          <!-- Center primary phone -->
           <div class="phone-mockup finzen-phone-center">
             <div class="phone-notch"></div>
             <div class="phone-screen finzen-screen">
@@ -1358,9 +1360,9 @@ footer {
         </div>
       </div>
       <div class="project-card-info">
-        <h3 class="project-card-title">Mobile Apps</h3>
+        <h3 class="project-card-title">Em Andamento</h3>
         <p class="project-card-desc">
-          FinZen — Simulador de finanças pessoais para controle de despesas e conquistas financeiras. Em desenvolvimento.
+          Novo aplicativo mobile em desenvolvimento. Toque para se inscrever na lista de espera e receber atualizações em primeira mão.
         </p>
         <span class="card-arrow">▼</span>
         <svg class="project-card-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
@@ -1373,109 +1375,6 @@ footer {
         <div class="form-feedback"></div>
       </div>
     </div>
-
-    <!-- Card 3: São Bento App -->
-    <div class="project-card soon">
-      <div class="project-card-glow"></div>
-      <div class="project-preview">
-        <div class="preview-saobento-app">
-          <div class="phone-mockup saobento-phone">
-            <div class="phone-notch"></div>
-            <div class="phone-screen saobento-screen">
-              <div class="saobento-mini-medal">
-                🛡️
-              </div>
-              <div class="saobento-line"></div>
-              <div class="saobento-line" style="width: 50%"></div>
-              <div class="saobento-line" style="width: 80%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="project-card-info">
-        <h3 class="project-card-title">São Bento App</h3>
-        <p class="project-card-desc">
-          Aplicativo com orações, significados interativos e oráculo da Medalha de São Bento. Toque para se inscrever na lista.
-        </p>
-        <span class="card-arrow">▼</span>
-        <svg class="project-card-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
-      </div>
-      <div class="card-expand-form">
-        <form class="notify-form" action="https://formspree.io/f/placeholder_free" method="POST">
-          <input type="email" name="email" placeholder="Seu melhor e-mail" required onclick="event.stopPropagation()">
-          <button type="submit" onclick="event.stopPropagation()">Me Avise</button>
-        </form>
-        <div class="form-feedback"></div>
-      </div>
-    </div>
-
-    <!-- Card 4: Mobile Apps (GitHub) -->
-    <a class="project-card" href="https://github.com/Tinight" target="_blank" rel="noopener">
-      <div class="project-card-glow"></div>
-      <div class="project-preview">
-        <div class="preview-github-apps">
-          <div class="phone-mockup github-phone-left">
-            <div class="phone-notch"></div>
-            <div class="phone-screen github-screen">
-              <div class="github-repo-card">
-                <div class="github-repo-line" style="width: 60%"></div>
-                <div class="github-repo-meta">
-                  <div class="github-repo-dot"></div>
-                  <div class="github-repo-line" style="width: 30%; opacity: 0.5"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="phone-mockup github-phone-right">
-            <div class="phone-notch"></div>
-            <div class="phone-screen github-screen">
-              <div class="github-repo-card">
-                <div class="github-repo-line" style="width: 80%"></div>
-                <div class="github-repo-meta">
-                  <div class="github-repo-dot" style="background: #3178c6"></div>
-                  <div class="github-repo-line" style="width: 40%; opacity: 0.5"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="project-card-info">
-        <h3 class="project-card-title">Mobile Apps</h3>
-        <p class="project-card-desc">
-          Portfólio de projetos, scripts utilitários e aplicativos open-source hospedados no meu perfil público do GitHub.
-        </p>
-        <svg class="project-card-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-      </div>
-    </a>
-
-    <!-- Card 5: São Bento (Faith App / Devocional) -->
-    <a class="project-card" href="#" id="projectSaintBenedictCard" onclick="event.preventDefault(); document.getElementById('saintBenedictModal').classList.add('active');">
-      <div class="project-card-glow"></div>
-      <div class="project-preview">
-        <div class="preview-saobento-cards">
-          <div class="mini-card" style="transform: rotate(-10deg) translateX(5px)">
-            <div class="mini-card-icon">🛡️</div>
-            <div class="mini-card-line"></div>
-            <div class="mini-card-text"></div>
-            <div class="mini-card-text" style="width: 80%"></div>
-          </div>
-          <div class="mini-card" style="transform: rotate(5deg) scale(1.05); z-index: 5">
-            <div class="mini-card-icon">⛪</div>
-            <div class="mini-card-line" style="width: 60%"></div>
-            <div class="mini-card-text"></div>
-            <div class="mini-card-text" style="width: 90%"></div>
-          </div>
-        </div>
-      </div>
-      <div class="project-card-info">
-        <h3 class="project-card-title">São Bento</h3>
-        <p class="project-card-desc">
-          Estudo completo sobre a Cruz de São Bento, explicações teológicas, medalha 3D e preces de proteção e fé.
-        </p>
-        <svg class="project-card-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-    </a>
 
   </div>
 
@@ -1536,6 +1435,79 @@ footer {
 <footer>
   © 2026 Breitner Maquito · Feito com 💜 e ☕
 </footer>
+
+<!-- ── WOLF MODAL (EXPLICAÇÃO DO SIMBOLO) ── -->
+<div class="modal-overlay" id="wolfModal">
+  <div class="benedict-card">
+    <button class="benedict-close-btn" id="closeWolfBtn" title="Fechar">&times;</button>
+    <div class="medal-viewer">
+      <div style="width: 180px; height: 180px; color: var(--gold);">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.0" style="width:100%; height:100%;">
+          <polygon points="50,30 20,5 35,45" />
+          <polygon points="50,30 80,5 65,45" />
+          <polygon points="50,30 35,45 50,55" />
+          <polygon points="50,30 65,45 50,55" />
+          <polygon points="35,45 50,55 30,65" />
+          <polygon points="65,45 50,55 70,65" />
+          <polygon points="30,65 50,55 50,75 25,75" />
+          <polygon points="70,65 50,55 50,75 75,75" />
+          <polygon points="50,55 42,75 50,85" />
+          <polygon points="50,55 58,75 50,85" />
+          <polygon points="42,75 58,75 50,85" fill="currentColor" opacity="0.1"/>
+          <line x1="20" y1="5" x2="30" y2="30" />
+          <line x1="80" y1="5" x2="70" y2="30" />
+          <line x1="35" y1="45" x2="25" y2="75" />
+          <line x1="65" y1="45" x2="75" y2="75" />
+          <line x1="50" y1="30" x2="50" y2="55" />
+        </svg>
+      </div>
+    </div>
+    <div class="benedict-info">
+      <div>
+        <h3 class="benedict-title">O Simbolismo do Lobo</h3>
+        <span class="benedict-subtitle">Lealdade, Coragem e Instinto</span>
+      </div>
+      <p class="prayer-text" style="font-style: normal; min-height: auto; color: rgba(240, 240, 248, 0.85); line-height: 1.6;">
+        O lobo é um símbolo ancestral de inteligência social, lealdade e força coletiva. Ele representa a conexão profunda com os próprios instintos, sabendo agir com determinação e coragem. Na matilha, o lobo nos ensina a equilibrar o compromisso com o grupo e a preservação de nossa individualidade e liberdade.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── OWL MODAL (EXPLICAÇÃO DO SIMBOLO) ── -->
+<div class="modal-overlay" id="owlModal">
+  <div class="benedict-card">
+    <button class="benedict-close-btn" id="closeOwlBtn" title="Fechar">&times;</button>
+    <div class="medal-viewer">
+      <div style="width: 180px; height: 180px; color: var(--gold);">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.0" style="width:100%; height:100%;">
+          <polygon points="50,15 25,5 30,30" />
+          <polygon points="50,15 75,5 70,30" />
+          <polygon points="30,30 20,50 35,60" />
+          <polygon points="70,30 80,50 65,60" />
+          <polygon points="35,60 50,75 65,60" />
+          <polygon points="35,60 50,50 65,60" />
+          <circle cx="38" cy="45" r="10" />
+          <circle cx="62" cy="45" r="10" />
+          <circle cx="38" cy="45" r="3" fill="currentColor" opacity="0.2"/>
+          <circle cx="62" cy="45" r="3" fill="currentColor" opacity="0.2"/>
+          <polygon points="46,50 54,50 50,65" fill="currentColor" />
+          <polygon points="25,5 50,25 38,45" />
+          <polygon points="75,5 50,25 62,45" />
+        </svg>
+      </div>
+    </div>
+    <div class="benedict-info">
+      <div>
+        <h3 class="benedict-title">O Simbolismo da Coruja</h3>
+        <span class="benedict-subtitle">Sabedoria, Vigília e Mistério</span>
+      </div>
+      <p class="prayer-text" style="font-style: normal; min-height: auto; color: rgba(240, 240, 248, 0.85); line-height: 1.6;">
+        A coruja simboliza a sabedoria silenciosa, o discernimento e a capacidade de enxergar a verdade além das aparências e da escuridão. Associada à vigilância constante e ao intelecto, ela atua como um guia mental no caos, ensinando-nos a observar pacientemente antes de tomar qualquer decisão.
+      </p>
+    </div>
+  </div>
+</div>
 
 <!-- ── SAINT BENEDICT MODAL (POPOVER INTERATIVO) ── -->
 <div class="modal-overlay" id="saintBenedictModal">
@@ -1942,6 +1914,49 @@ footer {
       e.preventDefault();
       showTranslation();
     });
+  });
+
+  // 9. Wolf and Owl Modal Controls
+  const wolfModal = document.getElementById('wolfModal');
+  const wolfBadge = document.getElementById('wolfBadge');
+  const closeWolfBtn = document.getElementById('closeWolfBtn');
+  
+  const owlModal = document.getElementById('owlModal');
+  const owlBadge = document.getElementById('owlBadge');
+  const closeOwlBtn = document.getElementById('closeOwlBtn');
+
+  // Wolf Modal
+  if (wolfBadge) {
+    wolfBadge.addEventListener('click', () => {
+      wolfModal.classList.add('active');
+    });
+  }
+  if (closeWolfBtn) {
+    closeWolfBtn.addEventListener('click', () => {
+      wolfModal.classList.remove('active');
+    });
+  }
+  wolfModal.addEventListener('click', (e) => {
+    if (e.target === wolfModal) {
+      wolfModal.classList.remove('active');
+    }
+  });
+
+  // Owl Modal
+  if (owlBadge) {
+    owlBadge.addEventListener('click', () => {
+      owlModal.classList.add('active');
+    });
+  }
+  if (closeOwlBtn) {
+    closeOwlBtn.addEventListener('click', () => {
+      owlModal.classList.remove('active');
+    });
+  }
+  owlModal.addEventListener('click', (e) => {
+    if (e.target === owlModal) {
+      owlModal.classList.remove('active');
+    }
   });
 </script>
 
