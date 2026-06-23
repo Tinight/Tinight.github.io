@@ -112,15 +112,15 @@ body::after {
 /* ── MAIN WRAPPER (CENTERED CARD) ── */
 main {
   position: relative; z-index: 1;
-  max-width: 760px; margin: 60px auto;
-  padding: 48px 40px 60px;
-  background: rgba(24, 24, 26, 0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
+  max-width: 850px; margin: 30px auto 60px;
+  padding: 48px 48px 60px;
+  background: rgba(16, 16, 18, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(194, 155, 56, 0.25);
   border-radius: 28px;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
-  display: flex; flex-direction: column; gap: 32px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 0 40px rgba(194, 155, 56, 0.03);
+  display: flex; flex-direction: column; gap: 40px;
 }
 @media (max-width: 768px) {
   main {
@@ -818,25 +818,25 @@ footer {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  width: 220px;
-  height: 220px;
-  opacity: 0.18; /* Aumentada para 0.18 */
-  color: var(--gold);
+  width: 380px;
+  height: 380px;
+  opacity: 0.85; /* Opacidade alta e visível */
   pointer-events: none;
   z-index: 0;
-  transition: opacity 0.5s ease;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
   mix-blend-mode: screen;
+  transition: all 0.5s ease;
 }
 .watermark-wolf {
-  left: calc(50% - 380px - 220px - 40px);
-  background-image: url('wolf_head_gold.png');
+  left: calc(50% - 425px - 180px); /* Sobrepõe suavemente a borda do card central */
+  background-image: url('wolf_metallic_gold.png');
+  background-position: right center;
 }
 .watermark-owl {
-  right: calc(50% - 380px - 220px - 40px);
-  background-image: url('owl_head_gold.png');
+  right: calc(50% - 425px - 180px);
+  background-image: url('owl_metallic_gold.png');
+  background-position: left center;
 }
 
 .medal-watermark {
@@ -844,18 +844,35 @@ footer {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 750px; /* Aumentada para 750px */
+  width: 750px;
   height: 750px;
-  opacity: 0.08; /* Visível através do card translúcido */
-  color: var(--gold);
+  opacity: 0.12; /* Visibilidade ajustada com brilho */
   pointer-events: none;
-  z-index: -1; /* Alterada para -1 para ficar atrás do texto do main mas sobre o fundo */
-  transition: opacity 0.5s ease;
-  background-image: url('saint_benedict_gold.png');
+  z-index: -1;
+  background-image: url('saint_benedict_glow.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   mix-blend-mode: screen;
+  transition: opacity 0.5s ease;
+}
+
+@media (max-width: 1300px) {
+  .watermark-wolf, .watermark-owl {
+    opacity: 0.15;
+    z-index: -2; /* Fica atrás do card quando a tela diminui */
+  }
+  .watermark-wolf {
+    left: 5%;
+  }
+  .watermark-owl {
+    right: 5%;
+  }
+}
+@media (max-width: 800px) {
+  .watermark-wolf, .watermark-owl {
+    display: none;
+  }
 }
 
 .medal-halo {
@@ -1104,11 +1121,210 @@ footer {
     height: 150px;
   }
 }
+
+/* ── TOP NAV HEADER & MONOGRAM ── */
+.top-header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 20px;
+  gap: 16px;
+  animation: fadeUp .7s ease both;
+  position: relative;
+  z-index: 10;
+}
+.top-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(194, 155, 56, 0.35);
+}
+.top-nav {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+}
+.top-nav a {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 2.5px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-bottom: 4px;
+}
+.top-nav a:hover {
+  color: var(--white);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+.top-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+.top-nav a:hover::after {
+  width: 100%;
+}
+
+/* ── CARD BACKGROUND AURA GLOW ── */
+.card-back-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(194, 155, 56, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Hide Avatar Ring to match second photo */
+.avatar-ring {
+  display: none !important;
+}
+
+/* V5 Project Buttons styling */
+.project-card-btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, var(--gold2), var(--gold));
+  color: #0c0c0e;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(194, 155, 56, 0.15);
+}
+.project-card:hover .project-card-btn {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(194, 155, 56, 0.35);
+  color: #000;
+}
+
+/* ── SKILLS SECTION ── */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  animation: fadeUp .7s ease both;
+}
+.skills-grid-v5 {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.skill-item-v5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+.skill-item-v5:hover {
+  transform: translateY(-4px);
+}
+.skill-icon-v5 {
+  width: 48px;
+  height: 48px;
+  background: rgba(194, 155, 56, 0.05);
+  border: 1px solid rgba(194, 155, 56, 0.25);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+  transition: all 0.3s ease;
+}
+.skill-item-v5:hover .skill-icon-v5 {
+  background: var(--gold);
+  color: #121214;
+  box-shadow: 0 0 20px rgba(194, 155, 56, 0.3);
+}
+.skill-name-v5 {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+.skill-item-v5:hover .skill-name-v5 {
+  color: var(--white);
+}
+
+/* ── BOTTOM SOCIALS & LINKS ── */
+.bottom-socials {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+  z-index: 10;
+  position: relative;
+}
+.bottom-socials a, .bottom-social-btn {
+  color: var(--muted);
+  transition: all 0.3s ease;
+}
+.bottom-socials a:hover, .bottom-social-btn:hover {
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+.bottom-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  z-index: 10;
+  position: relative;
+}
+.bottom-links a {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: color 0.3s ease;
+}
+.bottom-links a:hover {
+  color: var(--white);
+}
 </style>
 </head>
 
 <!-- HTML Body Content -->
 <body>
+
+<div class="top-header-container" id="home">
+  <div class="top-logo">BM</div>
+  <nav class="top-nav">
+    <a href="#home">HOME</a>
+    <a href="#projects">PROJECTS</a>
+    <a href="#skills">SKILLS</a>
+    <a href="#social">SOCIAL</a>
+  </nav>
+</div>
+<div class="card-back-glow"></div>
+
 
 <div class="watermark-wolf"></div>
 
@@ -1179,7 +1395,7 @@ footer {
       </div>
     </div>
 
-    <div class="name">Breitner <span>Maquito</span></div>
+    <div class="name">BREITNER MAQUITO <span>// DEVELOPER ENTUSIASTA</span></div>
     <div class="handle">@breitnermaquito</div>
 
     <p class="tagline">
@@ -1245,6 +1461,7 @@ footer {
         <p class="project-card-desc">
           Jogo match-3 Glixar com níveis infinitos, gemas especiais, obstáculos, missões diárias e ranking global. Funciona como app no celular.
         </p>
+        <span class="project-card-btn">Jogar Glixar</span>
         <svg class="project-card-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       </div>
     </a>
@@ -1287,6 +1504,7 @@ footer {
         <p class="project-card-desc">
           Novo aplicativo mobile em desenvolvimento. Toque para se inscrever na lista de espera e receber atualizações em primeira mão.
         </p>
+        <span class="project-card-btn">Lista de Espera</span>
         <span class="card-arrow">▼</span>
         <svg class="project-card-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
       </div>
@@ -1307,37 +1525,55 @@ footer {
     <span>Disponível para novos projetos e colaborações</span>
   </div>
 
-  <!-- SOCIAL CARD CONTAINER -->
-  <div class="social-card">
-    <h2 class="social-title">Social</h2>
-    
-        <div class="social-grid">
-      <!-- GitHub -->
-      <a class="social-link" href="https://github.com/Tinight" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        <span>GitHub</span>
-      </a>
-
-      <!-- LinkedIn -->
-      <a class="social-link" href="https://linkedin.com/in/breitner-maquito" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        <span>LinkedIn</span>
-      </a>
-
-      <!-- Instagram -->
-      <a class="social-link" href="https://instagram.com/breitnermaquito" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        <span>Instagram</span>
-      </a>
-
-      <!-- Email Copy Button -->
-      <button class="social-link email-link" id="copyEmailBtn" title="Clique para copiar o e-mail" style="cursor: pointer; width: 100%; text-align: left; background: rgba(25, 25, 27, 0.4); font-family: inherit;">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <span id="emailText">E-mail</span>
-      </button>
+  
+  <!-- SKILLS SECTION -->
+  <div class="divider" id="skills"><span class="divider-label">Skills</span></div>
+  <div class="skills-section">
+    <div class="skills-grid-v5">
+      <div class="skill-item-v5">
+        <span class="skill-icon-v5">JS</span>
+        <span class="skill-name-v5">JavaScript</span>
+      </div>
+      <div class="skill-item-v5">
+        <span class="skill-icon-v5">PY</span>
+        <span class="skill-name-v5">Python</span>
+      </div>
+      <div class="skill-item-v5">
+        <span class="skill-icon-v5">FI</span>
+        <span class="skill-name-v5">Figma</span>
+      </div>
+      <div class="skill-item-v5">
+        <span class="skill-icon-v5">DK</span>
+        <span class="skill-name-v5">Docker</span>
+      </div>
     </div>
   </div>
+
+  <!-- Social card moved to bottom -->
 </main>
+  
+  <!-- BOTTOM SOCIALS & LINKS -->
+  <div class="bottom-socials" id="social">
+    <a href="https://github.com/Tinight" target="_blank" rel="noopener" title="GitHub">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+    </a>
+    <a href="https://linkedin.com/in/breitner-maquito" target="_blank" rel="noopener" title="LinkedIn">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+    <a href="https://instagram.com/breitnermaquito" target="_blank" rel="noopener" title="Instagram">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <button id="copyEmailBtnBottom" class="bottom-social-btn" title="Copiar e-mail" style="background: none; border: none; color: inherit; cursor: pointer; padding: 0; display: inline-flex; align-items: center;">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </button>
+  </div>
+  <div class="bottom-links">
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#social">Social</a>
+  </div>
+
 
 <footer>
   © 2026 Breitner Maquito · Feito com 💜 e ☕
@@ -1349,7 +1585,7 @@ footer {
     <button class="benedict-close-btn" id="closeWolfBtn" title="Fechar">&times;</button>
     <div class="medal-viewer">
       <div style="width: 180px; height: 180px; color: var(--gold);">
-        <img src="wolf_head_gold.png" style="width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen;" alt="Lobo">
+        <img src="wolf_metallic_gold.png" style="width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen;" alt="Lobo">
       </div>
     </div>
     <div class="benedict-info">
@@ -1370,7 +1606,7 @@ footer {
     <button class="benedict-close-btn" id="closeOwlBtn" title="Fechar">&times;</button>
     <div class="medal-viewer">
       <div style="width: 180px; height: 180px; color: var(--gold);">
-        <img src="owl_head_gold.png" style="width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen;" alt="Coruja">
+        <img src="owl_metallic_gold.png" style="width: 100%; height: 100%; object-fit: contain; mix-blend-mode: screen;" alt="Coruja">
       </div>
     </div>
     <div class="benedict-info">
@@ -1630,30 +1866,26 @@ footer {
   fetchGithubStats();
 
   // 4. Copiar E-mail com feedback visual
-  const copyEmailBtn = document.getElementById('copyEmailBtn');
-  const emailSub = document.getElementById('emailSub');
-  const emailText = document.getElementById('emailText');
+  const copyEmailBtnBottom = document.getElementById('copyEmailBtnBottom');
   const emailVal = "contato.breitner@gmail.com";
 
-  copyEmailBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(emailVal).then(() => {
-      copyEmailBtn.classList.add('copied');
-      emailText.innerText = "Copiado!";
-      if (emailSub) {
-        emailSub.innerText = "Copiado com sucesso!";
-      }
-      
-      setTimeout(() => {
-        copyEmailBtn.classList.remove('copied');
-        emailText.innerText = "E-mail";
-        if (emailSub) {
-          emailSub.innerText = `Clique para copiar: ${emailVal}`;
-        }
-      }, 2500);
-    }).catch(err => {
-      console.error('Erro ao copiar e-mail:', err);
+  if (copyEmailBtnBottom) {
+    copyEmailBtnBottom.addEventListener('click', () => {
+      navigator.clipboard.writeText(emailVal).then(() => {
+        copyEmailBtnBottom.style.color = "var(--gold)";
+        // Simple visual tooltip check
+        const originalTitle = copyEmailBtnBottom.getAttribute('title');
+        copyEmailBtnBottom.setAttribute('title', 'Copiado!');
+        
+        setTimeout(() => {
+          copyEmailBtnBottom.style.color = "";
+          copyEmailBtnBottom.setAttribute('title', originalTitle);
+        }, 2000);
+      }).catch(err => {
+        console.error('Erro ao copiar e-mail:', err);
+      });
     });
-  });
+  }
 
   // 5. Expandable "Soon" cards & signup
   document.querySelectorAll('.project-card.soon').forEach(card => {
