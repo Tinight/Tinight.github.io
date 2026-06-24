@@ -152,28 +152,33 @@ body::after{
   display:flex;align-items:center;justify-content:center;
 }
 
-/* MEDAL — big, centered, behind projects */
+/* MEDAL — big, centered, fixed watermark behind the main card */
 .medal-bg{
-  position:absolute;
+  position:fixed;
   top:50%;left:50%;
   transform:translate(-50%,-50%);
-  width:380px;height:380px;
+  width:580px;height:580px;
   z-index:1;
   pointer-events:none;
+  mix-blend-mode:screen;
+  opacity:0.35;
+  transition:all 0.3s ease;
 }
 .medal-bg img{
   width:100%;height:100%;
   object-fit:contain;
-  filter:drop-shadow(0 0 40px rgba(194,155,56,0.65)) drop-shadow(0 0 80px rgba(194,155,56,0.3));
-  animation:medalFloat 6s ease-in-out infinite alternate;
+  filter:drop-shadow(0 0 35px rgba(194,155,56,0.5)) drop-shadow(0 0 70px rgba(194,155,56,0.25));
+  animation:medalFloat 8s ease-in-out infinite alternate;
 }
 @keyframes medalFloat{
-  from{transform:scale(1) rotate(-1deg);}
-  to{transform:scale(1.03) rotate(1deg);}
+  from{transform:scale(1) rotate(-1.3deg);}
+  to{transform:scale(1.04) rotate(1.3deg);}
 }
 @media(max-width:768px){
-  .medal-bg{width:240px;height:240px;}
-  .hero-zone{min-height:280px;}
+  .medal-bg{width:360px;height:360px;opacity:0.3;}
+}
+@media(max-width:480px){
+  .medal-bg{width:280px;height:280px;opacity:0.25;}
 }
 
 /* PROJECT CARDS GRID — in front of medal */
@@ -199,9 +204,9 @@ body::after{
   backdrop-filter:blur(10px);
 }
 .project-card:hover{
-  transform:translateY(-4px);
-  border-color:rgba(194,155,56,0.5);
-  box-shadow:0 12px 32px rgba(0,0,0,0.5),0 0 20px rgba(194,155,56,0.08);
+  transform:translateY(-5px);
+  border-color:rgba(194,155,56,0.6);
+  box-shadow:0 16px 36px rgba(0,0,0,0.6),0 0 26px rgba(194,155,56,0.15);
 }
 
 /* Card preview area */
@@ -212,29 +217,16 @@ body::after{
   overflow:hidden;
   position:relative;
 }
-.preview-glixar{background:linear-gradient(135deg,#0e1726,#1c2e4a);width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
-.preview-em-andamento{background:linear-gradient(135deg,#131416,#1d1e22);width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
 
-/* Mini browser mockup */
-.browser-mockup{width:130px;background:#080b11;border-radius:6px;border:1px solid rgba(255,255,255,0.07);overflow:hidden;}
-.browser-bar{height:12px;background:rgba(255,255,255,0.04);display:flex;align-items:center;gap:3px;padding:0 5px;}
-.browser-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.18);}
-.browser-body{height:68px;display:flex;align-items:center;justify-content:center;padding:6px;}
-.gem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
-.gem{width:9px;height:9px;border-radius:2px;}
-.gem.b{background:#00d5ff;box-shadow:0 0 4px #00d5ff;}
-.gem.g{background:#ffd700;box-shadow:0 0 4px #ffd700;}
-.gem.p{background:#c29b38;box-shadow:0 0 4px #c29b38;}
-.gem.gr{background:#10b981;box-shadow:0 0 4px #10b981;}
-
-/* Phone mockup */
-.phone-mockup{width:48px;height:90px;background:#08080a;border:1.5px solid #27272a;border-radius:8px 8px 0 0;display:flex;flex-direction:column;padding:5px 3px 0;overflow:hidden;}
-.phone-notch{width:18px;height:3px;background:#27272a;border-radius:0 0 2px 2px;align-self:center;margin-bottom:4px;}
-.phone-body{flex:1;display:flex;flex-direction:column;gap:3px;padding:2px;}
-.p-line{height:2px;border-radius:1px;background:rgba(255,255,255,0.12);}
-.p-line.gold{background:var(--gold);width:60%;}
-.p-chart{height:18px;border-bottom:1px solid rgba(194,155,56,0.15);position:relative;}
-.p-chart::after{content:'';position:absolute;left:0;bottom:0;right:0;top:4px;background:linear-gradient(to right,rgba(194,155,56,0.4)20%,transparent 80%);clip-path:polygon(0 80%,20% 30%,40% 60%,60% 10%,80% 50%,100% 20%,100% 100%,0 100%);}
+.project-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.project-card:hover .project-preview-img {
+  transform: scale(1.08);
+}
 
 /* Card info */
 .card-info{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column;}
@@ -396,12 +388,17 @@ footer{text-align:center;padding:16px 20px 30px;font-family:var(--mono);font-siz
 }
 .glow-toggle:hover{border-color:rgba(194,155,56,0.45);box-shadow:0 0 14px rgba(194,155,56,0.2);}
 .glow-off .orb{opacity:0!important;}
+.glow-off .medal-bg{opacity:0.12!important;}
+.glow-off .medal-bg img{filter:none!important;}
 </style>
 </head>
 <body>
 
 <div class="watermark-wolf"></div>
 <div class="watermark-owl"></div>
+<div class="medal-bg">
+  <img src="saint_benedict_glow.png" alt="Medalha de São Bento">
+</div>
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
 
@@ -429,31 +426,13 @@ footer{text-align:center;padding:16px 20px 30px;font-family:var(--mono);font-siz
   <!-- MEDAL + PROJECTS OVERLAP -->
   <div class="hero-zone" id="projects">
 
-    <!-- Medalha grande ao fundo -->
-    <div class="medal-bg">
-      <img src="saint_benedict_transparent.png" alt="Medalha de São Bento">
-    </div>
-
     <!-- Cards de projeto sobre a medalha -->
     <div class="projects-grid">
 
       <!-- Card 1: Glixar -->
       <a class="project-card" href="https://tinight.github.io/glixar" target="_blank" rel="noopener">
         <div class="card-preview">
-          <div class="preview-glixar">
-            <div class="browser-mockup">
-              <div class="browser-bar">
-                <div class="browser-dot"></div><div class="browser-dot"></div><div class="browser-dot"></div>
-              </div>
-              <div class="browser-body">
-                <div class="gem-grid">
-                  <div class="gem b"></div><div class="gem g"></div><div class="gem p"></div><div class="gem gr"></div>
-                  <div class="gem p"></div><div class="gem gr"></div><div class="gem b"></div><div class="gem g"></div>
-                  <div class="gem g"></div><div class="gem b"></div><div class="gem gr"></div><div class="gem p"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <img src="glixar_preview.png" alt="Glixar Preview" class="project-preview-img">
         </div>
         <div class="card-info">
           <div class="card-title">Glixar</div>
@@ -465,20 +444,7 @@ footer{text-align:center;padding:16px 20px 30px;font-family:var(--mono);font-siz
       <!-- Card 2: Em andamento -->
       <div class="project-card" id="soonCard" style="cursor:pointer;">
         <div class="card-preview">
-          <div class="preview-em-andamento">
-            <div class="phone-mockup" style="margin-right:8px;opacity:.5;transform:rotate(-8deg)scale(.88);">
-              <div class="phone-notch"></div>
-              <div class="phone-body"><div class="p-line"></div><div class="p-line" style="width:50%"></div></div>
-            </div>
-            <div class="phone-mockup">
-              <div class="phone-notch"></div>
-              <div class="phone-body"><div class="p-chart"></div><div class="p-line gold" style="margin-top:5px"></div><div class="p-line" style="width:70%"></div></div>
-            </div>
-            <div class="phone-mockup" style="margin-left:8px;opacity:.5;transform:rotate(8deg)scale(.88);">
-              <div class="phone-notch"></div>
-              <div class="phone-body"><div class="p-line"></div><div class="p-line" style="width:40%"></div></div>
-            </div>
-          </div>
+          <img src="soon_preview.png" alt="Soon Project Preview" class="project-preview-img">
         </div>
         <div class="card-info">
           <div class="card-title">Em Andamento</div>
