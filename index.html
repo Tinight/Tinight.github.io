@@ -42,27 +42,47 @@ body::after{
   background-size:52px 52px;
 }
 
-/* WOLF & OWL WATERMARKS */
-.watermark-wolf,.watermark-owl{
-  position:fixed;top:50%;transform:translateY(-50%);
-  width:420px;height:420px;
-  pointer-events:none;z-index:0;
-  background-size:contain;background-repeat:no-repeat;
-  mix-blend-mode:screen;
-  opacity:0.88;
+/* HERO TITLE WITH WOLF & OWL ACCENTS */
+.hero-title-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  line-height: 1.2;
+  margin-bottom: 8px;
 }
-.watermark-wolf{
-  left:calc(50% - 425px - 200px);
-  background-image:url('wolf_metallic_gold.png');
-  background-position:right center;
+.name-icon {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 8px rgba(194, 155, 56, 0.45));
+  transition: transform 0.3s ease;
 }
-.watermark-owl{
-  right:calc(50% - 425px - 200px);
-  background-image:url('owl_metallic_gold.png');
-  background-position:left center;
+.name-icon.left-icon {
+  margin-right: 16px;
 }
-@media(max-width:1340px){
-  .watermark-wolf,.watermark-owl{display:none;}
+.name-icon.right-icon {
+  margin-left: 16px;
+}
+.hero-title-main:hover .name-icon {
+  transform: scale(1.12) rotate(2deg);
+}
+@media(max-width: 480px) {
+  .hero-title-main {
+    font-size: 1.2rem;
+  }
+  .name-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .name-icon.left-icon { margin-right: 8px; }
+  .name-icon.right-icon { margin-left: 8px; }
 }
 
 /* ORB GLOWS */
@@ -71,47 +91,15 @@ body::after{
 .orb2{width:320px;height:320px;bottom:-100px;left:-100px;background:rgba(194,155,56,0.055);animation-delay:-4s;}
 @keyframes orbFloat{from{transform:translate(0,0)scale(1);}to{transform:translate(18px,28px)scale(1.07);}}
 
-/* TOP HEADER */
-.top-header{
-  position:relative;z-index:10;
-  display:flex;flex-direction:column;align-items:center;
-  padding:36px 20px 20px;
-  gap:14px;
-  animation:fadeUp .6s ease both;
-}
-.top-monogram{
-  font-family:'Cinzel',serif;
-  font-size:2rem;font-weight:700;
-  color:var(--gold);
-  letter-spacing:4px;
-  text-shadow:0 0 24px rgba(194,155,56,0.4);
-}
-.top-nav{
-  display:flex;gap:24px;
-}
-.top-nav a{
-  font-family:var(--sans);
-  font-size:0.72rem;font-weight:600;
-  color:var(--muted);
-  text-decoration:none;
-  letter-spacing:2.5px;
-  text-transform:uppercase;
-  transition:color .25s;
-  position:relative;padding-bottom:3px;
-}
-.top-nav a.active,.top-nav a:hover{color:var(--white);}
-.top-nav a.active::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
-  background:var(--gold);
-}
+/* TOP HEADER CSS REMOVED */
 
 /* MAIN CARD */
 .main-card{
   position:relative;z-index:2;
   max-width:820px;margin:0 auto 32px;
   padding:36px 36px 40px;
-  background:rgba(14,13,11,0.72);
-  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  background:rgba(10,10,12,0.48);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
   border:1px solid rgba(194,155,56,0.22);
   border-radius:22px;
   box-shadow:0 28px 70px rgba(0,0,0,0.88),inset 0 1px 0 rgba(255,255,255,0.04);
@@ -161,7 +149,7 @@ body::after{
   z-index:1;
   pointer-events:none;
   mix-blend-mode:screen;
-  opacity:0.35;
+  opacity:0.62;
   transition:all 0.3s ease;
 }
 .medal-bg img{
@@ -394,8 +382,6 @@ footer{text-align:center;padding:16px 20px 30px;font-family:var(--mono);font-siz
 </head>
 <body>
 
-<div class="watermark-wolf"></div>
-<div class="watermark-owl"></div>
 <div class="medal-bg">
   <img src="saint_benedict_glow.png" alt="Medalha de São Bento">
 </div>
@@ -404,22 +390,18 @@ footer{text-align:center;padding:16px 20px 30px;font-family:var(--mono);font-siz
 
 <button class="glow-toggle" id="glowToggle" title="Alternar brilho" aria-label="Alternar brilho">💡</button>
 
-<!-- TOP HEADER -->
-<div class="top-header">
-  <div class="top-monogram">BM</div>
-  <nav class="top-nav">
-    <a href="#card" class="active">HOME</a>
-    <a href="#projects">PROJETOS</a>
-    <a href="#contato">CONTATO</a>
-  </nav>
-</div>
+
 
 <!-- MAIN CARD -->
 <div class="main-card" id="card">
 
   <!-- HERO NAME -->
   <div class="hero-name">
-    <h1>BREITNER MAQUITO <span>// DESENVOLVEDOR ENTUSIASTA</span></h1>
+    <h1 class="hero-title-main">
+      <img src="wolf_metallic_gold.png" alt="Lobo" class="name-icon left-icon">
+      BREITNER MAQUITO
+      <img src="owl_metallic_gold.png" alt="Coruja" class="name-icon right-icon">
+    </h1>
     <p class="hero-desc">tecnologia, viagens e natureza... Apenas a vida acontecendo. ✨<br>Um pouco de tudo, muito de nada. Pedaços do meu caos organizado.</p>
   </div>
 
