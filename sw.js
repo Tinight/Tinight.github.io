@@ -1,10 +1,16 @@
-const CACHE_NAME = 'tinight-v1';
+const CACHE_NAME = 'tinight-v2';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './icon-192.png',
-  './icon-512.png'
+  './icon-512.png',
+  './LoboSF.png',
+  './CorujaSF.png',
+  './Saint_Benedict_Medal_Colored_Front.png',
+  './Saint_Benedict_Medal_Colored_Back.png',
+  './glixar_preview.jpg',
+  './soon_preview.jpg'
 ];
 
 // Install Event
@@ -33,21 +39,17 @@ self.addEventListener('activate', (e) => {
 
 // Fetch Event
 self.addEventListener('fetch', (e) => {
-  // Only cache GET requests
   if (e.request.method !== 'GET') return;
-
-  // Let browser-extension requests and non-http requests pass through
   if (!e.request.url.startsWith(self.location.origin) && !e.request.url.startsWith('https://fonts.')) return;
 
   e.respondWith(
     caches.match(e.request).then((cachedResponse) => {
       if (cachedResponse) {
-        // Return cached and fetch in background to update cache (stale-while-revalidate)
         fetch(e.request).then((networkResponse) => {
           if (networkResponse.status === 200) {
             caches.open(CACHE_NAME).then((cache) => cache.put(e.request, networkResponse));
           }
-        }).catch(() => {/* ignore fetch errors when offline */});
+        }).catch(() => {/* offline */});
         return cachedResponse;
       }
       return fetch(e.request);
