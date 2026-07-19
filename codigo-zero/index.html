@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aprenda a criar aplicativos inteligentes com IA sem escrever uma linha de código. Método completo com 4 entregáveis por R$ 37.">
+  <title>Código Zero, Mente Artificial — Crie Apps com IA Sem Programar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #100e24;
+      --bg2:      #16132e;
+      --bg3:      #1a1733;
+      --border:   #2e2a52;
+      --magenta:  #a34a78;
+      --purple:   #6b5bd6;
+      --title:    #c7b8f7;
+      --body:     #d8d5e8;
+      --muted:    #9d97c4;
+      --dim:      #6f68a0;
+      --white:    #f0eeff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--body);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    h1,h2,h3,h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      color: var(--title);
+      line-height: 1.2;
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3.4rem); }
+    h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); }
+    h3 { font-size: 1.15rem; }
+    p  { color: var(--body); }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    .wrap--narrow { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+
+    /* ── ANIMATED SPINE ─ the signature element ── */
+    /* A single pixel-wide vertical line that grows from top to bottom
+       as you scroll, glowing from purple to magenta. Pure CSS trick:
+       we draw it on the ::before of body. */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--purple), var(--magenta));
+      opacity: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(16,14,36,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--title);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--magenta); }
+    .nav-cta {
+      background: var(--magenta);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 9px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity .2s, transform .15s;
+    }
+    .nav-cta:hover { opacity: .88; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 92vh;
+      display: flex; align-items: center;
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* background glow */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -160px;
+      width: 540px; height: 540px;
+      background: radial-gradient(circle, rgba(107,91,214,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -100px;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(163,74,120,.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--magenta);
+      margin-bottom: 22px;
+    }
+    .hero-title { margin-bottom: 18px; }
+    .hero-title em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--purple), var(--magenta));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--magenta), #c1567e);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 16px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 0 30px rgba(163,74,120,.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 40px rgba(163,74,120,.5); }
+    .btn-ghost {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .btn-ghost:hover { color: var(--title); border-color: var(--dim); }
+    .hero-proof {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex; gap: 32px; flex-wrap: wrap;
+    }
+    .proof-item { font-size: 0.85rem; color: var(--dim); }
+    .proof-item strong { display: block; color: var(--muted); font-size: 1rem; font-weight: 600; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 24px;
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-eye {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--magenta);
+      margin-bottom: 12px;
+    }
+    .section-title { margin-bottom: 14px; }
+    .section-sub { color: var(--muted); max-width: 560px; font-size: 1.05rem; margin-bottom: 48px; }
+
+    /* ── FOR WHOM ── */
+    #para-quem { background: var(--bg2); }
+    .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .profile-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .2s, transform .2s;
+    }
+    .profile-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--magenta));
+    }
+    .profile-card:hover { border-color: var(--dim); transform: translateY(-3px); }
+    .profile-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .profile-card h3 { margin-bottom: 8px; font-size: 1.05rem; }
+    .profile-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── WHAT YOU GET ── */
+    #o-que-recebe {}
+    .deliverables { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 8px; }
+    .deliverable {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px 22px;
+      text-align: center;
+      transition: border-color .2s;
+    }
+    .deliverable:hover { border-color: var(--purple); }
+    .del-badge {
+      display: inline-block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .del-badge--main { background: rgba(107,91,214,.18); color: var(--purple); border: 1px solid rgba(107,91,214,.3); }
+    .del-badge--bonus { background: rgba(163,74,120,.15); color: var(--magenta); border: 1px solid rgba(163,74,120,.3); }
+    .deliverable h3 { font-size: 1rem; margin-bottom: 8px; }
+    .deliverable p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; }
+    .deliverable .pages { font-size: 0.78rem; color: var(--dim); margin-top: 10px; font-family: 'Space Grotesk', sans-serif; }
+
+    /* ── INSIDE ── */
+    #o-que-tem { background: var(--bg2); }
+    .chapters { display: flex; flex-direction: column; gap: 2px; }
+    .chapter-row {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 22px 24px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: border-color .2s;
+    }
+    .chapter-row:hover { border-color: var(--dim); }
+    .ch-num {
+      flex: 0 0 36px; height: 36px;
+      border-radius: 6px;
+      background: rgba(107,91,214,.15);
+      border: 1px solid rgba(107,91,214,.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--purple);
+    }
+    .ch-body h4 { font-size: 1rem; margin-bottom: 4px; color: var(--title); font-weight: 600; }
+    .ch-body p { font-size: 0.88rem; color: var(--muted); }
+
+    /* ── METHOD ── */
+    #metodo {}
+    .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .method-item {
+      padding: 24px;
+      border-left: 2px solid var(--border);
+      transition: border-color .2s;
+    }
+    .method-item:hover { border-color: var(--magenta); }
+    .method-item h3 { font-size: 1rem; margin-bottom: 8px; }
+    .method-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── STEPS ── */
+    #como-funciona { background: var(--bg2); }
+    .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .steps::before {
+      content: '';
+      position: absolute; left: 22px; top: 44px; bottom: 44px; width: 1px;
+      background: linear-gradient(to bottom, var(--purple), var(--magenta));
+    }
+    .step-row {
+      display: flex; gap: 24px; align-items: flex-start;
+      padding: 20px 0;
+    }
+    .step-num {
+      flex: 0 0 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 0.95rem;
+      color: var(--title);
+      position: relative; z-index: 1;
+    }
+    .step-body h3 { font-size: 1rem; margin-bottom: 4px; }
+    .step-body p { font-size: 0.88rem; color: var(--muted); }
+
+    /* ── PRICING ── */
+    #preco {}
+    .price-box {
+      max-width: 520px;
+      margin: 0 auto;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .price-box::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--magenta));
+    }
+    .price-label { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); font-family: 'Space Grotesk', sans-serif; margin-bottom: 10px; }
+    .price-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 3.8rem;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .price-tag sup { font-size: 1.8rem; vertical-align: super; color: var(--magenta); }
+    .price-sub { font-size: 0.9rem; color: var(--dim); margin-bottom: 32px; }
+    .price-includes {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 36px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .price-includes li {
+      font-size: 0.92rem;
+      color: var(--muted);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .price-includes li::before {
+      content: '✓';
+      color: var(--magenta);
+      font-weight: 700;
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+    .btn-buy {
+      display: block; width: 100%;
+      background: linear-gradient(135deg, var(--magenta), #c1567e);
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 18px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 0 36px rgba(163,74,120,.4);
+      margin-bottom: 18px;
+    }
+    .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 6px 44px rgba(163,74,120,.55); }
+    .price-security { font-size: 0.82rem; color: var(--dim); }
+    .price-security a { color: var(--dim); text-decoration: underline; }
+
+    /* ── GUARANTEE ── */
+    #garantia { background: var(--bg2); }
+    .guarantee-box {
+      display: flex; gap: 36px; align-items: flex-start;
+      max-width: 680px; margin: 0 auto;
+      background: rgba(107,91,214,.08);
+      border: 1px solid rgba(107,91,214,.2);
+      border-radius: 12px;
+      padding: 40px;
+    }
+    .guarantee-icon { font-size: 3.5rem; flex: 0 0 auto; }
+    .guarantee-box h2 { font-size: 1.5rem; margin-bottom: 12px; }
+    .guarantee-box p { color: var(--muted); font-size: 0.95rem; }
+
+    /* ── FAQ ── */
+    #faq {}
+    .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 680px; margin: 0 auto; }
+    details {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    details[open] { border-color: var(--dim); }
+    summary {
+      padding: 20px 24px;
+      cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.97rem;
+      color: var(--title);
+      list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 1.3rem;
+      color: var(--magenta);
+      flex: 0 0 auto;
+      line-height: 1;
+      transition: transform .2s;
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+    .faq-body { padding: 0 24px 20px; font-size: 0.93rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── FINAL CTA ── */
+    #cta-final {
+      text-align: center;
+      padding: 100px 0;
+      background: radial-gradient(ellipse at center, rgba(107,91,214,.12) 0%, transparent 70%);
+    }
+    #cta-final h2 { max-width: 560px; margin: 0 auto 16px; }
+    #cta-final p { color: var(--muted); margin-bottom: 36px; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--dim);
+    }
+    footer a { color: var(--dim); text-decoration: none; }
+    footer a:hover { color: var(--muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      section { padding: 60px 0; }
+      #hero { padding: 80px 0 60px; min-height: auto; }
+      .guarantee-box { flex-direction: column; gap: 20px; padding: 28px; }
+      .price-box { padding: 36px 24px; }
+      .price-tag { font-size: 3rem; }
+      .steps::before { left: 21px; }
+      nav { padding: 12px 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#" class="nav-logo">Código<span>Zero</span></a>
+    <a href="#preco" class="nav-cta">Quero por R$&nbsp;37</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="wrap">
+      <span class="hero-eyebrow">Breitner Maquito Delvaux · Edição 2026</span>
+      <h1 class="hero-title">Crie apps com IA<br><em>sem escrever código.</em></h1>
+      <p class="hero-sub">
+        O método completo para transformar qualquer ideia em um aplicativo inteligente e rentável — usando agentes de IA como sua equipe de desenvolvimento, e ferramentas No-Code como estrutura.
+      </p>
+      <div class="hero-actions">
+        <a href="#preco" class="btn-primary">
+          Quero o método completo
+          <span>→</span>
+        </a>
+        <a href="#o-que-tem" class="btn-ghost">Ver o que tem dentro</a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-item"><strong>4 entregáveis</strong>2 ebooks + 2 bônus</div>
+        <div class="proof-item"><strong>6 passos</strong>do zero ao app publicado</div>
+        <div class="proof-item"><strong>R$ 37</strong>pagamento único, acesso vitalício</div>
+        <div class="proof-item"><strong>7 dias</strong>garantia de reembolso</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── PARA QUEM ── -->
+  <section id="para-quem">
+    <div class="wrap">
+      <p class="section-eye">Para quem é</p>
+      <h2 class="section-title">Você se encaixa aqui?</h2>
+      <p class="section-sub">Este método foi construído para quem quer criar — sem depender de uma equipe cara ou de anos de estudo em programação.</p>
+      <div class="profile-grid">
+        <div class="profile-card">
+          <div class="profile-icon">💡</div>
+          <h3>O empreendedor com ideia parada</h3>
+          <p>Você tem uma ideia de app há meses, sabe que resolveria um problema real, mas nunca soube por onde começar sem contratar um desenvolvedor.</p>
+        </div>
+        <div class="profile-card">
+          <div class="profile-icon">📊</div>
+          <h3>O profissional que quer vender infoprodutos</h3>
+          <p>Você já produz conteúdo, cursos ou consultorias, e quer criar um app como produto adicional — algo que entregue mais valor e cobre mais caro.</p>
+        </div>
+        <div class="profile-card">
+          <div class="profile-icon">🤖</div>
+          <h3>O curioso em IA que quer resultados reais</h3>
+          <p>Você usa ChatGPT, Gemini ou Claude no dia a dia, mas quer aprender a estruturar agentes especializados que realmente trabalham por você.</p>
+        </div>
+        <div class="profile-card">
+          <div class="profile-icon">🚀</div>
+          <h3>O dev que quer escalar com No-Code</h3>
+          <p>Você tem noção técnica, mas quer entregar MVPs mais rápido, sem montar toda a infraestrutura do zero para cada ideia nova.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── O QUE RECEBE ── -->
+  <section id="o-que-recebe">
+    <div class="wrap">
+      <p class="section-eye">O que você recebe</p>
+      <h2 class="section-title">4 entregáveis por R$ 37</h2>
+      <p class="section-sub">Não é só um PDF. É um sistema completo para você criar, publicar e vender apps com IA — do rascunho ao cliente pagante.</p>
+      <div class="deliverables">
+
+        <div class="deliverable">
+          <span class="del-badge del-badge--main">Volume 1 · Principal</span>
+          <h3>O Guia Definitivo</h3>
+          <p>A visão estratégica completa: No-Code, Agentes de IA, arquitetura de dados, conexão de APIs e estratégia de lançamento.</p>
+          <p class="pages">14 páginas · 5 capítulos</p>
+        </div>
+
+        <div class="deliverable">
+          <span class="del-badge del-badge--main">Volume 2 · Principal</span>
+          <h3>O Passo a Passo</h3>
+          <p>Manual de execução com os 6 passos exatos da Esteira de Produção — do prompt inicial ao app auditado e publicado.</p>
+          <p class="pages">13 páginas · 6 passos</p>
+        </div>
+
+        <div class="deliverable">
+          <span class="del-badge del-badge--bonus">Bônus 1</span>
+          <h3>Pack de Prompts</h3>
+          <p>Os 5 prompts dos agentes especialistas prontos para copiar e colar — Roteirista, UX Designer, Arquiteto, Guardião e o Comando do Fatiamento.</p>
+          <p class="pages">Arquivo .txt · Pronto para usar</p>
+        </div>
+
+        <div class="deliverable">
+          <span class="del-badge del-badge--bonus">Bônus 2</span>
+          <h3>Checklist de Lançamento</h3>
+          <p>Uma folha com as 4 fases de publicação: pré-lançamento, publicação nas lojas, primeiros 100 usuários e escala.</p>
+          <p class="pages">1 página · Imprima ou use digital</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── DENTRO ── -->
+  <section id="o-que-tem">
+    <div class="wrap">
+      <p class="section-eye">Dentro do método</p>
+      <h2 class="section-title">Tudo o que você vai aprender</h2>
+      <p class="section-sub">Do conceito ao app publicado — sem enrolação, na ordem certa.</p>
+
+      <div style="margin-bottom: 32px;">
+        <p style="font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--purple); margin-bottom: 16px;">Volume 1 — O Guia Definitivo</p>
+        <div class="chapters">
+          <div class="chapter-row">
+            <div class="ch-num">1</div>
+            <div class="ch-body">
+              <h4>A Nova Era de Ouro — No-Code + Agentes de IA</h4>
+              <p>Por que o modelo de desenvolvimento tradicional quebrou e quais ferramentas lideram o novo jogo: Glide, FlutterFlow e Bubble.</p>
+            </div>
+          </div>
+          <div class="chapter-row">
+            <div class="ch-num">2</div>
+            <div class="ch-body">
+              <h4>Engenharia de Contexto — Mentes Digitais de Elite</h4>
+              <p>Como estruturar agentes especializados que não alucinem: Roteirista, Arquiteto Construtor e Guardião da Qualidade.</p>
+            </div>
+          </div>
+          <div class="chapter-row">
+            <div class="ch-num">3</div>
+            <div class="ch-body">
+              <h4>Arquitetura do App Inteligente — Telas e Banco de Dados</h4>
+              <p>Como modelar as tabelas relacionais antes de abrir qualquer plataforma — e por que 3 cliques é a regra de ouro de UX.</p>
+            </div>
+          </div>
+          <div class="chapter-row">
+            <div class="ch-num">4</div>
+            <div class="ch-body">
+              <h4>Conexão Prática — Plugando a IA à Interface Visual</h4>
+              <p>O fluxo completo: Webhook → Proxy Seguro → Agentes em Equipe → Output. Usando Make ou n8n, sem código.</p>
+            </div>
+          </div>
+          <div class="chapter-row">
+            <div class="ch-num">5</div>
+            <div class="ch-body">
+              <h4>O Grande Lançamento — App nas Lojas e no Bolso do Cliente</h4>
+              <p>Google Play vs App Store vs PWA, os primeiros 100 usuários sem tráfego pago, e quando escalar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--magenta); margin-bottom: 16px;">Volume 2 — O Passo a Passo</p>
+        <div class="chapters">
+          <div class="chapter-row">
+            <div class="ch-num" style="background: rgba(163,74,120,.15); border-color: rgba(163,74,120,.3); color: var(--magenta);">1</div>
+            <div class="ch-body"><h4>Configuração das Mentes Digitais</h4><p>Como criar Gems, Custom GPTs ou Projetos Claude com travas de segurança que eliminam as alucinações.</p></div>
+          </div>
+          <div class="chapter-row">
+            <div class="ch-num" style="background: rgba(163,74,120,.15); border-color: rgba(163,74,120,.3); color: var(--magenta);">2</div>
+            <div class="ch-body"><h4>O Roteiro Técnico + Comando do Fatiamento</h4><p>Como transformar qualquer ideia bruta em especificação técnica e fatiar o projeto em blocos modulares para construção segura.</p></div>
+          </div>
+          <div class="chapter-row">
+            <div class="ch-num" style="background: rgba(163,74,120,.15); border-color: rgba(163,74,120,.3); color: var(--magenta);">3</div>
+            <div class="ch-body"><h4>UX Design com Agente de Interface</h4><p>Paleta de cores, tipografia e layout tela por tela — sem depender de designer.</p></div>
+          </div>
+          <div class="chapter-row">
+            <div class="ch-num" style="background: rgba(163,74,120,.15); border-color: rgba(163,74,120,.3); color: var(--magenta);">4</div>
+            <div class="ch-body"><h4>Engenharia com o Arquiteto Full-Stack</h4><p>Os 5 blocos de código modulares: Segurança → API → Back-end → Front-end → Testes automatizados.</p></div>
+          </div>
+          <div class="chapter-row">
+            <div class="ch-num" style="background: rgba(163,74,120,.15); border-color: rgba(163,74,120,.3); color: var(--magenta);">5</div>
+            <div class="ch-body"><h4>Auditoria com o Guardião da Qualidade</h4><p>O checklist de conformidade completo antes de qualquer push — sem Branch Protection Rule no GitHub Free.</p></div>
+          </div>
+          <div class="chapter-row">
+            <div class="ch-num" style="background: rgba(163,74,120,.15); border-color: rgba(163,74,120,.3); color: var(--magenta);">6</div>
+            <div class="ch-body"><h4>A Engrenagem Final — APIs e Banco de Dados</h4><p>Conectar tudo via Make ou n8n e testar com dados válidos, inválidos e falhas simuladas antes do lançamento.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── MÉTODO ── -->
+  <section id="metodo">
+    <div class="wrap">
+      <p class="section-eye">Por que funciona</p>
+      <h2 class="section-title">O que diferencia este método</h2>
+      <p class="section-sub">Não é prompt genérico. É engenharia de contexto aplicada a produto real.</p>
+      <div class="method-grid">
+        <div class="method-item">
+          <h3>Agentes especializados, não chat aberto</h3>
+          <p>Cada IA tem um papel fixo e travas de segurança rígidas — isso elimina as alucinações e garante qualidade de equipe profissional.</p>
+        </div>
+        <div class="method-item">
+          <h3>Esteira modular, não um dump de código</h3>
+          <p>O código é construído em 5 blocos isolados e testáveis, do jeito que times de engenharia reais trabalham.</p>
+        </div>
+        <div class="method-item">
+          <h3>Segurança desde o início</h3>
+          <p>Chaves de API nunca expostas no front-end, validação Pydantic em todas as entradas, logs internos e testes automatizados.</p>
+        </div>
+        <div class="method-item">
+          <h3>Zero dependência de programação</h3>
+          <p>FlutterFlow, Glide, Bubble e Make fazem o trabalho visual. Os agentes fazem o raciocínio. Você faz a direção estratégica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── COMO FUNCIONA ── -->
+  <section id="como-funciona">
+    <div class="wrap--narrow">
+      <p class="section-eye">Como funciona</p>
+      <h2 class="section-title">Da compra ao app publicado</h2>
+      <p class="section-sub" style="margin-bottom: 40px;">6 passos lineares. Você nunca fica sem saber o que fazer a seguir.</p>
+      <div class="steps">
+        <div class="step-row">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Configure os agentes nas plataformas</h3>
+            <p>Cole os prompts do Pack de Bônus no Gemini, ChatGPT ou Claude. Dois minutos por agente.</p>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Gere o roteiro técnico do seu app</h3>
+            <p>Converse com o Roteirista, responda as perguntas e obtenha o documento completo de especificação.</p>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Desenhe a interface com o UX Designer</h3>
+            <p>Paleta, tipografia e layout de cada tela, sem precisar de Figma ou habilidades de design.</p>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3>Construa o app bloco por bloco</h3>
+            <p>O Arquiteto entrega o código em 5 etapas isoladas — cada uma testável antes da próxima começar.</p>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h3>Audite com o Guardião da Qualidade</h3>
+            <p>Checklist de segurança completo. Nenhum bug vai para o ar sem ser revisado.</p>
+          </div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h3>Publique e consiga os primeiros usuários</h3>
+            <p>PWA, Google Play ou App Store — com a estratégia de lançamento orgânico do Capítulo 5.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── PREÇO ── -->
+  <section id="preco">
+    <div class="wrap">
+      <p class="section-eye" style="text-align:center;">Investimento</p>
+      <h2 class="section-title" style="text-align:center; margin-bottom:40px;">Tudo isso por um único valor</h2>
+      <div class="price-box">
+        <p class="price-label">Acesso vitalício · pagamento único</p>
+        <div class="price-tag"><sup>R$</sup>37</div>
+        <p class="price-sub">sem assinatura, sem mensalidade</p>
+        <ul class="price-includes">
+          <li>Volume 1 — O Guia Definitivo (14 páginas)</li>
+          <li>Volume 2 — O Passo a Passo da Esteira (13 páginas)</li>
+          <li>Pack de Prompts — 5 agentes prontos para copiar</li>
+          <li>Checklist de Lançamento — 4 fases do zero ao mercado</li>
+          <li>Atualizações futuras da edição 2026 sem custo extra</li>
+        </ul>
+        <a href="SEU_LINK_KIWIFY_AQUI" class="btn-buy" target="_blank" rel="noopener">
+          Quero o método completo por R$ 37
+        </a>
+        <p class="price-security">
+          🔒 Pagamento seguro via Kiwify &nbsp;·&nbsp; Pix ou Cartão<br>
+          <a href="#garantia">Garantia incondicional de 7 dias</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── GARANTIA ── -->
+  <section id="garantia">
+    <div class="wrap">
+      <div class="guarantee-box">
+        <div class="guarantee-icon">🛡️</div>
+        <div>
+          <h2>Garantia incondicional de 7 dias</h2>
+          <p style="margin-top: 12px;">Compre, leia, aplique. Se em 7 dias você não estiver satisfeito por qualquer motivo, basta enviar um e-mail e devolvo 100% do valor — sem perguntas, sem burocracia.</p>
+          <p style="margin-top: 10px; font-size: 0.85rem; color: var(--dim);">Seu investimento é protegido pela Kiwify e pela Lei do Consumidor (Art. 49 do CDC). Você não tem nada a perder.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── FAQ ── -->
+  <section id="faq">
+    <div class="wrap">
+      <p class="section-eye" style="text-align:center;">Dúvidas</p>
+      <h2 class="section-title" style="text-align:center; margin-bottom: 36px;">Perguntas frequentes</h2>
+      <div class="faq-list">
+
+        <details>
+          <summary>Preciso saber programar para aplicar o método?</summary>
+          <div class="faq-body">Não. O método foi construído especificamente para quem não programa. As ferramentas No-Code (Glide, FlutterFlow, Bubble) cuidam da interface visual, e os agentes de IA cuidam de toda a lógica técnica. Você atua como diretor estratégico — não como desenvolvedor.</div>
+        </details>
+
+        <details>
+          <summary>Funciona para qualquer tipo de app?</summary>
+          <div class="faq-body">Funciona para aplicativos web, Android e iOS nos segmentos mais comuns: negócios, produtividade, educação, finanças pessoais, saúde e bem-estar. Apps com hardware muito específico (como integração direta com sensores físicos) ficam fora do escopo do método.</div>
+        </details>
+
+        <details>
+          <summary>Precisa de investimento além dos R$ 37?</summary>
+          <div class="faq-body">Para o MVP e aprendizado, você pode usar os planos gratuitos das ferramentas citadas. Para publicar na Google Play Store, o custo é de US$ 25 (taxa única). Para a App Store da Apple, US$ 99/ano. A plataforma Make tem plano gratuito suficiente para os primeiros fluxos. Ou seja: você pode ir longe sem gastar mais nada.</div>
+        </details>
+
+        <details>
+          <summary>Consigo criar um app e vendê-lo como produto?</summary>
+          <div class="faq-body">Sim — esse é exatamente o objetivo final do método. O Capítulo 5 do Volume 1 cobre a estratégia de lançamento, os primeiros 100 usuários sem tráfego pago, e quando abrir o tráfego pago para escalar. O app que você criar é 100% seu.</div>
+        </details>
+
+        <details>
+          <summary>Como vou receber o material?</summary>
+          <div class="faq-body">Imediatamente após a confirmação do pagamento (Pix ou cartão), você recebe um e-mail com o link de acesso para baixar os arquivos. O acesso é vitalício — você pode baixar quantas vezes quiser.</div>
+        </details>
+
+        <details>
+          <summary>E se eu não gostar?</summary>
+          <div class="faq-body">Você tem 7 dias de garantia incondicional. Se por qualquer motivo não estiver satisfeito, basta enviar um e-mail para contato.breitner@gmail.com e o valor será devolvido integralmente, sem perguntas e sem burocracia.</div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA FINAL ── -->
+  <section id="cta-final">
+    <div class="wrap">
+      <h2>Qual será o seu próximo aplicativo inteligente?</h2>
+      <p>A diferença entre uma ideia que fica na cabeça e um app no bolso dos seus clientes é o método certo.</p>
+      <a href="#preco" class="btn-primary" style="display: inline-flex;">
+        Quero começar agora por R$ 37 →
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© 2026 <a href="https://tinight.github.io" target="_blank">Breitner Maquito Delvaux</a> · Todos os direitos reservados · <a href="mailto:contato.breitner@gmail.com">contato.breitner@gmail.com</a></p>
+    <p style="margin-top: 6px;">Este produto é protegido pela Lei nº 9.610/1998 (Direitos Autorais). Proibida a reprodução ou revenda sem autorização.</p>
+  </footer>
+
+</body>
+</html>

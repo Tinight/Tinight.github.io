@@ -3,14 +3,14 @@ const ASSETS = [
   './',
   './index.html',
   './manifest.json',
-  './icon-192.png',
-  './icon-512.png',
-  './LoboSF.png',
-  './CorujaSF.png',
-  './Saint_Benedict_Medal_Colored_Front.png',
-  './Saint_Benedict_Medal_Colored_Back.png',
-  './glixar_preview.jpg',
-  './soon_preview.jpg'
+  './assets/icon-192.png',
+  './assets/icon-512.png',
+  './assets/LoboSF.png',
+  './assets/CorujaSF.png',
+  './assets/Saint_Benedict_Medal_Colored_Front.png',
+  './assets/Saint_Benedict_Medal_Colored_Back.png',
+  './assets/glixar_preview.jpg',
+  './assets/soon_preview.jpg'
 ];
 
 // Install Event

@@ -219,9 +219,10 @@ body::before{
 
 /* ═══════════ PROJETOS ═══════════ */
 .projects-grid{
-  display:grid;grid-template-columns:repeat(2,1fr);
+  display:grid;grid-template-columns:repeat(3,1fr);
   gap:28px;
 }
+@media(max-width:900px){.projects-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:680px){.projects-grid{grid-template-columns:1fr;}}
 
 .project-card{
@@ -336,7 +337,7 @@ body::before{
 .contacts-grid{
   display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
 }
-@media(max-width:760px){.contacts-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:760px){.contacts-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:420px){.contacts-grid{grid-template-columns:1fr;}}
 
 .contact-item{
@@ -507,16 +508,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 <header class="hero" id="home">
 
   <div class="hero-medal" aria-hidden="true">
-    <img src="Saint_Benedict_Medal_Colored_Front.png" alt="">
+    <img src="assets/Saint_Benedict_Medal_Colored_Front.png" alt="">
   </div>
 
   <div class="hero-inner">
     <div class="hero-eyebrow">Portfólio · MMXXVI</div>
 
     <div class="hero-name-row">
-      <img src="LoboSF.png" alt="Lobo — clique para ver o simbolismo" class="guardian" id="wolfBadge" title="O simbolismo do Lobo">
+      <img src="assets/LoboSF.png" alt="Lobo — clique para ver o simbolismo" class="guardian" id="wolfBadge" title="O simbolismo do Lobo">
       <h1>Breitner<br>Maquito</h1>
-      <img src="CorujaSF.png" alt="Coruja — clique para ver o simbolismo" class="guardian" id="owlBadge" title="O simbolismo da Coruja">
+      <img src="assets/CorujaSF.png" alt="Coruja — clique para ver o simbolismo" class="guardian" id="owlBadge" title="O simbolismo da Coruja">
     </div>
 
     <p class="hero-tagline">Tecnologia, viagens e natureza —<br><em>construindo coisas que fazem sentido.</em></p>
@@ -542,7 +543,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
     <a class="project-card reveal" href="https://tinight.github.io/glixar" target="_blank" rel="noopener">
       <div class="card-preview">
-        <img src="glixar_preview.jpg" alt="Prévia do jogo Glixar">
+        <img src="assets/glixar_preview.jpg" alt="Prévia do jogo Glixar">
       </div>
       <div class="card-info">
         <div class="card-title">Glixar</div>
@@ -553,12 +554,23 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
     <a class="project-card reveal" href="https://finzen-beryl.vercel.app/dashboard" target="_blank" rel="noopener">
       <div class="card-preview">
-        <img src="soon_preview.jpg" alt="Prévia do app Finzen">
+        <img src="assets/soon_preview.jpg" alt="Prévia do app Finzen">
       </div>
       <div class="card-info">
         <div class="card-title">Finzen</div>
         <p class="card-desc">Simulador financeiro pessoal com dashboard de investimentos, controle de despesas e projeções de longo prazo.</p>
         <span class="card-btn">Acessar Finzen</span>
+      </div>
+    </a>
+
+    <a class="project-card reveal" href="./codigo-zero/" target="_blank" rel="noopener">
+      <div class="card-preview">
+        <img src="assets/codigo_zero_preview.png" alt="Prévia do site Código Zero">
+      </div>
+      <div class="card-info">
+        <div class="card-title">Código Zero</div>
+        <p class="card-desc">Página de vendas de alta conversão, otimizada para performance, SEO e vendas de infoprodutos ou serviços.</p>
+        <span class="card-btn">Acessar Página</span>
       </div>
     </a>
 
@@ -576,21 +588,21 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="symbols-grid">
 
     <button class="symbol-card reveal" id="wolfSymbol">
-      <img src="LoboSF.png" alt="">
+      <img src="assets/LoboSF.png" alt="">
       <div class="symbol-name">O Lobo</div>
       <div class="symbol-words">Lealdade · Coragem · Instinto</div>
       <span class="symbol-hint">Ver simbolismo</span>
     </button>
 
     <button class="symbol-card reveal" id="saintBenedictBadge">
-      <img src="Saint_Benedict_Medal_Colored_Front.png" alt="">
+      <img src="assets/Saint_Benedict_Medal_Colored_Front.png" alt="">
       <div class="symbol-name">São Bento</div>
       <div class="symbol-words">Proteção · Fé · Pax</div>
       <span class="symbol-hint">Ver a medalha</span>
     </button>
 
     <button class="symbol-card reveal" id="owlSymbol">
-      <img src="CorujaSF.png" alt="">
+      <img src="assets/CorujaSF.png" alt="">
       <div class="symbol-name">A Coruja</div>
       <div class="symbol-words">Sabedoria · Vigília · Mistério</div>
       <span class="symbol-hint">Ver simbolismo</span>
@@ -663,7 +675,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="modal-card">
     <button class="modal-close" id="closeWolf" aria-label="Fechar">&times;</button>
     <div class="modal-visual">
-      <img src="LoboSF.png" alt="Lobo">
+      <img src="assets/LoboSF.png" alt="Lobo">
     </div>
     <div class="modal-info">
       <div class="modal-title">O Simbolismo do Lobo</div>
@@ -678,7 +690,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <div class="modal-card">
     <button class="modal-close" id="closeOwl" aria-label="Fechar">&times;</button>
     <div class="modal-visual">
-      <img src="CorujaSF.png" alt="Coruja">
+      <img src="assets/CorujaSF.png" alt="Coruja">
     </div>
     <div class="modal-info">
       <div class="modal-title">O Simbolismo da Coruja</div>
@@ -696,10 +708,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       <div class="medal-3d" id="medalCard">
         <div class="medal-3d-inner" id="medalInner">
           <div class="medal-face">
-            <img src="Saint_Benedict_Medal_Colored_Front.png" alt="Frente da medalha">
+            <img src="assets/Saint_Benedict_Medal_Colored_Front.png" alt="Frente da medalha">
           </div>
           <div class="medal-face medal-back-face">
-            <img src="Saint_Benedict_Medal_Colored_Back.png" alt="Verso da medalha">
+            <img src="assets/Saint_Benedict_Medal_Colored_Back.png" alt="Verso da medalha">
           </div>
         </div>
       </div>
