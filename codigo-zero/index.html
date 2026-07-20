@@ -54,23 +54,6 @@
     .wrap--narrow { max-width: 680px; margin: 0 auto; padding: 0 24px; }
     section { padding: 80px 0; }
 
-    /* ── ANIMATED SPINE ─ the signature element ── */
-    /* A single pixel-wide vertical line that grows from top to bottom
-       as you scroll, glowing from purple to magenta. Pure CSS trick:
-       we draw it on the ::before of body. */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 1px;
-      height: 100%;
-      background: linear-gradient(to bottom, var(--purple), var(--magenta));
-      opacity: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
     /* ── NAV ── */
     nav {
       position: sticky; top: 0; z-index: 100;
@@ -454,6 +437,53 @@
     footer a { color: var(--dim); text-decoration: none; }
     footer a:hover { color: var(--muted); }
 
+    /* ── EBOOK COVERS ── */
+    .covers { display:flex; gap:30px; justify-content:center; flex-wrap:wrap; margin-bottom:52px; }
+    .book {
+      width:200px; height:284px; border-radius:3px 8px 8px 3px;
+      position:relative; padding:24px 22px; display:flex; flex-direction:column;
+      justify-content:space-between;
+      box-shadow:0 20px 44px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.04);
+      transform:perspective(1000px) rotateY(-9deg); transition:transform .45s ease;
+    }
+    .book:hover { transform:perspective(1000px) rotateY(0deg) translateY(-6px); }
+    .book::before { content:''; position:absolute; top:0; left:0; bottom:0; width:10px;
+      background:linear-gradient(to right, rgba(0,0,0,.4), transparent); border-radius:3px 0 0 3px; }
+    .book::after { content:''; position:absolute; inset:0; pointer-events:none;
+      background:linear-gradient(115deg, transparent 62%, rgba(255,255,255,.05)); }
+    .book--v1 { background:linear-gradient(160deg, #241f4a, #16132e); border:1px solid var(--border); }
+    .book--v2 { background:linear-gradient(160deg, #3a2440, #1f1533); border:1px solid var(--border); }
+    .book-vol { font-family:'Space Grotesk',sans-serif; font-size:.62rem; letter-spacing:.26em;
+      text-transform:uppercase; color:var(--magenta); position:relative; z-index:1; }
+    .book--v1 .book-vol { color:var(--purple); }
+    .book-title { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.4rem;
+      line-height:1.15; color:var(--white); margin-bottom:8px; position:relative; z-index:1; }
+    .book-tag { font-size:.72rem; color:var(--muted); line-height:1.5; position:relative; z-index:1; }
+    .book-author { margin-top:14px; font-family:'Space Grotesk',sans-serif; font-size:.58rem;
+      letter-spacing:.1em; text-transform:uppercase; color:var(--dim);
+      border-top:1px solid rgba(255,255,255,.08); padding-top:10px; position:relative; z-index:1; }
+
+    /* ── AUTOR ── */
+    #autor { background: var(--bg2); }
+    .author-box { display:flex; gap:36px; align-items:center; max-width:720px; margin:0 auto; flex-wrap:wrap; }
+    .author-photo {
+      flex:0 0 130px; width:130px; height:130px; border-radius:50%;
+      background:linear-gradient(135deg, var(--purple), var(--magenta));
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:2.5rem; color:#fff;
+      border:1px solid rgba(255,255,255,.12); overflow:hidden;
+      box-shadow:0 12px 30px rgba(107,91,214,.25);
+    }
+    .author-photo img { width:100%; height:100%; object-fit:cover; }
+    .author-body { flex:1; min-width:260px; }
+    .author-name { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.35rem; color:var(--title); margin-bottom:3px; }
+    .author-role { font-family:'Space Grotesk',sans-serif; font-size:.82rem; color:var(--magenta); letter-spacing:.04em; margin-bottom:16px; }
+    .author-body p { font-size:.95rem; color:var(--muted); line-height:1.7; margin-bottom:14px; }
+    .author-link { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:.85rem;
+      color:var(--title); text-decoration:none; border-bottom:1px solid var(--border); padding-bottom:2px; transition:.2s; }
+    .author-link:hover { color:var(--white); border-color:var(--dim); }
+    @media (max-width:560px){ .author-box{ text-align:center; justify-content:center; } .author-photo{ margin:0 auto; } }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       section { padding: 60px 0; }
@@ -484,7 +514,7 @@
       <span class="hero-eyebrow">Breitner Maquito Delvaux · Edição 2026</span>
       <h1 class="hero-title">Crie apps com IA<br><em>sem escrever código.</em></h1>
       <p class="hero-sub">
-        O método completo para transformar qualquer ideia em um aplicativo inteligente e rentável — usando agentes de IA como sua equipe de desenvolvimento, e ferramentas No-Code como estrutura.
+        O método completo para transformar qualquer ideia em um aplicativo inteligente e funcional — usando agentes de IA como sua equipe de desenvolvimento, e ferramentas No-Code como estrutura.
       </p>
       <div class="hero-actions">
         <a href="#preco" class="btn-primary">
@@ -519,7 +549,7 @@
         <div class="profile-card">
           <div class="profile-icon">📊</div>
           <h3>O profissional que quer vender infoprodutos</h3>
-          <p>Você já produz conteúdo, cursos ou consultorias, e quer criar um app como produto adicional — algo que entregue mais valor e cobre mais caro.</p>
+          <p>Você já produz conteúdo, cursos ou consultorias, e quer criar um app como produto adicional — algo que entregue mais valor aos seus clientes.</p>
         </div>
         <div class="profile-card">
           <div class="profile-icon">🤖</div>
@@ -542,7 +572,27 @@
     <div class="wrap">
       <p class="section-eye">O que você recebe</p>
       <h2 class="section-title">4 entregáveis por R$ 37</h2>
-      <p class="section-sub">Não é só um PDF. É um sistema completo para você criar, publicar e vender apps com IA — do rascunho ao cliente pagante.</p>
+      <p class="section-sub">Não é só um PDF. É um sistema completo para você criar e publicar apps com IA — do rascunho ao lançamento.</p>
+
+      <div class="covers">
+        <div class="book book--v1">
+          <span class="book-vol">Volume 1</span>
+          <div>
+            <div class="book-title">O Guia Definitivo</div>
+            <div class="book-tag">No-Code, agentes de IA e estratégia de lançamento</div>
+            <div class="book-author">Breitner Maquito Delvaux</div>
+          </div>
+        </div>
+        <div class="book book--v2">
+          <span class="book-vol">Volume 2</span>
+          <div>
+            <div class="book-title">O Passo a Passo</div>
+            <div class="book-tag">A Esteira de Produção em 6 passos, do prompt ao app</div>
+            <div class="book-author">Breitner Maquito Delvaux</div>
+          </div>
+        </div>
+      </div>
+
       <div class="deliverables">
 
         <div class="deliverable">
@@ -738,6 +788,27 @@
             <h3>Publique e consiga os primeiros usuários</h3>
             <p>PWA, Google Play ou App Store — com a estratégia de lançamento orgânico do Capítulo 5.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── AUTOR ── -->
+  <section id="autor">
+    <div class="wrap">
+      <p class="section-eye">Quem está por trás</p>
+      <h2 class="section-title" style="margin-bottom:40px;">Quem sou eu</h2>
+      <div class="author-box">
+        <!-- Para usar sua foto: troque o <span> abaixo por  <img src="foto.jpg" alt="Breitner Maquito Delvaux"> -->
+        <div class="author-photo"><span>BM</span></div>
+        <div class="author-body">
+          <div class="author-name">Breitner Maquito Delvaux</div>
+          <div class="author-role">Criador de apps · Entusiasta de IA aplicada a produto</div>
+          <p>Construí projetos como o <strong>Glixar</strong> e o <strong>Finzen</strong> usando exatamente o processo que você encontra aqui: agentes de IA especializados como equipe técnica e ferramentas No-Code como estrutura.</p>
+          <p>Este material é a versão organizada do método que uso no dia a dia — sem teoria vazia, só o caminho que funciona da ideia ao app publicado.</p>
+          <a href="https://tinight.github.io" target="_blank" rel="noopener" class="author-link">Conheça meus outros projetos →</a>
         </div>
       </div>
     </div>
