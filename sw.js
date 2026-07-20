@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tinight-v2';
+const CACHE_NAME = 'tinight-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -10,7 +10,9 @@ const ASSETS = [
   './assets/Saint_Benedict_Medal_Colored_Front.png',
   './assets/Saint_Benedict_Medal_Colored_Back.png',
   './assets/glixar_preview.jpg',
-  './assets/soon_preview.jpg'
+  './assets/finzen_preview.jpg',
+  './codigo-zero/',
+  './codigo-zero/index.html'
 ];
 
 // Install Event

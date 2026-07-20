@@ -277,6 +277,46 @@ body::before{
 .card-btn::after{content:'→';font-family:var(--sans);}
 .project-card:hover .card-btn{color:var(--gold-hi);border-color:var(--gold-hi);gap:16px;}
 
+/* ── Selos de status do projeto ── */
+.card-badge{
+  position:absolute;top:14px;left:14px;z-index:3;
+  font-family:var(--mono);font-size:0.57rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:5px 11px;border-radius:var(--r-sm);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+.card-badge--free{
+  background:rgba(10,9,8,0.55);
+  border:1px solid var(--line);
+  color:var(--muted);
+}
+.card-badge--product{
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+  border:1px solid var(--gold-hi);
+  color:var(--bg);
+  box-shadow:0 2px 14px rgba(201,168,76,0.4);
+}
+.card-badge--soon{
+  background:rgba(10,9,8,0.55);
+  border:1px solid rgba(242,239,226,0.14);
+  color:var(--faint);
+}
+
+/* Card 'Em breve' — não clicável, discreto */
+.project-card--soon{cursor:default;opacity:0.7;}
+.project-card--soon:hover{transform:none;border-color:var(--line);}
+.project-card--soon:hover .card-preview img{transform:none;}
+.card-preview--placeholder{
+  display:flex;align-items:center;justify-content:center;
+  background:repeating-linear-gradient(45deg,var(--bg-soft),var(--bg-soft) 14px,rgba(201,168,76,0.035) 14px,rgba(201,168,76,0.035) 28px);
+}
+.placeholder-mark{
+  font-family:var(--serif);font-size:2.6rem;font-weight:900;
+  letter-spacing:5px;color:var(--faint);opacity:0.55;
+}
+.card-btn--disabled{color:var(--faint);border-bottom-color:transparent;cursor:default;}
+.card-btn--disabled::after{content:'';}
+
 /* ═══════════ SÍMBOLOS ═══════════ */
 .symbols-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -543,6 +583,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
     <a class="project-card reveal" href="https://tinight.github.io/glixar" target="_blank" rel="noopener">
       <div class="card-preview">
+        <span class="card-badge card-badge--free">Gratuito</span>
         <img src="assets/glixar_preview.jpg" alt="Prévia do jogo Glixar">
       </div>
       <div class="card-info">
@@ -554,7 +595,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
     <a class="project-card reveal" href="https://finzen-beryl.vercel.app/dashboard" target="_blank" rel="noopener">
       <div class="card-preview">
-        <img src="assets/soon_preview.jpg" alt="Prévia do app Finzen">
+        <span class="card-badge card-badge--free">Gratuito</span>
+        <img src="assets/finzen_preview.jpg" alt="Prévia do dashboard Finzen">
       </div>
       <div class="card-info">
         <div class="card-title">Finzen</div>
@@ -565,6 +607,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 
     <a class="project-card reveal" href="./codigo-zero/" target="_blank" rel="noopener">
       <div class="card-preview">
+        <span class="card-badge card-badge--product">Produto</span>
         <img src="assets/codigo_zero_preview.png" alt="Prévia do site Código Zero">
       </div>
       <div class="card-info">
@@ -573,6 +616,17 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
         <span class="card-btn">Acessar Página</span>
       </div>
     </a>
+    <div class="project-card project-card--soon reveal">
+      <div class="card-preview card-preview--placeholder">
+        <span class="card-badge card-badge--soon">Em breve</span>
+        <span class="placeholder-mark">BI</span>
+      </div>
+      <div class="card-info">
+        <div class="card-title">Power BI</div>
+        <p class="card-desc">Dashboards e análise de dados de negócio, com foco em decisões orientadas por métricas. Projeto em desenvolvimento.</p>
+        <span class="card-btn card-btn--disabled">Em breve</span>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -667,7 +721,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
     <a href="#contato">Contato</a>
   </div>
   <div class="footer-pax">PAX</div>
-  <div class="footer-copy">© 2026 Breitner Maquito</div>
+  <div class="footer-copy">© 2026 Breitner Maquito Delvaux</div>
 </footer>
 
 <!-- ═══════════ MODAL: LOBO ═══════════ -->

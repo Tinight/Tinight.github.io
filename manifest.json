@@ -1,11 +1,11 @@
 {
-  "name": "Tinight - Breitner Tinight Portfolio",
+  "name": "Breitner Maquito Delvaux — Portfólio",
   "short_name": "Tinight",
-  "description": "Portfólio Pessoal de Breitner Tinight - Desenvolvedor Entusiasta e Viajante.",
+  "description": "Portfólio pessoal de Breitner Maquito Delvaux — Desenvolvedor Entusiasta e Viajante.",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#080810",
-  "theme_color": "#080810",
+  "background_color": "#0a0908",
+  "theme_color": "#0a0908",
   "orientation": "portrait-primary",
   "icons": [
     {
