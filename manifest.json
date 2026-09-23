@@ -1,7 +1,7 @@
 {
-  "name": "Breitner Maquito Delvaux — Portfólio",
-  "short_name": "Tinight",
-  "description": "Portfólio pessoal de Breitner Maquito Delvaux — Desenvolvedor Entusiasta e Viajante.",
+  "name": "Breitner Maquito — Curadoria Imobiliária",
+  "short_name": "B. Maquito",
+  "description": "Curadoria Imobiliária & Assessoria Estratégica em São Paulo por Breitner Maquito.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0a0908",

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Laboratório de Tecnologia & Inovação de Breitner Maquito — Projetos em desenvolvimento de software, inteligência artificial, finanças e análise de dados.">
+<title>Breitner Maquito — Projetos de Tecnologia & Inovação</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a0908">
+
+<!-- SEO / Open Graph -->
+<meta name="author" content="Breitner Maquito Delvaux">
+<meta name="keywords" content="Breitner Maquito, tecnologia, projetos, Glixar, Finzen, Código Zero, Power BI, inteligência artificial, no-code">
+<link rel="canonical" href="https://tinight.github.io/tech.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tinight.github.io/tech.html">
+<meta property="og:title" content="Breitner Maquito — Projetos de Tecnologia & Inovação">
+<meta property="og:description" content="Projetos em desenvolvimento de software, IA, finanças e jogos criados por Breitner Maquito.">
+<meta property="og:image" content="https://tinight.github.io/assets/og-card.jpg">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --bg:#0a0908;
+  --bg-soft:#100e0b;
+  --gold-hi:#ecd9a8;
+  --gold:#c9a84c;
+  --gold-deep:#8a6d2f;
+  --ink:#f2efe2;
+  --muted:rgba(242,239,226,0.60);
+  --faint:rgba(242,239,226,0.35);
+  --line:rgba(201,168,76,0.20);
+  --line-strong:rgba(201,168,76,0.45);
+
+  --r-sm:4px;
+  --r-md:12px;
+  --r-lg:24px;
+  --sans:'Outfit',sans-serif;
+  --serif:'Cinzel',serif;
+  --mono:'Space Mono',monospace;
+  --section-pad:clamp(60px,10vh,110px);
+}
+
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  font-weight:300;
+  background:var(--bg);
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Textura grain */
+body::after{
+  content:'';
+  position:fixed;inset:-50%;z-index:1;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity:0.05;
+  animation:grainShift 9s steps(6) infinite;
+}
+@keyframes grainShift{
+  0%,100%{transform:translate(0,0);}
+  20%{transform:translate(-2%,1%);}
+  40%{transform:translate(1%,-2%);}
+  60%{transform:translate(-1%,2%);}
+  80%{transform:translate(2%,-1%);}
+}
+
+/* Vinheta */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse at 50% 30%,transparent 60%,rgba(0,0,0,0.6) 100%);
+}
+
+::selection{background:rgba(201,168,76,0.28);color:var(--gold-hi);}
+
+/* ═══════════ TOPBAR ═══════════ */
+.topbar{
+  position:sticky;top:0;z-index:90;
+  background:rgba(10,9,8,0.85);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  padding:16px 24px;
+}
+.topbar-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;
+}
+.topbar-brand{
+  font-family:var(--serif);
+  font-size:0.95rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+}
+.topbar-brand span{color:var(--muted);font-weight:400;font-size:0.8rem;}
+.topbar-back{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:0.7rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;
+  padding:8px 16px;border:1px solid var(--line);
+  border-radius:var(--r-sm);
+  background:rgba(201,168,76,0.04);
+  transition:all .3s ease;
+}
+.topbar-back:hover{
+  border-color:var(--gold);
+  color:var(--gold-hi);
+  background:rgba(201,168,76,0.1);
+  transform:translateX(-2px);
+}
+
+/* ═══════════ HERO TECH ═══════════ */
+.hero-tech{
+  position:relative;z-index:2;
+  padding:clamp(60px,10vh,90px) 24px 40px;
+  text-align:center;
+  max-width:900px;margin:0 auto;
+}
+.hero-eyebrow{
+  font-family:var(--mono);
+  font-size:0.68rem;letter-spacing:4px;
+  color:var(--gold);text-transform:uppercase;
+  margin-bottom:20px;
+  display:inline-flex;align-items:center;gap:14px;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{
+  content:'';width:30px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--line-strong));
+}
+.hero-eyebrow::after{background:linear-gradient(90deg,var(--line-strong),transparent);}
+
+.hero-tech h1{
+  font-family:var(--serif);
+  font-size:clamp(2rem,5vw,3.6rem);
+  font-weight:700;
+  letter-spacing:clamp(2px,0.5vw,5px);
+  text-transform:uppercase;
+  line-height:1.15;
+  background:linear-gradient(175deg,var(--gold-hi) 0%,var(--gold) 45%,var(--gold-deep) 75%,var(--gold-hi) 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+.hero-tech p{
+  margin-top:22px;
+  font-size:clamp(0.95rem,1.8vw,1.15rem);
+  font-weight:300;color:var(--muted);
+  line-height:1.75;max-width:680px;margin-inline:auto;
+}
+
+/* ═══════════ PROJETOS GRID ═══════════ */
+.section{
+  position:relative;z-index:2;
+  max-width:1100px;margin:0 auto;
+  padding:30px 24px var(--section-pad);
+}
+.projects-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:32px;
+}
+@media(max-width:768px){.projects-grid{grid-template-columns:1fr;}}
+
+.project-card{
+  display:flex;flex-direction:column;
+  text-decoration:none;color:inherit;
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  overflow:hidden;
+  transition:border-color .35s ease,transform .35s ease,box-shadow .35s ease;
+}
+.project-card:hover{
+  border-color:var(--line-strong);
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.55);
+}
+
+.card-preview{
+  aspect-ratio:16/9;
+  overflow:hidden;position:relative;
+  border-bottom:1px solid var(--line);
+}
+.card-preview img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s cubic-bezier(0.22,0.61,0.36,1);
+}
+.project-card:hover .card-preview img{transform:scale(1.05);}
+.card-preview::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 60%,rgba(10,9,8,0.7));
+  opacity:0;transition:opacity .4s;
+}
+.project-card:hover .card-preview::after{opacity:1;}
+
+.card-info{padding:28px 30px;flex:1;display:flex;flex-direction:column;}
+.card-category{
+  font-family:var(--mono);font-size:0.62rem;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:8px;
+}
+.card-title{
+  font-family:var(--serif);
+  font-size:1.35rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--ink);
+}
+.card-desc{
+  margin-top:12px;flex:1;
+  font-size:0.92rem;font-weight:300;
+  color:var(--muted);line-height:1.7;
+}
+.card-btn{
+  margin-top:24px;width:fit-content;
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:0.68rem;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);
+  padding-bottom:6px;
+  border-bottom:1px solid var(--line-strong);
+  transition:color .3s,border-color .3s,gap .3s;
+}
+.card-btn::after{content:'→';font-family:var(--sans);}
+.project-card:hover .card-btn{color:var(--gold-hi);border-color:var(--gold-hi);gap:16px;}
+
+/* Selos */
+.card-badge{
+  position:absolute;top:14px;left:14px;z-index:3;
+  font-family:var(--mono);font-size:0.58rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:5px 12px;border-radius:var(--r-sm);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+.card-badge--free{
+  background:rgba(10,9,8,0.65);
+  border:1px solid var(--line);
+  color:var(--muted);
+}
+.card-badge--product{
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+  border:1px solid var(--gold-hi);
+  color:var(--bg);
+  box-shadow:0 2px 14px rgba(201,168,76,0.35);
+}
+.card-badge--soon{
+  background:rgba(10,9,8,0.65);
+  border:1px solid rgba(242,239,226,0.15);
+  color:var(--faint);
+}
+
+.project-card--soon{cursor:default;}
+.project-card--soon:hover{transform:none;border-color:var(--line);box-shadow:none;}
+.card-preview--placeholder{
+  display:flex;align-items:center;justify-content:center;
+  background:repeating-linear-gradient(45deg,var(--bg-soft),var(--bg-soft) 14px,rgba(201,168,76,0.035) 14px,rgba(201,168,76,0.035) 28px);
+}
+.placeholder-mark{
+  font-family:var(--serif);font-size:3rem;font-weight:900;
+  letter-spacing:5px;color:var(--faint);opacity:0.4;
+}
+.card-btn--disabled{color:var(--faint);border-bottom-color:transparent;cursor:default;}
+.card-btn--disabled::after{content:'';}
+
+/* ═══════════ CALLOUT IMOBILIÁRIO ═══════════ */
+.tech-callout{
+  margin-top:60px;
+  background:radial-gradient(circle at 50% 0%,rgba(201,168,76,0.07) 0%,rgba(16,14,11,0.6) 80%);
+  border:1px solid var(--line-strong);
+  border-radius:var(--r-md);
+  padding:36px 32px;
+  text-align:center;
+  max-width:840px;margin-inline:auto;
+}
+.callout-tag{
+  font-family:var(--mono);font-size:0.65rem;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold);margin-bottom:12px;
+}
+.callout-title{
+  font-family:var(--serif);font-size:1.3rem;font-weight:700;
+  letter-spacing:2px;color:var(--ink);margin-bottom:12px;
+}
+.callout-desc{
+  font-size:0.92rem;font-weight:300;color:var(--muted);
+  line-height:1.75;max-width:640px;margin:0 auto 24px;
+}
+.callout-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+  color:var(--bg);font-family:var(--mono);font-size:0.72rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+  padding:12px 24px;border-radius:var(--r-sm);
+  border:1px solid var(--gold-hi);
+  transition:all .3s ease;
+}
+.callout-cta:hover{
+  background:linear-gradient(135deg,var(--gold-hi),var(--gold));
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(201,168,76,0.3);
+}
+
+/* ═══════════ FOOTER ═══════════ */
+.footer{
+  position:relative;z-index:2;
+  border-top:1px solid var(--line);
+  padding:36px 24px;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+  text-align:center;
+}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;}
+.footer-links a{
+  font-family:var(--mono);font-size:0.65rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--faint);text-decoration:none;
+  transition:color .3s;
+}
+.footer-links a:hover{color:var(--gold);}
+.footer-pax{
+  font-family:var(--serif);font-size:0.8rem;font-weight:600;
+  letter-spacing:6px;color:var(--gold);opacity:0.6;
+}
+.footer-copy{
+  font-family:var(--mono);font-size:0.6rem;
+  letter-spacing:1.5px;color:var(--faint);
+}
+
+/* Toggle de brilho */
+.glow-toggle{
+  position:fixed;top:16px;right:18px;z-index:100;
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(16,14,11,0.7);
+  border:1px solid var(--line);
+  color:var(--gold);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:border-color .3s,color .3s;
+}
+.glow-toggle:hover{border-color:var(--line-strong);color:var(--gold-hi);}
+.glow-toggle svg{width:16px;height:16px;}
+.glow-off body::after{display:none;}
+</style>
+</head>
+<body>
+
+<button class="glow-toggle" id="glowToggle" title="Alternar brilho" aria-label="Alternar brilho">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.9" y1="4.9" x2="7" y2="7"/><line x1="17" y1="17" x2="19.1" y2="19.1"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.9" y1="19.1" x2="7" y2="17"/><line x1="17" y1="7" x2="19.1" y2="4.9"/></svg>
+</button>
+
+<nav class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="topbar-brand">
+      Breitner Maquito <span>| Tech & Lab</span>
+    </a>
+    <a href="index.html" class="topbar-back">
+      ← Curadoria Imobiliária
+    </a>
+  </div>
+</nav>
+
+<header class="hero-tech">
+  <div class="hero-eyebrow">Laboratório Digital & Software</div>
+  <h1>Inovação & Tecnologia</h1>
+  <p>Sistemas, simulações financeiras, inteligência artificial e experimentos desenvolvidos para solucionar problemas com elegância e eficiência lógica.</p>
+</header>
+
+<main class="section">
+  <div class="projects-grid">
+
+    <!-- Glixar -->
+    <a class="project-card" href="https://tinight.github.io/glixar" target="_blank" rel="noopener">
+      <div class="card-preview">
+        <span class="card-badge card-badge--free">Gratuito</span>
+        <img src="assets/glixar_preview.jpg" alt="Prévia do jogo Glixar">
+      </div>
+      <div class="card-info">
+        <span class="card-category">Game Dev · WebApp</span>
+        <div class="card-title">Glixar</div>
+        <p class="card-desc">Jogo estilo match-3 dinâmico com níveis infinitos, design minimalista e mecânica fluida de pontuação.</p>
+        <span class="card-btn">Jogar Glixar</span>
+      </div>
+    </a>
+
+    <!-- Finzen -->
+    <a class="project-card" href="https://finzen-beryl.vercel.app/dashboard" target="_blank" rel="noopener">
+      <div class="card-preview">
+        <span class="card-badge card-badge--free">Gratuito</span>
+        <img src="assets/finzen_preview.jpg" alt="Prévia do dashboard Finzen">
+      </div>
+      <div class="card-info">
+        <span class="card-category">Fintech · Gestão de Patrimônio</span>
+        <div class="card-title">Finzen</div>
+        <p class="card-desc">Controle financeiro pessoal com divisão em cofres inteligentes, metas de longo prazo e projeções de fluxo de caixa.</p>
+        <span class="card-btn">Acessar Finzen</span>
+      </div>
+    </a>
+
+    <!-- Código Zero -->
+    <a class="project-card" href="./codigo-zero/" target="_blank" rel="noopener">
+      <div class="card-preview">
+        <span class="card-badge card-badge--product">Produto</span>
+        <img src="assets/codigo_zero_preview.png" alt="Prévia do site Código Zero">
+      </div>
+      <div class="card-info">
+        <span class="card-category">Inteligência Artificial · No-Code</span>
+        <div class="card-title">Código Zero</div>
+        <p class="card-desc">Método estruturado em 6 etapas para concepção e lançamento de aplicativos com auxílio de IA sem escrever código.</p>
+        <span class="card-btn">Acessar Método</span>
+      </div>
+    </a>
+
+    <!-- Power BI -->
+    <div class="project-card project-card--soon">
+      <div class="card-preview card-preview--placeholder">
+        <span class="card-badge card-badge--soon">Em breve</span>
+        <span class="placeholder-mark">BI</span>
+      </div>
+      <div class="card-info">
+        <span class="card-category">Business Intelligence · Analytics</span>
+        <div class="card-title">Power BI & Dados</div>
+        <p class="card-desc">Dashboards executivos e modelagem de métricas de mercado para tomada de decisões embasadas em dados reais.</p>
+        <span class="card-btn card-btn--disabled">Em desenvolvimento</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Callout de conexão com a Consultoria Imobiliária -->
+  <div class="tech-callout">
+    <div class="callout-tag">Inteligência de Mercado</div>
+    <div class="callout-title">Tecnologia aplicada ao Mercado Imobiliário</div>
+    <p class="callout-desc">Esta experiência analítica e lógica é diretamente empregada na curadoria imobiliária em São Paulo: desde a apuração do valor do m² e projeções de rentabilidade até a agilidade digital na assessoria patrimonial.</p>
+    <a href="index.html" class="callout-cta">Conhecer a Curadoria Imobiliária em SP →</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">Início</a>
+    <a href="index.html#atuacao">Atuação</a>
+    <a href="index.html#curadoria">Curadoria</a>
+    <a href="index.html#contato">Contato</a>
+  </div>
+  <div class="footer-pax">PAX</div>
+  <div class="footer-copy">© 2026 Breitner Maquito Delvaux · Todos os direitos reservados.</div>
+</footer>
+
+<script>
+// Toggle de brilho
+const glowToggle = document.getElementById('glowToggle');
+if(localStorage.getItem('glowOff')==='true'){document.body.classList.add('glow-off');}
+glowToggle.addEventListener('click',()=>{
+  document.body.classList.toggle('glow-off');
+  localStorage.setItem('glowOff',document.body.classList.contains('glow-off'));
+});
+</script>
+</body>
+</html>

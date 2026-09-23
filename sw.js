@@ -1,16 +1,19 @@
-const CACHE_NAME = 'tinight-v3';
+const CACHE_NAME = 'tinight-v4';
 const ASSETS = [
   './',
   './index.html',
+  './tech.html',
   './manifest.json',
   './assets/icon-192.png',
   './assets/icon-512.png',
+  './assets/BreitnerMaquitoDelvaux.jpeg',
   './assets/LoboSF.png',
   './assets/CorujaSF.png',
   './assets/Saint_Benedict_Medal_Colored_Front.png',
   './assets/Saint_Benedict_Medal_Colored_Back.png',
   './assets/glixar_preview.jpg',
   './assets/finzen_preview.jpg',
+  './assets/codigo_zero_preview.png',
   './codigo-zero/',
   './codigo-zero/index.html'
 ];

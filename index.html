@@ -3,57 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Portfólio de Breitner Maquito Delvaux — Desenvolvedor entusiasta e viajante. Projetos em tecnologia, jogos e finanças: construindo coisas que fazem sentido.">
-<title>Breitner Maquito Delvaux — Portfólio</title>
+<meta name="description" content="Breitner Maquito — Curadoria Imobiliária & Assessoria Estratégica em São Paulo. Imóveis selecionados e decisões guiadas por inteligência de mercado, discrição e visão de patrimônio.">
+<title>Breitner Maquito — Curadoria Imobiliária & Assessoria Estratégica · São Paulo</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0a0908">
 
 <!-- ═══════════ SEO / META TAGS ═══════════ -->
 <meta name="author" content="Breitner Maquito Delvaux">
-<meta name="keywords" content="Breitner Maquito Delvaux, portfólio, desenvolvedor, Glixar, Finzen, Código Zero, No-Code, IA">
+<meta name="keywords" content="Breitner Maquito, corretor de imóveis, curadoria imobiliária, São Paulo, Jardins, Itaim Bibi, Pinheiros, Vila Nova Conceição, assessoria imobiliária, investimentos imobiliários">
 <link rel="canonical" href="https://tinight.github.io/">
 
-<!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
+<!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tinight.github.io/">
-<meta property="og:title" content="Breitner Maquito Delvaux — Portfólio">
-<meta property="og:description" content="Desenvolvedor entusiasta e viajante. Projetos em tecnologia, jogos e finanças — construindo coisas que fazem sentido.">
+<meta property="og:title" content="Breitner Maquito — Curadoria Imobiliária & Assessoria Estratégica">
+<meta property="og:description" content="Imóveis selecionados e decisões guiadas por inteligência de mercado, discrição e visão de patrimônio em São Paulo.">
 <meta property="og:image" content="https://tinight.github.io/assets/og-card.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="Tinight">
+<meta property="og:site_name" content="Breitner Maquito Real Estate">
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Breitner Maquito Delvaux — Portfólio">
-<meta name="twitter:description" content="Desenvolvedor entusiasta e viajante. Projetos em tecnologia, jogos e finanças.">
+<meta name="twitter:title" content="Breitner Maquito — Curadoria Imobiliária · São Paulo">
+<meta name="twitter:description" content="Imóveis selecionados e decisões guiadas por inteligência de mercado e discrição em São Paulo.">
 <meta name="twitter:image" content="https://tinight.github.io/assets/og-card.jpg">
+
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 
 :root{
-  /* Paleta champanhe */
+  /* Paleta champanhe & luxo discreto */
   --bg:#0a0908;
-  --bg-soft:#100e0b;
+  --bg-soft:#110f0c;
+  --bg-card:#15130f;
   --gold-hi:#ecd9a8;   /* champanhe claro — brilhos e texto metálico */
-  --gold:#c9a84c;      /* ouro base */
+  --gold:#c9a84c;      /* ouro nobre */
   --gold-deep:#8a6d2f; /* ouro sombra */
-  --ink:#f2efe2;
-  --muted:rgba(242,239,226,0.55);
-  --faint:rgba(242,239,226,0.35);
-  --line:rgba(201,168,76,0.20);
+  --ink:#f4f2e8;
+  --muted:rgba(244,242,232,0.68);
+  --faint:rgba(244,242,232,0.38);
+  --line:rgba(201,168,76,0.18);
   --line-strong:rgba(201,168,76,0.45);
+  --whatsapp:#25D366;
 
   /* Sistema */
   --r-sm:4px;
-  --r-md:12px;
-  --r-lg:24px;
+  --r-md:10px;
+  --r-lg:20px;
   --sans:'Outfit',sans-serif;
   --serif:'Cinzel',serif;
   --mono:'Space Mono',monospace;
-  --section-pad:clamp(90px,14vh,150px);
+  --section-pad:clamp(80px,12vh,140px);
 }
 
 html{scroll-behavior:smooth;}
@@ -67,12 +70,12 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* ── Textura de grain (substitui o grid) ── */
+/* ── Textura de grain sutil ── */
 body::after{
   content:'';
   position:fixed;inset:-50%;z-index:1;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-  opacity:0.05;
+  opacity:0.045;
   animation:grainShift 9s steps(6) infinite;
 }
 @keyframes grainShift{
@@ -83,138 +86,244 @@ body::after{
   80%{transform:translate(2%,-1%);}
 }
 
-/* Vinheta suave nas bordas */
+/* Vinheta de profundidade */
 body::before{
   content:'';
   position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(ellipse at 50% 38%,transparent 55%,rgba(0,0,0,0.5) 100%);
+  background:radial-gradient(ellipse at 50% 35%,transparent 55%,rgba(0,0,0,0.65) 100%);
 }
 
-::selection{background:rgba(201,168,76,0.28);color:var(--gold-hi);}
+::selection{background:rgba(201,168,76,0.3);color:var(--gold-hi);}
+
+/* ═══════════ NAVBAR ═══════════ */
+.navbar{
+  position:sticky;top:0;z-index:90;
+  background:rgba(10,9,8,0.88);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+  padding:16px 28px;
+}
+.nav-inner{
+  max-width:1160px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;
+}
+.nav-brand{
+  display:flex;flex-direction:column;
+  text-decoration:none;
+}
+.brand-name{
+  font-family:var(--serif);
+  font-size:1.05rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);
+}
+.brand-sub{
+  font-family:var(--mono);
+  font-size:0.56rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--muted);
+}
+.nav-links{
+  display:flex;align-items:center;gap:26px;
+}
+.nav-links a{
+  font-family:var(--mono);font-size:0.68rem;font-weight:500;
+  letter-spacing:1.8px;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:color .25s ease;
+}
+.nav-links a:hover{color:var(--gold-hi);}
+.nav-btn-tech{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--mono);font-size:0.66rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  padding:7px 14px;border:1px solid var(--line-strong);
+  border-radius:var(--r-sm);
+  background:rgba(201,168,76,0.06);
+  transition:all .3s ease;
+}
+.nav-btn-tech:hover{
+  background:var(--gold);color:var(--bg);
+  border-color:var(--gold);
+  transform:translateY(-1px);
+}
+@media(max-width:880px){
+  .nav-links a:not(.nav-btn-tech){display:none;}
+}
 
 /* ═══════════ HERO ═══════════ */
 .hero{
   position:relative;z-index:2;
-  min-height:100vh;min-height:100svh;
+  min-height:92vh;min-height:92svh;
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   text-align:center;
-  padding:60px 24px 80px;
+  padding:60px 24px 70px;
   overflow:hidden;
 }
 
-/* Medalha gigante como marca d'água — o único ponto de brilho */
+/* Marca d'água medalha */
 .hero-medal{
   position:absolute;top:50%;left:50%;
-  width:min(72vh,640px);height:min(72vh,640px);
-  transform:translate(-50%,-52%);
+  width:min(70vh,600px);height:min(70vh,600px);
+  transform:translate(-50%,-50%);
   pointer-events:none;z-index:0;
-  opacity:0.14;
-  animation:medalBreath 12s ease-in-out infinite alternate;
+  opacity:0.09;
+  animation:medalBreath 14s ease-in-out infinite alternate;
 }
-.hero-medal img{
-  width:100%;height:100%;object-fit:contain;
-  filter:drop-shadow(0 0 60px rgba(201,168,76,0.35));
-}
+.hero-medal img{width:100%;height:100%;object-fit:contain;}
 @keyframes medalBreath{
-  from{transform:translate(-50%,-52%) scale(1) rotate(-1deg);opacity:0.12;}
-  to{transform:translate(-50%,-52%) scale(1.03) rotate(1deg);opacity:0.17;}
+  from{transform:translate(-50%,-50%) scale(1) rotate(-1deg);opacity:0.08;}
+  to{transform:translate(-50%,-50%) scale(1.04) rotate(1deg);opacity:0.12;}
 }
 
-.hero-inner{position:relative;z-index:2;max-width:960px;}
+.hero-inner{position:relative;z-index:2;max-width:980px;display:flex;flex-direction:column;align-items:center;}
+
+/* Foto do Breitner com moldura de luxo */
+.hero-profile{
+  position:relative;
+  margin-bottom:28px;
+}
+.profile-frame{
+  width:120px;height:120px;
+  border-radius:50%;
+  padding:4px;
+  background:linear-gradient(135deg,var(--gold-hi),var(--gold-deep));
+  box-shadow:0 8px 32px rgba(201,168,76,0.28);
+  display:inline-block;
+}
+.profile-img{
+  width:100%;height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  border:2px solid var(--bg);
+}
+.profile-status{
+  position:absolute;bottom:2px;right:4px;
+  background:var(--bg-soft);
+  border:1px solid var(--line-strong);
+  border-radius:20px;
+  padding:4px 10px;
+  font-family:var(--mono);font-size:0.58rem;letter-spacing:1px;
+  text-transform:uppercase;color:var(--gold-hi);
+  display:flex;align-items:center;gap:6px;
+  white-space:nowrap;
+  box-shadow:0 4px 12px rgba(0,0,0,0.6);
+}
+.status-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--whatsapp);
+  box-shadow:0 0 8px var(--whatsapp);
+}
 
 .hero-eyebrow{
   font-family:var(--mono);
-  font-size:0.7rem;letter-spacing:5px;
+  font-size:0.68rem;letter-spacing:4px;
   color:var(--gold);text-transform:uppercase;
-  margin-bottom:34px;
-  display:inline-flex;align-items:center;gap:16px;
+  margin-bottom:22px;
+  display:inline-flex;align-items:center;gap:14px;
 }
 .hero-eyebrow::before,.hero-eyebrow::after{
-  content:'';width:36px;height:1px;
+  content:'';width:32px;height:1px;
   background:linear-gradient(90deg,transparent,var(--line-strong));
 }
 .hero-eyebrow::after{background:linear-gradient(90deg,var(--line-strong),transparent);}
 
-/* Guardiões: lobo e coruja flanqueando o nome */
-.hero-name-row{
-  display:flex;align-items:center;justify-content:center;
-  gap:clamp(18px,4vw,44px);
-}
-.guardian{
-  width:clamp(56px,9vw,110px);height:clamp(56px,9vw,110px);
-  object-fit:contain;flex-shrink:0;
-  opacity:0.9;
-  cursor:pointer;
-  transition:opacity .35s ease,transform .35s ease;
-}
-.guardian:hover{opacity:1;transform:translateY(-4px);}
-
-/* Nome em ouro metálico */
 .hero h1{
   font-family:var(--serif);
-  font-size:clamp(2.2rem,6.5vw,4.6rem);
+  font-size:clamp(2.4rem,6vw,4.5rem);
   font-weight:700;
-  letter-spacing:clamp(2px,0.6vw,7px);
+  letter-spacing:clamp(3px,0.7vw,7px);
   text-transform:uppercase;
-  line-height:1.05;
-  background:linear-gradient(175deg,var(--gold-hi) 0%,var(--gold) 42%,var(--gold-deep) 68%,var(--gold-hi) 100%);
+  line-height:1.08;
+  background:linear-gradient(175deg,var(--gold-hi) 0%,var(--gold) 45%,var(--gold-deep) 75%,var(--gold-hi) 100%);
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;color:transparent;
 }
 
+.hero-subtitle{
+  margin-top:14px;
+  font-family:var(--serif);
+  font-size:clamp(1.05rem,2.4vw,1.45rem);
+  font-weight:400;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--ink);
+}
+
 .hero-tagline{
-  margin-top:30px;
-  font-size:clamp(1rem,2vw,1.25rem);
+  margin-top:22px;
+  font-size:clamp(1rem,1.9vw,1.2rem);
   font-weight:300;
   color:var(--muted);
-  letter-spacing:0.5px;
-  line-height:1.7;
-  max-width:560px;margin-inline:auto;
+  letter-spacing:0.4px;
+  line-height:1.75;
+  max-width:660px;
 }
-.hero-tagline em{font-style:normal;color:var(--ink);font-weight:400;}
 
-.hero-status{
-  margin-top:46px;
-  display:inline-flex;align-items:center;gap:12px;
-  font-family:var(--mono);font-size:0.68rem;
-  letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--muted);
+/* Ações do Hero */
+.hero-actions{
+  margin-top:40px;
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;flex-wrap:wrap;
 }
-.status-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--gold);flex-shrink:0;
-  animation:pulse 2.6s ease infinite;
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+  color:var(--bg);font-family:var(--mono);font-size:0.75rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+  padding:15px 28px;border-radius:var(--r-sm);
+  border:1px solid var(--gold-hi);
+  box-shadow:0 6px 24px rgba(201,168,76,0.32);
+  transition:all .3s ease;
 }
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.btn-primary:hover{
+  background:linear-gradient(135deg,var(--gold-hi),var(--gold));
+  transform:translateY(-2px);
+  box-shadow:0 10px 30px rgba(201,168,76,0.45);
+}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(201,168,76,0.05);
+  color:var(--ink);font-family:var(--mono);font-size:0.75rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+  padding:15px 28px;border-radius:var(--r-sm);
+  border:1px solid var(--line-strong);
+  transition:all .3s ease;
+}
+.btn-secondary:hover{
+  border-color:var(--gold);color:var(--gold-hi);
+  background:rgba(201,168,76,0.12);
+  transform:translateY(-2px);
+}
 
 .hero-scroll{
-  position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
-  z-index:2;
+  margin-top:60px;
   display:flex;flex-direction:column;align-items:center;gap:10px;
   color:var(--faint);text-decoration:none;
   font-family:var(--mono);font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;
   transition:color .3s;
 }
 .hero-scroll:hover{color:var(--gold);}
-.hero-scroll span{display:block;width:1px;height:42px;background:linear-gradient(180deg,var(--line-strong),transparent);}
+.hero-scroll span{display:block;width:1px;height:36px;background:linear-gradient(180deg,var(--line-strong),transparent);}
 
 /* ═══════════ ESTRUTURA DE SEÇÃO ═══════════ */
 .section{
   position:relative;z-index:2;
-  max-width:1060px;margin:0 auto;
+  max-width:1140px;margin:0 auto;
   padding:var(--section-pad) 28px 0;
 }
 .section:last-of-type{padding-bottom:var(--section-pad);}
 
-/* Divisor ornamental: linha + losango */
 .section-head{
   display:flex;flex-direction:column;align-items:center;
-  margin-bottom:64px;text-align:center;
+  margin-bottom:60px;text-align:center;
 }
 .ornament{
   display:flex;align-items:center;gap:14px;
-  margin-bottom:22px;width:100%;max-width:520px;
+  margin-bottom:20px;width:100%;max-width:480px;
 }
 .ornament::before,.ornament::after{
   content:'';flex:1;height:1px;
@@ -222,134 +331,232 @@ body::before{
 }
 .ornament::after{background:linear-gradient(90deg,var(--line-strong),transparent);}
 .ornament i{
-  width:9px;height:9px;flex-shrink:0;
+  width:8px;height:8px;flex-shrink:0;
   background:var(--gold);
   transform:rotate(45deg);
-  box-shadow:0 0 12px rgba(201,168,76,0.4);
+  box-shadow:0 0 10px rgba(201,168,76,0.4);
+}
+.section-tag{
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:3px;
+  color:var(--gold);text-transform:uppercase;margin-bottom:10px;
 }
 .section-title{
   font-family:var(--serif);
-  font-size:clamp(1.5rem,3.4vw,2.2rem);
-  font-weight:600;letter-spacing:5px;text-transform:uppercase;
-  color:var(--gold);
+  font-size:clamp(1.6rem,3.4vw,2.3rem);
+  font-weight:600;letter-spacing:4px;text-transform:uppercase;
+  color:var(--ink);
 }
 .section-sub{
   margin-top:14px;
   font-size:0.95rem;color:var(--muted);font-weight:300;
-  max-width:480px;line-height:1.7;
+  max-width:580px;line-height:1.75;
 }
 
-/* ═══════════ PROJETOS ═══════════ */
-.projects-grid{
+/* ═══════════ ÁREAS DE ATUAÇÃO ═══════════ */
+.services-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:28px;
 }
-@media(max-width:900px){.projects-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:680px){.projects-grid{grid-template-columns:1fr;}}
+@media(max-width:920px){.services-grid{grid-template-columns:1fr;max-width:540px;margin-inline:auto;}}
 
-.project-card{
-  display:flex;flex-direction:column;
-  text-decoration:none;color:inherit;
+.service-card{
   background:var(--bg-soft);
   border:1px solid var(--line);
   border-radius:var(--r-md);
-  overflow:hidden;
-  transition:border-color .35s ease,transform .35s ease;
+  padding:40px 32px;
+  display:flex;flex-direction:column;
+  transition:border-color .35s ease,transform .35s ease,box-shadow .35s ease;
+  position:relative;overflow:hidden;
 }
-.project-card:hover{border-color:var(--line-strong);transform:translateY(-6px);}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:0;transition:opacity .35s;
+}
+.service-card:hover{
+  border-color:var(--line-strong);
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+.service-card:hover::before{opacity:1;}
 
-.card-preview{
-  aspect-ratio:16/9;
-  overflow:hidden;position:relative;
-  border-bottom:1px solid var(--line);
-}
-.card-preview img{
-  width:100%;height:100%;object-fit:cover;
-  transition:transform .6s cubic-bezier(0.22,0.61,0.36,1);
-}
-.project-card:hover .card-preview img{transform:scale(1.05);}
-.card-preview::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 55%,rgba(10,9,8,0.75));
-  opacity:0;transition:opacity .4s;
-}
-.project-card:hover .card-preview::after{opacity:1;}
-
-.card-info{padding:26px 28px 30px;flex:1;display:flex;flex-direction:column;}
-.card-title{
-  font-family:var(--serif);
-  font-size:1.25rem;font-weight:700;letter-spacing:2px;
-  text-transform:uppercase;color:var(--ink);
-}
-.card-desc{
-  margin-top:12px;flex:1;
-  font-size:0.92rem;font-weight:300;
-  color:var(--muted);line-height:1.7;
-}
-.card-btn{
-  margin-top:24px;width:fit-content;
-  display:inline-flex;align-items:center;gap:10px;
-  font-family:var(--mono);font-size:0.68rem;font-weight:700;
-  letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--gold);
-  padding-bottom:6px;
-  border-bottom:1px solid var(--line-strong);
-  transition:color .3s,border-color .3s,gap .3s;
-}
-.card-btn::after{content:'→';font-family:var(--sans);}
-.project-card:hover .card-btn{color:var(--gold-hi);border-color:var(--gold-hi);gap:16px;}
-
-/* ── Selos de status do projeto ── */
-.card-badge{
-  position:absolute;top:14px;left:14px;z-index:3;
-  font-family:var(--mono);font-size:0.57rem;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;
-  padding:5px 11px;border-radius:var(--r-sm);
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-}
-.card-badge--free{
-  background:rgba(10,9,8,0.55);
-  border:1px solid var(--line);
-  color:var(--muted);
-}
-.card-badge--product{
-  background:linear-gradient(135deg,var(--gold),var(--gold-deep));
-  border:1px solid var(--gold-hi);
-  color:var(--bg);
-  box-shadow:0 2px 14px rgba(201,168,76,0.4);
-}
-.card-badge--soon{
-  background:rgba(10,9,8,0.55);
-  border:1px solid rgba(242,239,226,0.14);
-  color:var(--faint);
-}
-
-/* Card 'Em breve' — não clicável, discreto */
-.project-card--soon{cursor:default;opacity:0.7;}
-.project-card--soon:hover{transform:none;border-color:var(--line);}
-.project-card--soon:hover .card-preview img{transform:none;}
-.card-preview--placeholder{
+.service-icon{
+  width:52px;height:52px;border-radius:var(--r-sm);
+  border:1px solid var(--line-strong);
   display:flex;align-items:center;justify-content:center;
-  background:repeating-linear-gradient(45deg,var(--bg-soft),var(--bg-soft) 14px,rgba(201,168,76,0.035) 14px,rgba(201,168,76,0.035) 28px);
+  color:var(--gold);background:rgba(201,168,76,0.06);
+  margin-bottom:26px;
 }
-.placeholder-mark{
-  font-family:var(--serif);font-size:2.6rem;font-weight:900;
-  letter-spacing:5px;color:var(--faint);opacity:0.55;
+.service-title{
+  font-family:var(--serif);font-size:1.25rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;color:var(--ink);
+  margin-bottom:14px;
 }
-.card-btn--disabled{color:var(--faint);border-bottom-color:transparent;cursor:default;}
-.card-btn--disabled::after{content:'';}
+.service-desc{
+  font-size:0.92rem;font-weight:300;color:var(--muted);
+  line-height:1.75;flex:1;
+}
+.service-tags{
+  margin-top:24px;padding-top:20px;
+  border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.service-tag{
+  font-family:var(--mono);font-size:0.58rem;letter-spacing:1px;
+  text-transform:uppercase;color:var(--gold-hi);
+  background:rgba(201,168,76,0.08);padding:4px 8px;border-radius:var(--r-sm);
+}
 
-/* ═══════════ SÍMBOLOS ═══════════ */
+/* ═══════════ CURADORIA INTERATIVA ═══════════ */
+.curadoria-box{
+  background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,0.08) 0%,rgba(17,15,12,0.85) 75%);
+  border:1px solid var(--line-strong);
+  border-radius:var(--r-lg);
+  padding:48px 36px;
+  max-width:920px;margin:0 auto;
+  box-shadow:0 24px 60px rgba(0,0,0,0.6);
+}
+@media(max-width:600px){.curadoria-box{padding:32px 20px;}}
+
+.curadoria-steps{
+  display:flex;flex-direction:column;gap:32px;
+}
+.curadoria-step-title{
+  font-family:var(--mono);font-size:0.68rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold);margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.step-num{
+  width:22px;height:22px;border-radius:50%;
+  border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.62rem;font-weight:700;
+}
+.options-chips{
+  display:flex;flex-wrap:wrap;gap:10px;
+}
+.chip-btn{
+  background:none;border:1px solid var(--line);
+  color:var(--muted);padding:10px 18px;border-radius:var(--r-sm);
+  font-family:var(--sans);font-size:0.85rem;cursor:pointer;
+  transition:all .25s ease;
+}
+.chip-btn:hover{border-color:var(--gold);color:var(--ink);}
+.chip-btn.active{
+  background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+  color:var(--bg);border-color:var(--gold-hi);font-weight:500;
+  box-shadow:0 4px 14px rgba(201,168,76,0.3);
+}
+
+.curadoria-submit-row{
+  margin-top:36px;
+  padding-top:28px;
+  border-top:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;
+}
+.curadoria-summary{
+  font-family:var(--mono);font-size:0.75rem;color:var(--muted);
+  line-height:1.6;
+}
+.curadoria-summary b{color:var(--gold-hi);font-weight:600;}
+
+/* ═══════════ DIFERENCIAIS / INTELIGÊNCIA ═══════════ */
+.diff-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
+@media(max-width:860px){.diff-grid{grid-template-columns:1fr;}}
+
+.diff-card{
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  padding:32px 26px;
+  background:rgba(17,15,12,0.6);
+  transition:all .3s ease;
+}
+.diff-card:hover{
+  border-color:var(--gold);
+  background:rgba(201,168,76,0.04);
+}
+.diff-number{
+  font-family:var(--mono);font-size:0.7rem;font-weight:700;
+  letter-spacing:2px;color:var(--gold);margin-bottom:12px;
+}
+.diff-title{
+  font-family:var(--serif);font-size:1.15rem;font-weight:700;
+  letter-spacing:1.5px;color:var(--ink);margin-bottom:10px;
+}
+.diff-desc{
+  font-size:0.88rem;color:var(--muted);line-height:1.7;font-weight:300;
+}
+
+/* Banner de ligação com o Tech Lab */
+.tech-banner{
+  margin-top:50px;
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  padding:28px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;
+  background:linear-gradient(90deg,rgba(17,15,12,0.9),rgba(25,21,16,0.7));
+}
+.tech-banner-info h4{
+  font-family:var(--serif);font-size:1.1rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold-hi);margin-bottom:6px;
+}
+.tech-banner-info p{
+  font-size:0.88rem;color:var(--muted);font-weight:300;max-width:580px;
+}
+.tech-banner-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:0.72rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;
+  color:var(--bg);background:var(--gold);
+  padding:12px 22px;border-radius:var(--r-sm);
+  transition:all .3s;white-space:nowrap;
+}
+.tech-banner-btn:hover{
+  background:var(--gold-hi);transform:translateX(3px);
+}
+
+/* ═══════════ SOBRE & PRINCÍPIOS ═══════════ */
+.about-box{
+  display:grid;grid-template-columns:320px 1fr;gap:48px;
+  align-items:center;margin-bottom:60px;
+}
+@media(max-width:860px){.about-box{grid-template-columns:1fr;text-align:center;}}
+
+.about-photo-col{display:flex;justify-content:center;}
+.about-photo-wrap{
+  position:relative;width:240px;height:300px;
+  border-radius:var(--r-md);overflow:hidden;
+  border:1px solid var(--line-strong);
+  box-shadow:0 18px 45px rgba(0,0,0,0.6);
+}
+.about-photo-wrap img{
+  width:100%;height:100%;object-fit:cover;
+}
+.about-text h3{
+  font-family:var(--serif);font-size:1.6rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;color:var(--gold);
+  margin-bottom:16px;
+}
+.about-text p{
+  font-size:0.95rem;font-weight:300;color:var(--muted);
+  line-height:1.8;margin-bottom:16px;
+}
+
+/* Símbolos / Pilares */
 .symbols-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
-  gap:28px;
+  gap:24px;
 }
 @media(max-width:680px){.symbols-grid{grid-template-columns:1fr;max-width:380px;margin-inline:auto;}}
 
 .symbol-card{
   background:none;border:1px solid var(--line);
   border-radius:var(--r-md);
-  padding:44px 26px 36px;
+  padding:36px 24px 30px;
   text-align:center;cursor:pointer;
   color:inherit;font-family:inherit;
   transition:border-color .35s,background .35s,transform .35s;
@@ -360,104 +567,160 @@ body::before{
   transform:translateY(-6px);
 }
 .symbol-card img{
-  width:96px;height:96px;object-fit:contain;
-  margin-bottom:22px;
+  width:88px;height:88px;object-fit:contain;
+  margin-bottom:18px;
   transition:transform .4s ease;
 }
-.symbol-card:hover img{transform:scale(1.07);}
+.symbol-card:hover img{transform:scale(1.06);}
 .symbol-name{
   font-family:var(--serif);
   font-size:1.05rem;font-weight:700;
-  letter-spacing:3px;text-transform:uppercase;
+  letter-spacing:2.5px;text-transform:uppercase;
   color:var(--ink);
 }
-.symbol-words{
-  margin-top:10px;
+.symbol-meaning{
+  margin-top:8px;
   font-family:var(--mono);font-size:0.62rem;
   letter-spacing:2px;text-transform:uppercase;
-  color:var(--muted);line-height:1.8;
+  color:var(--gold);
 }
 .symbol-hint{
-  margin-top:18px;display:inline-block;
+  margin-top:14px;display:inline-block;
   font-family:var(--mono);font-size:0.58rem;
-  letter-spacing:2px;text-transform:uppercase;
+  letter-spacing:1.8px;text-transform:uppercase;
   color:var(--faint);
   transition:color .3s;
 }
 .symbol-card:hover .symbol-hint{color:var(--gold);}
 
-/* Também os traços pessoais, discretos, em linha */
-.traits-line{
-  margin-top:56px;text-align:center;
-  font-family:var(--mono);font-size:0.68rem;
-  letter-spacing:3px;text-transform:uppercase;
-  color:var(--muted);
-}
-.traits-line b{color:var(--gold);font-weight:400;padding:0 6px;}
-
 /* ═══════════ CONTATO ═══════════ */
-.contacts-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+.contact-section-inner{
+  max-width:880px;margin:0 auto;
 }
-@media(max-width:760px){.contacts-grid{grid-template-columns:repeat(3,1fr);}}
-@media(max-width:420px){.contacts-grid{grid-template-columns:1fr;}}
+.contact-highlight-card{
+  background:radial-gradient(circle at 50% 0%,rgba(201,168,76,0.08) 0%,rgba(17,15,12,0.95) 80%);
+  border:1px solid var(--line-strong);
+  border-radius:var(--r-lg);
+  padding:44px 36px;
+  text-align:center;
+  box-shadow:0 24px 60px rgba(0,0,0,0.7);
+}
+.creci-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px;border-radius:var(--r-sm);
+  background:rgba(201,168,76,0.08);
+  border:1px solid var(--line-strong);
+  font-family:var(--mono);font-size:0.62rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gold-hi);
+  margin-bottom:24px;
+}
+.contacts-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  margin-top:32px;
+}
+@media(max-width:700px){.contacts-grid{grid-template-columns:1fr;}}
 
 .contact-item{
-  display:flex;flex-direction:column;align-items:center;gap:12px;
-  padding:34px 14px 30px;
-  background:none;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:28px 16px;
+  background:rgba(10,9,8,0.5);
   border:1px solid var(--line);
   border-radius:var(--r-md);
   text-decoration:none;color:inherit;cursor:pointer;
-  font-family:inherit;
-  transition:border-color .3s,background .3s,transform .3s;
+  transition:all .3s ease;
 }
 .contact-item:hover{
-  border-color:var(--line-strong);
-  background:rgba(201,168,76,0.04);
+  border-color:var(--gold);
+  background:rgba(201,168,76,0.05);
   transform:translateY(-4px);
 }
+.contact-item.contact-item--whatsapp{
+  border-color:rgba(37,211,102,0.3);
+}
+.contact-item.contact-item--whatsapp:hover{
+  border-color:var(--whatsapp);
+  background:rgba(37,211,102,0.06);
+}
 .contact-icon{
-  width:46px;height:46px;border-radius:var(--r-sm);
+  width:44px;height:44px;border-radius:var(--r-sm);
   border:1px solid var(--line);
   display:flex;align-items:center;justify-content:center;
   color:var(--gold);
   transition:all .3s;
 }
+.contact-item--whatsapp .contact-icon{color:var(--whatsapp);border-color:rgba(37,211,102,0.3);}
 .contact-item:hover .contact-icon{
   background:var(--gold);color:var(--bg);
-  border-color:var(--gold);
+}
+.contact-item--whatsapp:hover .contact-icon{
+  background:var(--whatsapp);color:#fff;border-color:var(--whatsapp);
 }
 .contact-label{
-  font-family:var(--serif);font-size:0.85rem;font-weight:700;
+  font-family:var(--serif);font-size:0.88rem;font-weight:700;
   letter-spacing:2px;text-transform:uppercase;color:var(--ink);
 }
 .contact-handle{
-  font-family:var(--mono);font-size:0.62rem;
+  font-family:var(--mono);font-size:0.65rem;
   color:var(--muted);text-align:center;word-break:break-all;
-  letter-spacing:0.5px;
 }
 
-/* ═══════════ RODAPÉ ═══════════ */
+/* ═══════════ BOTÃO FLUTUANTE DE WHATSAPP ═══════════ */
+.floating-whatsapp{
+  position:fixed;bottom:24px;right:24px;z-index:999;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(17,15,12,0.92);
+  border:1px solid rgba(37,211,102,0.45);
+  color:var(--ink);text-decoration:none;
+  padding:10px 18px 10px 12px;border-radius:30px;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6), 0 0 15px rgba(37,211,102,0.2);
+  transition:all .3s cubic-bezier(0.2,0.8,0.2,1);
+}
+.floating-whatsapp:hover{
+  transform:translateY(-3px) scale(1.02);
+  border-color:var(--whatsapp);
+  box-shadow:0 14px 35px rgba(0,0,0,0.7), 0 0 25px rgba(37,211,102,0.35);
+}
+.wpp-icon-circle{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--whatsapp);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.wpp-text{
+  display:flex;flex-direction:column;text-align:left;
+}
+.wpp-title{
+  font-family:var(--mono);font-size:0.65rem;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;color:var(--gold-hi);
+}
+.wpp-sub{
+  font-size:0.75rem;color:var(--muted);line-height:1.2;
+}
+
+/* ═══════════ FOOTER ═══════════ */
 .footer{
   position:relative;z-index:2;
   margin-top:var(--section-pad);
   border-top:1px solid var(--line);
-  padding:38px 28px 46px;
-  display:flex;flex-direction:column;align-items:center;gap:18px;
+  padding:42px 28px 50px;
+  display:flex;flex-direction:column;align-items:center;gap:20px;
 }
-.footer-links{display:flex;gap:28px;}
+.footer-links{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;}
 .footer-links a{
-  font-family:var(--mono);font-size:0.62rem;font-weight:700;
-  letter-spacing:2.5px;text-transform:uppercase;
+  font-family:var(--mono);font-size:0.64rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
   color:var(--faint);text-decoration:none;
   transition:color .3s;
 }
 .footer-links a:hover{color:var(--gold);}
+.footer-creci-note{
+  font-family:var(--mono);font-size:0.6rem;letter-spacing:1px;
+  color:var(--faint);text-align:center;max-width:540px;line-height:1.6;
+}
 .footer-pax{
   font-family:var(--serif);font-size:0.8rem;font-weight:600;
-  letter-spacing:6px;color:var(--gold);
-  opacity:0.6;
+  letter-spacing:6px;color:var(--gold);opacity:0.6;
 }
 .footer-copy{
   font-family:var(--mono);font-size:0.58rem;
@@ -465,15 +728,13 @@ body::before{
 }
 
 /* ═══════════ REVEAL ON SCROLL ═══════════ */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease;}
 .reveal.in{opacity:1;transform:translateY(0);}
-.reveal:nth-child(2){transition-delay:.08s;}
-.reveal:nth-child(3){transition-delay:.16s;}
 
 /* ═══════════ TOGGLE DE BRILHO ═══════════ */
 .glow-toggle{
-  position:fixed;top:22px;right:22px;z-index:100;
-  width:40px;height:40px;border-radius:50%;
+  position:fixed;top:18px;right:18px;z-index:100;
+  width:38px;height:38px;border-radius:50%;
   background:rgba(16,14,11,0.7);
   border:1px solid var(--line);
   color:var(--gold);cursor:pointer;
@@ -482,14 +743,14 @@ body::before{
   transition:border-color .3s,color .3s;
 }
 .glow-toggle:hover{border-color:var(--line-strong);color:var(--gold-hi);}
-.glow-toggle svg{width:17px;height:17px;}
-.glow-off .hero-medal{opacity:0.05!important;animation:none;}
+.glow-toggle svg{width:16px;height:16px;}
+.glow-off .hero-medal{opacity:0.04!important;animation:none;}
 .glow-off body::after{display:none;}
 
-/* ═══════════ MODAIS (preservados) ═══════════ */
+/* ═══════════ MODAIS (PRESERVADOS E REFINADOS) ═══════════ */
 .modal-overlay{
   position:fixed;inset:0;
-  background:rgba(10,9,8,0.9);
+  background:rgba(10,9,8,0.92);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   display:flex;align-items:center;justify-content:center;
   z-index:1000;opacity:0;pointer-events:none;
@@ -500,8 +761,8 @@ body::before{
   background:var(--bg-soft);
   border:1px solid var(--line-strong);
   border-radius:var(--r-lg);width:100%;max-width:680px;
-  box-shadow:0 30px 80px rgba(0,0,0,0.8);
-  transform:translateY(24px) scale(0.97);
+  box-shadow:0 30px 80px rgba(0,0,0,0.85);
+  transform:translateY(20px) scale(0.98);
   transition:transform .35s cubic-bezier(0.175,0.885,0.32,1.12);
   position:relative;overflow:hidden;
   padding:36px;
@@ -518,45 +779,42 @@ body::before{
 }
 .modal-close:hover{border-color:var(--gold);color:var(--gold);}
 .modal-visual{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;}
-.modal-visual img{width:170px;height:170px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(201,168,76,0.4));}
-.modal-info{display:flex;flex-direction:column;gap:16px;min-width:0;}
+.modal-visual img{width:160px;height:160px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(201,168,76,0.35));}
+.modal-info{display:flex;flex-direction:column;gap:14px;min-width:0;}
 .modal-title{
   font-family:var(--serif);font-size:1.35rem;font-weight:700;
   letter-spacing:2px;text-transform:uppercase;color:var(--gold);
 }
-.modal-sub{font-family:var(--mono);font-size:0.6rem;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-top:-8px;}
-.modal-text{font-size:0.9rem;font-weight:300;line-height:1.75;color:rgba(242,239,226,0.85);}
-@media(max-width:600px){.modal-card{grid-template-columns:1fr;padding:28px 22px;}.modal-visual img{width:130px;height:130px;}}
+.modal-sub{font-family:var(--mono);font-size:0.62rem;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;margin-top:-6px;}
+.modal-text{font-size:0.9rem;font-weight:300;line-height:1.75;color:rgba(244,242,232,0.85);}
+@media(max-width:600px){.modal-card{grid-template-columns:1fr;padding:28px 20px;}.modal-visual img{width:120px;height:120px;}}
 
 /* Extras do modal de São Bento */
-.benedict-tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:8px;}
-.benedict-tab{background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:0.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;padding:6px 12px;border-radius:var(--r-sm);transition:all .2s;}
+.benedict-tabs{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:8px;margin-top:6px;}
+.benedict-tab{background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:0.64rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;padding:6px 12px;border-radius:var(--r-sm);transition:all .2s;}
 .benedict-tab.active{color:var(--gold);background:rgba(201,168,76,0.08);}
-.siglas-box{border:1px solid var(--line);border-radius:var(--r-md);padding:14px;}
+.siglas-box{border:1px solid var(--line);border-radius:var(--r-md);padding:14px;margin-top:6px;}
 .siglas-header-label{font-family:var(--mono);font-size:0.58rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
-.siglas-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px;}
+.siglas-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
 .sigla-chip{font-family:var(--mono);font-size:0.62rem;font-weight:700;padding:4px 8px;border-radius:var(--r-sm);border:1px solid var(--line);color:var(--ink);cursor:help;transition:all .2s;}
 .sigla-chip:hover{border-color:var(--gold);color:var(--gold);}
-.sigla-desc{font-size:0.75rem;color:var(--muted);line-height:1.5;min-height:38px;}
-.prayer-text{font-size:0.85rem;line-height:1.75;color:rgba(242,239,226,0.8);font-style:italic;border-left:2px solid var(--line-strong);padding-left:14px;}
+.sigla-desc{font-size:0.75rem;color:var(--muted);line-height:1.5;min-height:36px;}
+.prayer-text{font-size:0.84rem;line-height:1.7;color:rgba(244,242,232,0.82);font-style:italic;border-left:2px solid var(--line-strong);padding-left:14px;}
 
 /* Flip 3D da medalha */
-.medal-3d{width:170px;height:170px;perspective:900px;cursor:pointer;}
+.medal-3d{width:160px;height:160px;perspective:900px;cursor:pointer;}
 .medal-3d-inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .8s cubic-bezier(0.4,0,0.2,1);}
 .medal-3d-inner.flipped{transform:rotateY(180deg);}
 .medal-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:50%;overflow:hidden;}
-.medal-face img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 18px rgba(201,168,76,0.45));}
+.medal-face img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 16px rgba(201,168,76,0.4));}
 .medal-back-face{transform:rotateY(180deg);}
-.medal-hint{font-family:var(--mono);font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-align:center;}
+.medal-hint{font-family:var(--mono);font-size:0.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-align:center;}
 
-/* ═══════════ MOVIMENTO REDUZIDO ═══════════ */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;}
   html{scroll-behavior:auto;}
   .reveal{opacity:1;transform:none;}
 }
-
-/* Foco visível */
 a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:var(--r-sm);}
 </style>
 </head>
@@ -566,6 +824,24 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="4.9" y1="4.9" x2="7" y2="7"/><line x1="17" y1="17" x2="19.1" y2="19.1"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.9" y1="19.1" x2="7" y2="17"/><line x1="17" y1="7" x2="19.1" y2="4.9"/></svg>
 </button>
 
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">
+      <span class="brand-name">Breitner Maquito</span>
+      <span class="brand-sub">Curadoria Imobiliária · São Paulo</span>
+    </a>
+    <div class="nav-links">
+      <a href="#atuacao">Atuação</a>
+      <a href="#curadoria">Curadoria</a>
+      <a href="#inteligencia">Inteligência</a>
+      <a href="#sobre">Sobre & Princípios</a>
+      <a href="#contato">Contato</a>
+      <a href="tech.html" class="nav-btn-tech" title="Ver portfólio de tecnologia">Projetos Tech ↗</a>
+    </div>
+  </div>
+</nav>
+
 <!-- ═══════════ HERO ═══════════ -->
 <header class="hero" id="home">
 
@@ -574,209 +850,391 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
   </div>
 
   <div class="hero-inner">
-    <div class="hero-eyebrow">Portfólio · MMXXVI</div>
 
-    <div class="hero-name-row">
-      <img src="assets/LoboSF.png" alt="Lobo — clique para ver o simbolismo" class="guardian" id="wolfBadge" title="O simbolismo do Lobo">
-      <h1>Breitner<br>Maquito</h1>
-      <img src="assets/CorujaSF.png" alt="Coruja — clique para ver o simbolismo" class="guardian" id="owlBadge" title="O simbolismo da Coruja">
+    <!-- Foto profissional de Breitner com moldura e status -->
+    <div class="hero-profile reveal">
+      <div class="profile-frame">
+        <img src="assets/BreitnerMaquitoDelvaux.jpeg" alt="Breitner Maquito Delvaux" class="profile-img">
+      </div>
+      <div class="profile-status">
+        <span class="status-dot"></span>
+        Atendimento Private · SP
+      </div>
     </div>
 
-    <p class="hero-tagline">Tecnologia, viagens e natureza —<br><em>construindo coisas que fazem sentido.</em></p>
+    <div class="hero-eyebrow reveal">São Paulo · Assessoria Imobiliária & Patrimonial</div>
 
-    <div class="hero-status">
-      <div class="status-dot"></div>
-      Disponível para novos projetos
+    <h1 class="reveal">Breitner<br>Maquito</h1>
+
+    <div class="hero-subtitle reveal">Curadoria Imobiliária & Assessoria Estratégica</div>
+
+    <p class="hero-tagline reveal">
+      Imóveis selecionados e decisões guiadas por <em>inteligência de mercado, discrição e visão de patrimônio.</em>
+    </p>
+
+    <!-- CTAs de Ação Rápida -->
+    <div class="hero-actions reveal">
+      <!-- 
+        CONFIGURAÇÃO DE WHATSAPP:
+        Substitua 5511999999999 pelo seu número oficial (com DDI 55 e DDD de SP)
+      -->
+      <a class="btn-primary" id="heroWppBtn" href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20Breitner!%20Gostaria%20de%20conversar%20sobre%20oportunidades%20imobili%C3%A1rias%20em%20S%C3%A3o%20Paulo." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.693.076-2.002-.465-1.574-.65-2.576-2.253-2.656-2.358-.079-.105-.637-.847-.637-1.613s.401-1.139.544-1.294c.144-.155.313-.195.417-.195.105 0 .209.002.302.007.098.005.231-.038.36.273.134.322.459 1.117.499 1.199.04.081.067.177.014.283-.053.106-.079.172-.158.265-.08.093-.167.208-.239.279-.079.078-.162.164-.07.322.092.158.409.675.877 1.092.602.536 1.109.702 1.267.781.158.079.251.066.345-.04.093-.106.398-.464.504-.623.106-.158.212-.132.357-.079.145.053.921.434 1.079.513.158.079.264.119.303.185.04.066.04.385-.104.79z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a class="btn-secondary" href="#curadoria">
+        Solicitar Curadoria Sob Medida ↓
+      </a>
     </div>
+
   </div>
 
-  <a class="hero-scroll" href="#projetos">Explorar<span></span></a>
+  <a class="hero-scroll" href="#atuacao">Conhecer Atuação<span></span></a>
 </header>
 
-<!-- ═══════════ PROJETOS ═══════════ -->
-<section class="section" id="projetos">
+<!-- ═══════════ ÁREAS DE ATUAÇÃO ═══════════ -->
+<section class="section" id="atuacao">
   <div class="section-head reveal">
     <div class="ornament"><i></i></div>
-    <h2 class="section-title">Projetos</h2>
-    <p class="section-sub">Ideias que saíram do papel e viraram produto.</p>
+    <div class="section-tag">Serviços & Assessoria</div>
+    <h2 class="section-title">Pilares de Atuação</h2>
+    <p class="section-sub">Assessoria completa e personalizada para clientes que valorizam tempo, privacidade e precisão financeira.</p>
   </div>
 
-  <div class="projects-grid">
+  <div class="services-grid">
 
-    <a class="project-card reveal" href="https://tinight.github.io/glixar" target="_blank" rel="noopener">
-      <div class="card-preview">
-        <span class="card-badge card-badge--free">Gratuito</span>
-        <img src="assets/glixar_preview.jpg" alt="Prévia do jogo Glixar">
+    <!-- Card 1 -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       </div>
-      <div class="card-info">
-        <div class="card-title">Glixar</div>
-        <p class="card-desc">Jogo match-3 com níveis infinitos.</p>
-        <span class="card-btn">Jogar Glixar</span>
+      <h3 class="service-title">Curadoria Residencial</h3>
+      <p class="service-desc">
+        Mapeamento sob medida de residências e apartamentos nos bairros mais nobres de São Paulo. Selecionamos apenas imóveis com localização consolidada, qualidade construtiva e documentação impecável.
+      </p>
+      <div class="service-tags">
+        <span class="service-tag">Jardins</span>
+        <span class="service-tag">Itaim Bibi</span>
+        <span class="service-tag">Pinheiros</span>
+        <span class="service-tag">Vila Nova Conceição</span>
       </div>
-    </a>
+    </div>
 
-    <a class="project-card reveal" href="https://finzen-beryl.vercel.app/dashboard" target="_blank" rel="noopener">
-      <div class="card-preview">
-        <span class="card-badge card-badge--free">Gratuito</span>
-        <img src="assets/finzen_preview.jpg" alt="Prévia do dashboard Finzen">
+    <!-- Card 2 -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
       </div>
-      <div class="card-info">
-        <div class="card-title">Finzen</div>
-        <p class="card-desc">Controle financeiro pessoal com cofres, metas e projeções.</p>
-        <span class="card-btn">Acessar Finzen</span>
+      <h3 class="service-title">Investimentos Imobiliários</h3>
+      <p class="service-desc">
+        Estratégia voltada à preservação e multiplicação de capital: análise de preço por m², lançamentos com alto potencial de valorização, ativos para locação e avaliação de taxas de retorno (Cap Rate).
+      </p>
+      <div class="service-tags">
+        <span class="service-tag">Lançamentos</span>
+        <span class="service-tag">Renda & Yield</span>
+        <span class="service-tag">Ganho de Capital</span>
       </div>
-    </a>
+    </div>
 
-    <a class="project-card reveal" href="./codigo-zero/" target="_blank" rel="noopener">
-      <div class="card-preview">
-        <span class="card-badge card-badge--product">Produto</span>
-        <img src="assets/codigo_zero_preview.png" alt="Prévia do site Código Zero">
+    <!-- Card 3 -->
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
-      <div class="card-info">
-        <div class="card-title">Código Zero</div>
-        <p class="card-desc">Crie apps com IA sem escrever código. Método completo em 6 passos.</p>
-        <span class="card-btn">Acessar Página</span>
-      </div>
-    </a>
-    <div class="project-card project-card--soon reveal">
-      <div class="card-preview card-preview--placeholder">
-        <span class="card-badge card-badge--soon">Em breve</span>
-        <span class="placeholder-mark">BI</span>
-      </div>
-      <div class="card-info">
-        <div class="card-title">Power BI</div>
-        <p class="card-desc">Dashboards e análise de dados de negócio, com foco em decisões orientadas por métricas. Projeto em desenvolvimento.</p>
-        <span class="card-btn card-btn--disabled">Em breve</span>
+      <h3 class="service-title">Assessoria & Venda</h3>
+      <p class="service-desc">
+        Posicionamento estratégico para quem deseja vender seu patrimônio sem exposição desnecessária. Conexão direta com compradores qualificados e acompanhamento em todas as etapas negociais.
+      </p>
+      <div class="service-tags">
+        <span class="service-tag">Discrição Total</span>
+        <span class="service-tag">Due Diligence</span>
+        <span class="service-tag">Segurança Jurídica</span>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ═══════════ SÍMBOLOS ═══════════ -->
-<section class="section" id="simbolos">
+<!-- ═══════════ CURADORIA SOB MEDIDA (BRIEFING) ═══════════ -->
+<section class="section" id="curadoria">
   <div class="section-head reveal">
     <div class="ornament"><i></i></div>
-    <h2 class="section-title">Símbolos</h2>
-    <p class="section-sub">Três emblemas que guiam o caminho. Toque em cada um para conhecer seu significado.</p>
+    <div class="section-tag">Atendimento Personalizado</div>
+    <h2 class="section-title">Curadoria Sob Medida</h2>
+    <p class="section-sub">Indique o perfil do imóvel que você busca e receba uma seleção refinada diretamente em seu WhatsApp.</p>
   </div>
 
-  <div class="symbols-grid">
+  <div class="curadoria-box reveal">
+    <div class="curadoria-steps">
 
-    <button class="symbol-card reveal" id="wolfSymbol">
-      <img src="assets/LoboSF.png" alt="">
-      <div class="symbol-name">O Lobo</div>
-      <div class="symbol-words">Lealdade · Coragem · Instinto</div>
-      <span class="symbol-hint">Ver simbolismo</span>
-    </button>
+      <!-- Passo 1 -->
+      <div class="curadoria-step">
+        <div class="curadoria-step-title">
+          <span class="step-num">1</span> Qual é o seu objetivo principal?
+        </div>
+        <div class="options-chips" id="objectiveGroup">
+          <button class="chip-btn active" data-val="Moradia de Alto Padrão">Morar com conforto</button>
+          <button class="chip-btn" data-val="Investimento para Renda">Investimento & Renda</button>
+          <button class="chip-btn" data-val="Investimento na Planta (Valorização)">Lançamento na Planta</button>
+          <button class="chip-btn" data-val="Vender meu Imóvel">Quero Vender meu Imóvel</button>
+        </div>
+      </div>
 
-    <button class="symbol-card reveal" id="saintBenedictBadge">
-      <img src="assets/Saint_Benedict_Medal_Colored_Front.png" alt="">
-      <div class="symbol-name">São Bento</div>
-      <div class="symbol-words">Proteção · Fé · Pax</div>
-      <span class="symbol-hint">Ver a medalha</span>
-    </button>
+      <!-- Passo 2 -->
+      <div class="curadoria-step">
+        <div class="curadoria-step-title">
+          <span class="step-num">2</span> Região de interesse em São Paulo:
+        </div>
+        <div class="options-chips" id="regionGroup">
+          <button class="chip-btn active" data-val="Jardins">Jardins</button>
+          <button class="chip-btn" data-val="Itaim Bibi">Itaim Bibi</button>
+          <button class="chip-btn" data-val="Pinheiros">Pinheiros</button>
+          <button class="chip-btn" data-val="Vila Nova Conceição">Vila Nova Conceição</button>
+          <button class="chip-btn" data-val="Moema">Moema</button>
+          <button class="chip-btn" data-val="Outras Regiões Nobres">Outras Regiões Nobres</button>
+        </div>
+      </div>
 
-    <button class="symbol-card reveal" id="owlSymbol">
-      <img src="assets/CorujaSF.png" alt="">
-      <div class="symbol-name">A Coruja</div>
-      <div class="symbol-words">Sabedoria · Vigília · Mistério</div>
-      <span class="symbol-hint">Ver simbolismo</span>
-    </button>
+    </div>
 
+    <!-- Linha de envio do briefing -->
+    <div class="curadoria-submit-row">
+      <div class="curadoria-summary" id="curadoriaSummary">
+        Selecionado: <b>Moradia de Alto Padrão</b> em <b>Jardins</b>
+      </div>
+      <a class="btn-primary" id="curadoriaSubmitBtn" href="#" target="_blank" rel="noopener">
+        Receber Curadoria no WhatsApp →
+      </a>
+    </div>
   </div>
-
-  <div class="traits-line reveal">Desenvolvedor Entusiasta<b>·</b>Viajante<b>·</b>Natureza</div>
 </section>
 
-<!-- ═══════════ CONTATO ═══════════ -->
+<!-- ═══════════ DIFERENCIAIS / INTELIGÊNCIA DE MERCADO ═══════════ -->
+<section class="section" id="inteligencia">
+  <div class="section-head reveal">
+    <div class="ornament"><i></i></div>
+    <div class="section-tag">O Diferencial Analítico</div>
+    <h2 class="section-title">Inteligência de Mercado</h2>
+    <p class="section-sub">A união entre visão estética apurada e rigor analítico para garantir decisões patrimoniais sólidas.</p>
+  </div>
+
+  <div class="diff-grid">
+
+    <div class="diff-card reveal">
+      <div class="diff-number">01 / DADOS</div>
+      <h3 class="diff-title">Métricas Reais & Preço do m²</h3>
+      <p class="diff-desc">Não operamos com especulações. Mapeamos valores reais praticados na região para garantir que você compre pelo preço justo e venda pelo teto de mercado.</p>
+    </div>
+
+    <div class="diff-card reveal">
+      <div class="diff-number">02 / FINANÇAS</div>
+      <h3 class="diff-title">Simulação de Fluxo & Rentabilidade</h3>
+      <p class="diff-desc">Modelagem financeira transparente: projeção de valorização futura, custo de oportunidade e estimativa segura de rentabilidade para investidores.</p>
+    </div>
+
+    <div class="diff-card reveal">
+      <div class="diff-number">03 / TEMPO</div>
+      <h3 class="diff-title">Filtro Cirúrgico de Oportunidades</h3>
+      <p class="diff-desc">Seu tempo é o recurso mais valioso. Você só visita imóveis que atendem com rigor 100% dos seus critérios e com documentação pré-validada.</p>
+    </div>
+
+  </div>
+
+  <!-- Banner com link para a página Tech -->
+  <div class="tech-banner reveal">
+    <div class="tech-banner-info">
+      <h4>Origem na Tecnologia & Análise Lógica</h4>
+      <p>Além da atuação imobiliária, desenvolvo softwares, simuladores financeiros e sistemas de inteligência artificial. Conheça os projetos do laboratório digital.</p>
+    </div>
+    <a href="tech.html" class="tech-banner-btn">Ver Projetos Tech & Lab ↗</a>
+  </div>
+</section>
+
+<!-- ═══════════ SOBRE & PRINCÍPIOS ═══════════ -->
+<section class="section" id="sobre">
+  <div class="section-head reveal">
+    <div class="ornament"><i></i></div>
+    <div class="section-tag">Perfil & Conduta</div>
+    <h2 class="section-title">Sobre & Princípios</h2>
+    <p class="section-sub">Uma postura pautada na transparência incondicional, atenção aos detalhes e respeito ao patrimônio construído por cada cliente.</p>
+  </div>
+
+  <div class="about-box reveal">
+    <div class="about-photo-col">
+      <div class="about-photo-wrap">
+        <img src="assets/BreitnerMaquitoDelvaux.jpeg" alt="Breitner Maquito">
+      </div>
+    </div>
+    <div class="about-text">
+      <h3>Breitner Maquito</h3>
+      <p>
+        Com sólida bagagem em raciocínio analítico, tecnologia e dados, direcionei minha atuação para o mercado imobiliário de São Paulo com uma missão clara: elevar a experiência de compra e venda a um patamar de consultoria estratégica real.
+      </p>
+      <p>
+        Acredito que um imóvel de valor nunca é apenas uma transação comercial — é o refúgio da família ou um pilar fundamental da solidez patrimonial de longo prazo. Por isso, cada cliente conta com dedicação exclusiva, sigilo absoluto e um atendimento consultivo em todas as etapas.
+      </p>
+    </div>
+  </div>
+
+  <!-- Três Símbolos Ressignificados como Princípios -->
+  <div class="symbols-grid">
+
+    <!-- Coruja -->
+    <button class="symbol-card reveal" id="owlSymbol" aria-label="Simbolismo da Coruja">
+      <img src="assets/CorujaSF.png" alt="A Coruja">
+      <div class="symbol-name">A Coruja</div>
+      <div class="symbol-meaning">Discernimento & Visão Analítica</div>
+      <span class="symbol-hint">Conhecer princípio →</span>
+    </button>
+
+    <!-- São Bento -->
+    <button class="symbol-card reveal" id="saintBenedictBadge" aria-label="Medalha de São Bento">
+      <img src="assets/Saint_Benedict_Medal_Colored_Front.png" alt="São Bento">
+      <div class="symbol-name">São Bento</div>
+      <div class="symbol-meaning">Ética, Solidez & Proteção</div>
+      <span class="symbol-hint">Ver a medalha →</span>
+    </button>
+
+    <!-- Lobo -->
+    <button class="symbol-card reveal" id="wolfSymbol" aria-label="Simbolismo do Lobo">
+      <img src="assets/LoboSF.png" alt="O Lobo">
+      <div class="symbol-name">O Lobo</div>
+      <div class="symbol-meaning">Lealdade & Foco no Cliente</div>
+      <span class="symbol-hint">Conhecer princípio →</span>
+    </button>
+
+  </div>
+</section>
+
+<!-- ═══════════ CONTATO & ATENDIMENTO ═══════════ -->
 <section class="section" id="contato">
   <div class="section-head reveal">
     <div class="ornament"><i></i></div>
-    <h2 class="section-title">Contato</h2>
-    <p class="section-sub">Aberto a projetos, colaborações e boas conversas.</p>
+    <div class="section-tag">Canais Diretos</div>
+    <h2 class="section-title">Iniciar Atendimento</h2>
+    <p class="section-sub">Atendimento personalizado com agendamento prévio em São Paulo ou via canais digitais.</p>
   </div>
 
-  <div class="contacts-grid">
-
-    <a class="contact-item reveal" href="https://instagram.com/breitnermaquito" target="_blank" rel="noopener">
-      <div class="contact-icon">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  <div class="contact-section-inner reveal">
+    <div class="contact-highlight-card">
+      
+      <!-- 
+        CRECI-SP MODELO:
+        Substitua pelo seu registro assim que emitido (ex: CRECI-SP: 000000-F ou CRECI-SP Estágio: 000000-E)
+      -->
+      <div class="creci-badge">
+        <span>CRECI-SP: EM CADASTRAMENTO / ESTÁGIO</span>
       </div>
-      <span class="contact-label">Instagram</span>
-      <span class="contact-handle">@breitnermaquito</span>
-    </a>
 
-    <a class="contact-item reveal" href="https://github.com/Tinight" target="_blank" rel="noopener">
-      <div class="contact-icon">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      <h3 style="font-family:var(--serif);font-size:1.45rem;letter-spacing:2px;color:var(--ink);margin-bottom:12px;">
+        Agende uma conversa sobre seu próximo imóvel
+      </h3>
+      <p style="font-size:0.92rem;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.7;">
+        Disponível para reuniões presenciais nos principais polos de negócios de SP ou atendimento ágil via WhatsApp.
+      </p>
+
+      <div class="contacts-grid">
+
+        <!-- WhatsApp -->
+        <a class="contact-item contact-item--whatsapp" id="contactWppBtn" href="https://wa.me/5511999999999?text=Ol%C3%A1%20Breitner!%20Gostaria%20de%20conversar%20sobre%20im%C3%B3veis%20em%20S%C3%A3o%20Paulo." target="_blank" rel="noopener">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.693.076-2.002-.465-1.574-.65-2.576-2.253-2.656-2.358-.079-.105-.637-.847-.637-1.613s.401-1.139.544-1.294c.144-.155.313-.195.417-.195.105 0 .209.002.302.007.098.005.231-.038.36.273.134.322.459 1.117.499 1.199.04.081.067.177.014.283-.053.106-.079.172-.158.265-.08.093-.167.208-.239.279-.079.078-.162.164-.07.322.092.158.409.675.877 1.092.602.536 1.109.702 1.267.781.158.079.251.066.345-.04.093-.106.398-.464.504-.623.106-.158.212-.132.357-.079.145.053.921.434 1.079.513.158.079.264.119.303.185.04.066.04.385-.104.79z"/></svg>
+          </div>
+          <span class="contact-label">WhatsApp</span>
+          <!-- Substitua pelo número real de exibição -->
+          <span class="contact-handle">(11) 99999-9999</span>
+        </a>
+
+        <!-- Instagram -->
+        <a class="contact-item" href="https://instagram.com/breitnermaquito" target="_blank" rel="noopener">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <span class="contact-label">Instagram</span>
+          <span class="contact-handle">@breitnermaquito</span>
+        </a>
+
+        <!-- E-mail -->
+        <button class="contact-item" id="copyEmailBtn" aria-label="Copiar e-mail">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span class="contact-label">E-mail</span>
+          <span class="contact-handle" id="emailTxt">contato.breitner@gmail.com</span>
+        </button>
+
       </div>
-      <span class="contact-label">GitHub</span>
-      <span class="contact-handle">github.com/Tinight</span>
-    </a>
-
-    <a class="contact-item reveal" href="https://linkedin.com/in/breitner-maquito" target="_blank" rel="noopener">
-      <div class="contact-icon">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      </div>
-      <span class="contact-label">LinkedIn</span>
-      <span class="contact-handle">breitner-maquito</span>
-    </a>
-
-    <button class="contact-item reveal" id="copyEmailBtn">
-      <div class="contact-icon">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      </div>
-      <span class="contact-label">E-mail</span>
-      <span class="contact-handle" id="emailTxt">contato.breitner@gmail.com</span>
-    </button>
-
+    </div>
   </div>
 </section>
+
+<!-- ═══════════ BOTÃO FLUTUANTE DE WHATSAPP ═══════════ -->
+<a class="floating-whatsapp" id="floatingWppBtn" href="https://wa.me/5511999999999?text=Ol%C3%A1%20Breitner!%20Vi%20seu%20site%20e%20gostaria%20de%20uma%20consultoria%20imobili%C3%A1ria%20em%20S%C3%A3o%20Paulo." target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+  <div class="wpp-icon-circle">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.693.076-2.002-.465-1.574-.65-2.576-2.253-2.656-2.358-.079-.105-.637-.847-.637-1.613s.401-1.139.544-1.294c.144-.155.313-.195.417-.195.105 0 .209.002.302.007.098.005.231-.038.36.273.134.322.459 1.117.499 1.199.04.081.067.177.014.283-.053.106-.079.172-.158.265-.08.093-.167.208-.239.279-.079.078-.162.164-.07.322.092.158.409.675.877 1.092.602.536 1.109.702 1.267.781.158.079.251.066.345-.04.093-.106.398-.464.504-.623.106-.158.212-.132.357-.079.145.053.921.434 1.079.513.158.079.264.119.303.185.04.066.04.385-.104.79z"/></svg>
+  </div>
+  <div class="wpp-text">
+    <span class="wpp-title">Atendimento Direto</span>
+    <span class="wpp-sub">Fale no WhatsApp</span>
+  </div>
+</a>
 
 <!-- ═══════════ RODAPÉ ═══════════ -->
 <footer class="footer">
   <div class="footer-links">
     <a href="#home">Início</a>
-    <a href="#projetos">Projetos</a>
-    <a href="#simbolos">Símbolos</a>
+    <a href="#atuacao">Atuação</a>
+    <a href="#curadoria">Curadoria</a>
+    <a href="#inteligencia">Inteligência</a>
+    <a href="#sobre">Sobre & Princípios</a>
     <a href="#contato">Contato</a>
+    <a href="tech.html">Projetos Tech</a>
   </div>
+  
+  <div class="footer-creci-note">
+    Breitner Maquito Delvaux · Consultoria Imobiliária em São Paulo.<br>
+    Atendimento profissional em conformidade com o CRECI-SP.
+  </div>
+
   <div class="footer-pax">PAX</div>
-  <div class="footer-copy">© 2026 Breitner Maquito Delvaux</div>
+  <div class="footer-copy">© 2026 Breitner Maquito Delvaux · Todos os direitos reservados.</div>
 </footer>
 
-<!-- ═══════════ MODAL: LOBO ═══════════ -->
+<!-- ═══════════ MODAL: LOBO (LEALDADE & FOCO) ═══════════ -->
 <div class="modal-overlay" id="wolfModal">
   <div class="modal-card">
     <button class="modal-close" id="closeWolf" aria-label="Fechar">&times;</button>
     <div class="modal-visual">
-      <img src="assets/LoboSF.png" alt="Lobo">
+      <img src="assets/LoboSF.png" alt="O Lobo">
     </div>
     <div class="modal-info">
       <div class="modal-title">O Simbolismo do Lobo</div>
-      <div class="modal-sub">Lealdade · Coragem · Instinto</div>
-      <p class="modal-text">O lobo é um símbolo ancestral de inteligência social, lealdade e força coletiva. Ele representa a conexão profunda com os próprios instintos, sabendo agir com determinação e coragem. Na matilha, o lobo nos ensina a equilibrar o compromisso com o grupo e a preservação de nossa individualidade e liberdade.</p>
+      <div class="modal-sub">Lealdade · Proteção · Foco no Cliente</div>
+      <p class="modal-text">
+        No atendimento imobiliário, o lobo representa o compromisso irrestrito de proteção aos interesses de quem confia seu patrimônio em nossas mãos. Agimos com determinação, lealdade inegociável e defesa obstinada dos objetivos do cliente, mantendo a postura ética e o trabalho em equipe com todas as partes envolvidas.
+      </p>
     </div>
   </div>
 </div>
 
-<!-- ═══════════ MODAL: CORUJA ═══════════ -->
+<!-- ═══════════ MODAL: CORUJA (SABEDORIA & ANÁLISE) ═══════════ -->
 <div class="modal-overlay" id="owlModal">
   <div class="modal-card">
     <button class="modal-close" id="closeOwl" aria-label="Fechar">&times;</button>
     <div class="modal-visual">
-      <img src="assets/CorujaSF.png" alt="Coruja">
+      <img src="assets/CorujaSF.png" alt="A Coruja">
     </div>
     <div class="modal-info">
       <div class="modal-title">O Simbolismo da Coruja</div>
-      <div class="modal-sub">Sabedoria · Vigília · Mistério</div>
-      <p class="modal-text">A coruja simboliza a sabedoria silenciosa, o discernimento e a capacidade de enxergar a verdade além das aparências e da escuridão. Associada à vigilância constante e ao intelecto, ela atua como um guia mental no caos, ensinando-nos a observar pacientemente antes de tomar qualquer decisão.</p>
+      <div class="modal-sub">Discernimento · Vigilância · Inteligência de Mercado</div>
+      <p class="modal-text">
+        A coruja simboliza a visão que enxerga além do óbvio. No mercado de alto valor, isso se traduz em discernimento analítico: observar pacientemente as oscilações de mercado, identificar riscos antes que se materializem e guiar o cliente com clareza para a melhor decisão financeira e patrimonial.
+      </p>
     </div>
   </div>
 </div>
 
-<!-- ═══════════ MODAL: SÃO BENTO ═══════════ -->
+<!-- ═══════════ MODAL: SÃO BENTO (ÉTICA & PROTEÇÃO) ═══════════ -->
 <div class="modal-overlay" id="benedictModal">
   <div class="modal-card">
     <button class="modal-close" id="closeBenedict" aria-label="Fechar">&times;</button>
@@ -784,18 +1242,18 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
       <div class="medal-3d" id="medalCard">
         <div class="medal-3d-inner" id="medalInner">
           <div class="medal-face">
-            <img src="assets/Saint_Benedict_Medal_Colored_Front.png" alt="Frente da medalha">
+            <img src="assets/Saint_Benedict_Medal_Colored_Front.png" alt="Frente da medalha de São Bento">
           </div>
           <div class="medal-face medal-back-face">
-            <img src="assets/Saint_Benedict_Medal_Colored_Back.png" alt="Verso da medalha">
+            <img src="assets/Saint_Benedict_Medal_Colored_Back.png" alt="Verso da medalha de São Bento">
           </div>
         </div>
       </div>
-      <div class="medal-hint">Clique para girar</div>
+      <div class="medal-hint">Toque para girar 3D</div>
     </div>
     <div class="modal-info">
       <div class="modal-title">Medalha de São Bento</div>
-      <div class="modal-sub">Proteção e Fé</div>
+      <div class="modal-sub">Ética Inegociável · Solidez · Paz</div>
       <div class="siglas-box">
         <div class="siglas-header-label">Inscrições da Medalha</div>
         <div class="siglas-chips">
@@ -808,7 +1266,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
           <span class="sigla-chip" data-sigla="IVB">I.V.B.</span>
           <span class="sigla-chip" data-sigla="PAX">PAX</span>
         </div>
-        <div class="sigla-desc" id="siglaDesc">Passe o mouse em uma sigla para ver o significado.</div>
+        <div class="sigla-desc" id="siglaDesc">Passe o mouse ou toque em uma sigla para ver o significado.</div>
       </div>
       <div class="benedict-tabs">
         <button class="benedict-tab active" data-lang="pt">Português</button>
@@ -820,7 +1278,55 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offse
 </div>
 
 <script>
-// ── Toggle de brilho (mesma chave do localStorage) ──
+// ── VARIÁVEL GLOBAL DE WHATSAPP (Substitua quando tiver o número oficial) ──
+const WHATSAPP_PHONE = '5511999999999';
+
+// Atualiza links com o número configurado
+function buildWppLink(message){
+  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+}
+
+// ── Curadoria Interativa: Seleção de Perfil ──
+let selectedObjective = 'Moradia de Alto Padrão';
+let selectedRegion = 'Jardins';
+
+function updateCuradoriaSummary(){
+  const summaryEl = document.getElementById('curadoriaSummary');
+  const btnEl = document.getElementById('curadoriaSubmitBtn');
+  summaryEl.innerHTML = `Selecionado: <b>${selectedObjective}</b> em <b>${selectedRegion}</b>`;
+  const customMsg = `Olá, Breitner! Gostaria de receber opções para ${selectedObjective} na região de ${selectedRegion} (São Paulo).`;
+  btnEl.href = buildWppLink(customMsg);
+}
+
+// Handler para botões de Objetivo
+document.querySelectorAll('#objectiveGroup .chip-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#objectiveGroup .chip-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedObjective = btn.dataset.val;
+    updateCuradoriaSummary();
+  });
+});
+
+// Handler para botões de Região
+document.querySelectorAll('#regionGroup .chip-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#regionGroup .chip-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedRegion = btn.dataset.val;
+    updateCuradoriaSummary();
+  });
+});
+
+// Inicializa o link da curadoria
+updateCuradoriaSummary();
+
+// Configura links padrão de WhatsApp
+document.getElementById('heroWppBtn').href = buildWppLink('Olá, Breitner! Gostaria de conversar sobre oportunidades imobiliárias em São Paulo.');
+document.getElementById('contactWppBtn').href = buildWppLink('Olá, Breitner! Gostaria de conversar sobre assessoria imobiliária em São Paulo.');
+document.getElementById('floatingWppBtn').href = buildWppLink('Olá, Breitner! Vi seu site e gostaria de uma consultoria imobiliária em São Paulo.');
+
+// ── Alternador de brilho / glow ──
 const glowToggle = document.getElementById('glowToggle');
 if(localStorage.getItem('glowOff')==='true'){document.body.classList.add('glow-off');}
 glowToggle.addEventListener('click',()=>{
@@ -829,13 +1335,13 @@ glowToggle.addEventListener('click',()=>{
 });
 
 // ── Copiar e-mail ──
-const emailVal='contato.breitner@gmail.com';
+const emailVal = 'contato.breitner@gmail.com';
 document.getElementById('copyEmailBtn').addEventListener('click',()=>{
   navigator.clipboard.writeText(emailVal).then(()=>{
-    const el=document.getElementById('emailTxt');
-    const orig=el.textContent;
-    el.textContent='Copiado ✓';
-    setTimeout(()=>el.textContent=orig,2000);
+    const el = document.getElementById('emailTxt');
+    const orig = el.textContent;
+    el.textContent = 'Copiado ✓';
+    setTimeout(()=>el.textContent=orig, 2000);
   });
 });
 
@@ -849,13 +1355,11 @@ document.addEventListener('keydown',(e)=>{
   if(e.key==='Escape')document.querySelectorAll('.modal-overlay.active').forEach(m=>m.classList.remove('active'));
 });
 
-// Lobo (guardião no hero + card de símbolo)
-document.getElementById('wolfBadge').addEventListener('click',()=>openModal('wolfModal'));
+// Lobo
 document.getElementById('wolfSymbol').addEventListener('click',()=>openModal('wolfModal'));
 document.getElementById('closeWolf').addEventListener('click',()=>closeModal('wolfModal'));
 
 // Coruja
-document.getElementById('owlBadge').addEventListener('click',()=>openModal('owlModal'));
 document.getElementById('owlSymbol').addEventListener('click',()=>openModal('owlModal'));
 document.getElementById('closeOwl').addEventListener('click',()=>closeModal('owlModal'));
 
@@ -863,10 +1367,10 @@ document.getElementById('closeOwl').addEventListener('click',()=>closeModal('owl
 document.getElementById('saintBenedictBadge').addEventListener('click',()=>openModal('benedictModal'));
 document.getElementById('closeBenedict').addEventListener('click',()=>closeModal('benedictModal'));
 
-// ── Flip da medalha ──
+// Flip 3D da medalha
 document.getElementById('medalCard').addEventListener('click',()=>document.getElementById('medalInner').classList.toggle('flipped'));
 
-// ── Abas da oração ──
+// Abas da oração
 const prayers={
   pt:'"A Cruz Sagrada seja a minha luz, não seja o dragão o meu guia. Retira-te, Satanás, nunca me aconselhes coisas vãs. É mau o que tu me ofereces, bebe tu mesmo o teu veneno."',
   la:'"Crux Sacra Sit Mihi Lux, Non Draco Sit Mihi Dux. Vade Retro Satana, Numquam Suade Mihi Vana. Sunt Mala Quae Libas, Ipse Venena Bibas."'
@@ -879,7 +1383,7 @@ document.querySelectorAll('.benedict-tab').forEach(btn=>{
   });
 });
 
-// ── Siglas ──
+// Siglas
 const siglas={
   CSPB:'<strong>C.S.P.B.</strong> — <em>Crux Sancti Patris Benedicti</em><br>Cruz do Santo Pai Bento.',
   CSSML:'<strong>C.S.S.M.L.</strong> — <em>Crux Sacra Sit Mihi Lux</em><br>A Cruz Sagrada seja a minha luz.',
@@ -892,11 +1396,11 @@ const siglas={
 };
 document.querySelectorAll('.sigla-chip').forEach(chip=>{
   chip.addEventListener('mouseenter',()=>document.getElementById('siglaDesc').innerHTML=siglas[chip.dataset.sigla]);
-  chip.addEventListener('mouseleave',()=>document.getElementById('siglaDesc').textContent='Passe o mouse em uma sigla para ver o significado.');
+  chip.addEventListener('mouseleave',()=>document.getElementById('siglaDesc').textContent='Passe o mouse ou toque em uma sigla para ver o significado.');
   chip.addEventListener('touchstart',(e)=>{e.preventDefault();document.getElementById('siglaDesc').innerHTML=siglas[chip.dataset.sigla];});
 });
 
-// ── Reveal on scroll ──
+// Reveal on scroll
 const io=new IntersectionObserver((entries)=>{
   entries.forEach(en=>{
     if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
@@ -904,7 +1408,7 @@ const io=new IntersectionObserver((entries)=>{
 },{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// ── Service Worker ──
+// Service Worker
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 }
