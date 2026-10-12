@@ -1,23 +1,17 @@
-# Breitner Maquito — Curadoria Imobiliária & Assessoria Estratégica
+# Página de projetos de Breitner Maquito
 
-Plataforma oficial de **Breitner Maquito Delvaux** — Curadoria Imobiliária & Assessoria Estratégica em São Paulo.
+Página estática com quatro banners de Instagram e LinkedIn no final. Sem dependências, fontes externas ou rastreamento.
 
-**Site:** [tinight.github.io](https://tinight.github.io)
+## Editar e visualizar
 
----
+Abra esta pasta no VS Code. Os nomes e links ficam na lista de `index.html`, a aparência em `styles.css` e as imagens otimizadas em `assets/`. As artes originais permanecem nas pastas de referência do usuário. Imagens decorativas usam alt vazio porque o nome do projeto já identifica o link.
 
-## Estrutura do Site
+Abra `index.html` no navegador para a prévia, ou use Live Server se já estiver instalado. Links abrem na mesma aba.
 
-- **Página Principal ([index.html](file:///d:/APPsDev/APPs_VsCode/Tinight/index.html)):**
-  - Curadoria e Assessoria Imobiliária em São Paulo
-  - Atuação nos bairros nobres (Jardins, Itaim Bibi, Pinheiros, Vila Nova Conceição, Moema)
-  - Widget interativo de Curadoria Sob Medida integrado ao WhatsApp
-  - Inteligência de Mercado e Métricas Analíticas
-  - Apresentação profissional e Princípios (Coruja, Lobo, Medalha de São Bento)
-  - Contato direto, botão flutuante de WhatsApp e espaço para CRECI-SP
+## Publicação pendente
 
-- **Laboratório Tech & Projetos Digitais ([tech.html](file:///d:/APPsDev/APPs_VsCode/Tinight/tech.html)):**
-  - **Glixar:** Jogo match-3 com níveis infinitos
-  - **Finzen:** Gestão financeira pessoal e projeções patrimoniais
-  - **Código Zero:** Método para criação de apps com inteligência artificial
-  - **Power BI & Dados:** Dashboards de negócio e métricas analíticas
+Esta alteração local não foi enviada ao GitHub nem publicada. Validar os quatro perfis do Instagram, recortes e navegação em celular e computador antes de publicar. O LinkedIn foi confirmado pelo usuário.
+
+O repositório identificado é Tinight/Tinight.github.io. O endereço previsto para hospedagem é https://tinight.github.io/, mas configuração e adequação às regras atuais do GitHub Pages ainda precisam ser verificadas. Guardar código no GitHub não significa publicar um site.
+
+`sw.js` encerra o cache tinight do site anterior quando a versão nova for publicada; não habilita cache novo.

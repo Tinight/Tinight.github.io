@@ -1,63 +1,7 @@
-const CACHE_NAME = 'tinight-v4';
-const ASSETS = [
-  './',
-  './index.html',
-  './tech.html',
-  './manifest.json',
-  './assets/icon-192.png',
-  './assets/icon-512.png',
-  './assets/BreitnerMaquitoDelvaux.jpeg',
-  './assets/LoboSF.png',
-  './assets/CorujaSF.png',
-  './assets/Saint_Benedict_Medal_Colored_Front.png',
-  './assets/Saint_Benedict_Medal_Colored_Back.png',
-  './assets/glixar_preview.jpg',
-  './assets/finzen_preview.jpg',
-  './assets/codigo_zero_preview.png',
-  './codigo-zero/',
-  './codigo-zero/index.html'
-];
-
-// Install Event
-self.addEventListener('install', (e) => {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS);
-    }).then(() => self.skipWaiting())
-  );
-});
-
-// Activate Event
-self.addEventListener('activate', (e) => {
-  e.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
-  );
-});
-
-// Fetch Event
-self.addEventListener('fetch', (e) => {
-  if (e.request.method !== 'GET') return;
-  if (!e.request.url.startsWith(self.location.origin) && !e.request.url.startsWith('https://fonts.')) return;
-
-  e.respondWith(
-    caches.match(e.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        fetch(e.request).then((networkResponse) => {
-          if (networkResponse.status === 200) {
-            caches.open(CACHE_NAME).then((cache) => cache.put(e.request, networkResponse));
-          }
-        }).catch(() => {/* offline */});
-        return cachedResponse;
-      }
-      return fetch(e.request);
-    })
-  );
-});
+// Transição do cache do site anterior. Sem cache ou integrações novas.
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', event => event.waitUntil((async () => {
+ for (const key of await caches.keys()) if (key.startsWith('tinight-')) await caches.delete(key);
+ await self.clients.claim();
+ await self.registration.unregister();
+})()));
