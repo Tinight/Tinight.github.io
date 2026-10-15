@@ -1,17 +1,19 @@
-# Página de projetos de Breitner Maquito
+# Projetos e atendimento com IA — Breitner Maquito
 
-Página estática com quatro banners de Instagram e LinkedIn no final. Sem dependências, fontes externas ou rastreamento.
+Site publicado em https://tinight.github.io/ pelo GitHub Pages, a partir de main e /(root).
 
-## Editar e visualizar
+## Conteúdo
 
-Abra esta pasta no VS Code. Os nomes e links ficam na lista de `index.html`, a aparência em `styles.css` e as imagens otimizadas em `assets/`. As artes originais permanecem nas pastas de referência do usuário. Imagens decorativas usam alt vazio porque o nome do projeto já identifica o link.
+1. Atendimento com IA: https://typebot.co/consultor-demo
+2. WPP Money Machine: https://www.instagram.com/wpp.moneymachine/
+3. LinkedIn: https://www.linkedin.com/in/breitner-maquito/
 
-Abra `index.html` no navegador para a prévia, ou use Live Server se já estiver instalado. Links abrem na mesma aba.
+## Edição e prévia
 
-## Publicação pendente
+Edite nomes, chamadas e links em index.html; aparência em styles.css; imagens em assets/. Abra index.html no navegador ou use um servidor estático local. Não há dependências, rastreamento ou fontes externas. Links abrem na mesma aba.
 
-Esta alteração local não foi enviada ao GitHub nem publicada. Validar os quatro perfis do Instagram, recortes e navegação em celular e computador antes de publicar. O LinkedIn foi confirmado pelo usuário.
+O símbolo de atendimento é SVG local, editável e leve. A arte do WPP foi preservada. Imagens dos projetos retirados permanecem no histórico e na pasta de assets, sem links na página.
 
-O repositório identificado é Tinight/Tinight.github.io. O endereço previsto para hospedagem é https://tinight.github.io/, mas configuração e adequação às regras atuais do GitHub Pages ainda precisam ser verificadas. Guardar código no GitHub não significa publicar um site.
+## Publicação
 
-`sw.js` encerra o cache tinight do site anterior quando a versão nova for publicada; não habilita cache novo.
+Após revisar a prévia, registre e envie as mudanças para main. Isso inicia a publicação automática no Pages. Confirme o endereço público após a implantação. sw.js contém a transição de cache do site antigo.
