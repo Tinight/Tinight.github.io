@@ -9,14 +9,15 @@ Repositório que reúne a página pessoal e as páginas de projetos de Breitner 
 
 | Página | Endereço | Conteúdo |
 | --- | --- | --- |
-| Pessoal | [Página inicial](https://tinight.github.io/) | Demonstração de atendimento com IA, WPP Money Machine e LinkedIn. |
+| Pessoal | [Página inicial](https://tinight.github.io/) | Central com Portfólio Profissional, WPP Money Machine e Pages; LinkedIn e TikTok pessoais no rodapé. |
+| Pages | [/pages/](https://tinight.github.io/pages/) | Coleção de páginas: Bíblico em Cores, Por Trás do Óbvio e Cleaning Quote & Job Check. |
 | Portfólio profissional | [/portfolio/](https://tinight.github.io/portfolio/) | Projeto Aura, tecnologias utilizadas e evolução futura em Power BI. |
 | Por Trás do Óbvio | [/portrasdoobvio/](https://tinight.github.io/portrasdoobvio/) | Acesso aos canais do projeto no YouTube e TikTok. |
 | Bíblico em Cores | [/biblicoemcores/](https://tinight.github.io/biblicoemcores/) | Apresentação do livro digital Minha Primeira Bíblia para Colorir, compra pela Kiwify, canais e criador. |
 | Cleaning Quote & Job Check | [/cleaning/](https://tinight.github.io/cleaning/) | Página de links para compra, redes sociais e acesso ao aplicativo. |
 | WPP Money Machine | [/wpp-money-machine/](https://tinight.github.io/wpp-money-machine/) | Dois acessos: apresentação comercial externa e Instagram pessoal do criador. |
 
-Os seis endereços foram conferidos em 26/10/2026 e retornaram HTTP 200. Essa conferência confirma o carregamento das páginas, não uma compra de teste ou auditoria completa dos serviços externos.
+Os endereços são verificados após cada publicação. A nova coleção Pages não altera os endereços das páginas existentes. Verificar carregamento não equivale a uma compra de teste ou auditoria completa dos serviços externos.
 
 ## Organização dos arquivos
 
@@ -26,6 +27,7 @@ Tinight/
 ├── styles.css             # Estilos da página pessoal
 ├── assets/                # Artes da página pessoal
 ├── portfolio/             # Portfólio profissional
+├── pages/                 # Coleção de páginas dos projetos
 ├── portrasdoobvio/         # Canais Por Trás do Óbvio
 ├── biblicoemcores/         # Livro Bíblico em Cores
 ├── cleaning/              # Cleaning Quote & Job Check
@@ -73,3 +75,7 @@ Antes de cada envio:
 5. Confirme o resultado no endereço público após a implantação.
 
 Código salvo no GitHub e site publicado são estados diferentes. Este repositório é público: seu conteúdo pode ser consultado e copiado, mas alterações diretas dependem de permissão de escrita.
+
+## Organização da página pessoal — versão atual
+
+A principal usa azul-marinho, cartões em azul secundário e detalhes em ciano. A navegação apresenta Portfólio Profissional, WPP Money Machine e Pages, nessa ordem. A demonstração Aura permanece no portfólio. LinkedIn e TikTok pessoais ficam no rodapé, com os endereços confirmados pelo usuário. Pages reúne os três projetos já existentes e pode receber novos cartões aprovados. Seu CSS é compartilhado com a raiz; os demais projetos usam estilos próprios.
