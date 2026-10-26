@@ -2,7 +2,7 @@
 
 Repositório que reúne a página pessoal e as páginas de projetos de Breitner Maquito. Cada projeto fica em uma subpasta, com endereço próprio no GitHub Pages.
 
-**Site principal:** [tinight.github.io](https://tinight.github.io/)  
+**Site principal:** [tinight.github.io](https://tinight.github.io/)
 **Repositório:** [Tinight/Tinight.github.io](https://github.com/Tinight/Tinight.github.io)
 
 ## Páginas publicadas
